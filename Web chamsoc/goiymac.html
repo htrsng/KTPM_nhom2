@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gợi ý ăn mặc</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(to right, #ffecd2, #fcb69f);
+            color: #333;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            background: linear-gradient(to right, #ff758c, #ff7eb3);
+            color: white;
+            padding: 20px;
+            border-radius: 12px;
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 16px;
+        }
+
+        .btn {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background: #ff758c;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .btn:hover {
+            background: #ff4a6e;
+        }
+
+        .result {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .link {
+            margin-top: 10px;
+            text-align: center;
+        }
+
+        .link a {
+            text-decoration: none;
+            color: #ff758c;
+            font-weight: bold;
+        }
+
+        .link a:hover {
+            color: #ff4a6e;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            Gợi ý ăn mặc
+        </div>
+        <form id="fashionForm">
+            <div class="form-group">
+                <label for="bust">Vòng ngực (cm):</label>
+                <input type="number" id="bust" placeholder="Nhập số đo vòng ngực" required>
+            </div>
+            <div class="form-group">
+                <label for="waist">Vòng eo (cm):</label>
+                <input type="number" id="waist" placeholder="Nhập số đo vòng eo" required>
+            </div>
+            <div class="form-group">
+                <label for="hips">Vòng hông (cm):</label>
+                <input type="number" id="hips" placeholder="Nhập số đo vòng hông" required>
+            </div>
+            <button type="button" class="btn" onclick="suggestFashion()">Xác định dáng người</button>
+        </form>
+        <div id="result" class="result"></div>
+        <div class="link" id="fashionLink"></div>
+    </div>
+
+    <script>
+        function suggestFashion() {
+            const bust = parseFloat(document.getElementById('bust').value);
+            const waist = parseFloat(document.getElementById('waist').value);
+            const hips = parseFloat(document.getElementById('hips').value);
+
+            if (isNaN(bust) || isNaN(waist) || isNaN(hips) || bust <= 0 || waist <= 0 || hips <= 0) {
+                document.getElementById('result').innerText = "Vui lòng nhập số đo hợp lệ!";
+                document.getElementById('fashionLink').innerHTML = "";
+                return;
+            }
+
+            let bodyType = "";
+            let suggestion = "";
+            let link = "";
+
+            if (bust === hips && waist < bust) {
+                bodyType = "Dáng đồng hồ cát";
+                suggestion = "Hãy chọn các trang phục ôm sát để tôn lên đường cong cơ thể.";
+                link = "https://example.com/dang-dong-ho-cat";
+            } else if (hips > bust && hips > waist) {
+                bodyType = "Dáng quả lê";
+                suggestion = "Hãy chọn các trang phục nhấn vào phần trên cơ thể như áo sáng màu.";
+                link = "https://example.com/dang-qua-le";
+            } else if (bust > hips && bust > waist) {
+                bodyType = "Dáng quả táo";
+                suggestion = "Hãy chọn các trang phục nhấn vào phần dưới cơ thể như váy chữ A.";
+                link = "https://example.com/dang-qua-tao";
+            } else if (bust === waist && waist === hips) {
+                bodyType = "Dáng chữ nhật";
+                suggestion = "Hãy chọn các trang phục tạo điểm nhấn ở eo như thắt lưng.";
+                link = "https://example.com/dang-chu-nhat";
+            } else {
+                bodyType = "Dáng khác";
+                suggestion = "Hãy chọn các trang phục phù hợp với sở thích và thoải mái nhất.";
+                link = "https://example.com/dang-khac";
+            }
+
+            document.getElementById('result').innerHTML = `
+                <p>Dáng người của bạn: <strong>${bodyType}</strong></p>
+                <p>Gợi ý: ${suggestion}</p>
+            `;
+            document.getElementById('fashionLink').innerHTML = `
+                <a href="${link}" target="_blank">Xem thêm cách phối đồ</a>
+            `;
+        }
+    </script>
+</body>
+</html>
