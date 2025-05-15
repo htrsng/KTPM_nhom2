@@ -104,6 +104,10 @@
         </div>
         <form id="fashionForm">
             <div class="form-group">
+                <label for="shoulder">Vòng vai (cm):</label>
+                <input type="number" id="shoulder" placeholder="Nhập số đo vòng vai" required>
+            </div>
+            <div class="form-group">
                 <label for="bust">Vòng ngực (cm):</label>
                 <input type="number" id="bust" placeholder="Nhập số đo vòng ngực" required>
             </div>
@@ -115,6 +119,7 @@
                 <label for="hips">Vòng hông (cm):</label>
                 <input type="number" id="hips" placeholder="Nhập số đo vòng hông" required>
             </div>
+            
             <button type="button" class="btn" onclick="suggestFashion()">Xác định dáng người</button>
         </form>
         <div id="result" class="result"></div>
@@ -126,8 +131,12 @@
             const bust = parseFloat(document.getElementById('bust').value);
             const waist = parseFloat(document.getElementById('waist').value);
             const hips = parseFloat(document.getElementById('hips').value);
+            const shoulder = parseFloat(document.getElementById('shoulder').value);
 
-            if (isNaN(bust) || isNaN(waist) || isNaN(hips) || bust <= 0 || waist <= 0 || hips <= 0) {
+            if (
+                isNaN(bust) || isNaN(waist) || isNaN(hips) || isNaN(shoulder) ||
+                bust <= 0 || waist <= 0 || hips <= 0 || shoulder <= 0
+            ) {
                 document.getElementById('result').innerText = "Vui lòng nhập số đo hợp lệ!";
                 document.getElementById('fashionLink').innerHTML = "";
                 return;
@@ -137,19 +146,32 @@
             let suggestion = "";
             let link = "";
 
-            if (bust === hips && waist < bust) {
+            // Xác định dáng người dựa trên số đo 4 vòng
+            if (
+                Math.abs(shoulder - hips) <= 3 &&
+                Math.abs(bust - hips) <= 3 &&
+                (waist < bust && waist < hips)
+            ) {
                 bodyType = "Dáng đồng hồ cát";
                 suggestion = "Hãy chọn các trang phục ôm sát để tôn lên đường cong cơ thể.";
                 link = "https://example.com/dang-dong-ho-cat";
-            } else if (hips > bust && hips > waist) {
+            } else if (hips > bust && hips > shoulder) {
                 bodyType = "Dáng quả lê";
                 suggestion = "Hãy chọn các trang phục nhấn vào phần trên cơ thể như áo sáng màu.";
                 link = "https://example.com/dang-qua-le";
-            } else if (bust > hips && bust > waist) {
+            } else if (shoulder > hips && shoulder > bust) {
+                bodyType = "Dáng tam giác ngược";
+                suggestion = "Hãy chọn các trang phục nhấn vào phần dưới như váy xòe, chân váy chữ A.";
+                link = "https://example.com/dang-tam-giac-nguoc";
+            } else if (bust > hips && bust > shoulder) {
                 bodyType = "Dáng quả táo";
                 suggestion = "Hãy chọn các trang phục nhấn vào phần dưới cơ thể như váy chữ A.";
                 link = "https://example.com/dang-qua-tao";
-            } else if (bust === waist && waist === hips) {
+            } else if (
+                Math.abs(shoulder - bust) <= 3 &&
+                Math.abs(bust - waist) <= 3 &&
+                Math.abs(waist - hips) <= 3
+            ) {
                 bodyType = "Dáng chữ nhật";
                 suggestion = "Hãy chọn các trang phục tạo điểm nhấn ở eo như thắt lưng.";
                 link = "https://example.com/dang-chu-nhat";
