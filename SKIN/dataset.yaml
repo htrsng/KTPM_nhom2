@@ -1,6 +1,0 @@
-path: D:/KTPM_nhom2/SKIN/dataset  
-train: images/train
-val: images/val
-test: images/test
-nc: 3  
-names: ['acne', 'pores', 'pigment']  

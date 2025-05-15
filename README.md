@@ -1,1 +1,0 @@
-# KTPM_nhom2
