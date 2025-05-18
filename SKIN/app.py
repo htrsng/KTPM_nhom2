@@ -4,6 +4,8 @@ import os
 import numpy as np
 import uuid
 import re
+import cv2
+from PIL import Image
 
 app = Flask(__name__)
 
@@ -21,7 +23,7 @@ except Exception as e:
 
 # Directory to save uploaded images and results
 UPLOAD_FOLDER = "static/uploads"
-RESULT_FOLDER = "static/results"  # Thư mục cho ảnh kết quả với bounding boxes
+RESULT_FOLDER = "static/results"
 for folder in [UPLOAD_FOLDER, RESULT_FOLDER]:
     if not os.path.exists(folder):
         os.makedirs(folder)
@@ -34,6 +36,22 @@ ISSUE_WEIGHTS = {
     "pores": 0.3,
     "pigment": 0.2
 }
+
+def preprocess_image(image_stream):
+    """Preprocess image: resize and normalize."""
+    # Read image from stream
+    img_array = np.frombuffer(image_stream.read(), np.uint8)
+    img = cv2.imdecode(img_array, cv2.IMREAD_COLOR)
+    
+    # Resize to 512x512, keep aspect ratio
+    img = cv2.resize(img, (512, 512), interpolation=cv2.INTER_LANCZOS4)
+    
+    # Normalize brightness and contrast
+    img = cv2.convertScaleAbs(img, alpha=1.0, beta=0)
+    
+    # Save processed image to temporary file
+    _, buffer = cv2.imencode('.jpg', img)
+    return buffer.tobytes()
 
 def calculate_skin_score(predictions):
     """Calculate skin score based on model predictions."""
@@ -81,12 +99,18 @@ def predict():
             if image.filename == "":
                 return jsonify({"error": f"No {side} image uploaded"}), 400
 
+            # Preprocess image
+            processed_image = preprocess_image(image)
+            
             # Sanitize filename and add unique identifier
-            ext = os.path.splitext(image.filename)[1]
+            ext = '.jpg'
             sanitized_filename = sanitize_filename(os.path.splitext(image.filename)[0])
             filename = f"{side}_{uuid.uuid4().hex}_{sanitized_filename}{ext}"
             filepath = os.path.join(app.config["UPLOAD_FOLDER"], filename)
-            image.save(filepath)
+            
+            # Save processed image
+            with open(filepath, 'wb') as f:
+                f.write(processed_image)
             image_paths[side] = filepath
             filenames[side] = filename
 
@@ -102,7 +126,7 @@ def predict():
             results[side] = result
             print(f"Results for {side}: {len(result[0].boxes)} detections")
 
-            # Get result filename (YOLO saves with same name in result folder)
+            # Get result filename
             result_filenames[side] = filename
 
         # Calculate skin score
