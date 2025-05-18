@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skin Condition Analyzer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 flex flex-col items-center min-h-screen">
+    <div class="container mx-auto p-4">
+        <h1 class="text-3xl font-bold text-center mb-6">Skin Condition Analyzer</h1>
+        
+        <!-- Upload Form -->
+        <div class="bg-white p-6 rounded-lg shadow-md mb-6">
+            <h2 class="text-xl font-semibold mb-4">Upload Face Images</h2>
+            <form id="uploadForm" enctype="multipart/form-data" class="space-y-4">
+                <div>
+                    <label class="block text-sm font-medium text-gray-700">Left Side</label>
+                    <input type="file" id="left" name="left" accept="image/*" class="mt-1 block w-full" required>
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700">Right Side</label>
+                    <input type="file" id="right" name="right" accept="image/*" class="mt-1 block w-full" required>
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700">Front</label>
+                    <input type="file" id="front" name="front" accept="image/*" class="mt-1 block w-full" required>
+                </div>
+                <button type="button" onclick="uploadImages()" class="w-full bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600">Analyze</button>
+            </form>
+        </div>
+        
+        <!-- Results Section -->
+        <div id="results" class="hidden bg-white p-6 rounded-lg shadow-md w-full">
+            <h2 class="text-xl font-semibold mb-4">Analysis Results</h2>
+            <div class="mb-4">
+                <p class="text-lg font-bold">Skin Score: <span id="skinScore"></span>/10</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div>
+                    <h3 class="text-lg font-medium">Left Side</h3>
+                    <img id="leftImage" class="w-full h-auto rounded" alt="Left Side">
+                    <ul id="leftAnalysis" class="mt-2 list-disc list-inside"></ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-medium">Right Side</h3>
+                    <img id="rightImage" class="w-full h-auto rounded" alt="Right Side">
+                    <ul id="rightAnalysis" class="mt-2 list-disc list-inside"></ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-medium">Front</h3>
+                    <img id="frontImage" class="w-full h-auto rounded" alt="Front">
+                    <ul id="frontAnalysis" class="mt-2 list-disc list-inside"></ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        async function uploadImages() {
+            const form = document.getElementById("uploadForm");
+            const formData = new FormData(form);
+            
+            // Kiểm tra xem tất cả các tệp đã được chọn chưa
+            if (!form.left.files[0] || !form.right.files[0] || !form.front.files[0]) {
+                alert("Vui lòng chọn tất cả ba hình ảnh (mặt bên trái, bên phải, và mặt trước)!");
+                return;
+            }
+            
+            const response = await fetch("/predict", {
+                method: "POST",
+                body: formData
+            });
+            
+            const result = await response.json();
+            
+            if (response.ok) {
+                // Hiển thị kết quả
+                document.getElementById("results").classList.remove("hidden");
+                document.getElementById("skinScore").textContent = result.score;
+                
+                // Cập nhật hình ảnh
+                document.getElementById("leftImage").src = encodeURI(result.image_urls.left);
+                document.getElementById("rightImage").src = encodeURI(result.image_urls.right);
+                document.getElementById("frontImage").src = encodeURI(result.image_urls.front);
+
+                
+                // Hiển thị phân tích
+                ["left", "right", "front"].forEach(side => {
+                    const analysisList = document.getElementById(`${side}Analysis`);
+                    analysisList.innerHTML = "";
+                    result.analysis[side].forEach(item => {
+                        const li = document.createElement("li");
+                        li.textContent = `${item.label}: ${(item.confidence * 100).toFixed(1)}%`;
+                        analysisList.appendChild(li);
+                    });
+                });
+            } else {
+                alert(result.error || "Đã xảy ra lỗi trong quá trình phân tích!");
+            }
+        }
+    </script>
+</body>
+</html>
