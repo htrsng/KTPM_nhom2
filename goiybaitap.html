@@ -78,6 +78,47 @@
         .link a:hover {
             color: #ff4a6e;
         }
+
+        .btn {
+            padding: 8px 16px;
+            margin-right: 8px;
+            background: #ff758c;
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .btn:hover {
+            background: #ff4a6e;
+        }
+        .exercise-detail {
+            margin-top: 15px;
+            background: #fff0f3;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 1px 1px 6px rgba(0,0,0,0.05);
+            opacity: 0;
+            transform: translateY(20px);
+            pointer-events: none;
+            transition: opacity 0.4s, transform 0.4s;
+        }
+        .exercise-detail.active {
+            opacity: 1;
+            transform: translateY(0);
+            pointer-events: auto;
+        }
+        .btn.exercise-btn {
+            transition: background 0.3s, color 0.3s, transform 0.2s;
+        }
+        .btn.exercise-btn.active-ex {
+            background: #a1c4fd;
+            color: #ff758c;
+            font-weight: bold;
+            box-shadow: 0 0 8px #a1c4fd;
+            transform: scale(1.07);
+        }
     </style>
 </head>
 <body>
@@ -89,10 +130,64 @@
 
         <!-- Gợi ý bài tập -->
         <div class="section">
-            <h2>Gợi ý bài tập</h2>
-            <p>Thực hiện các bài tập như chạy bộ, plank, squat, và chống đẩy để cải thiện sức khỏe và vóc dáng.</p>
-            <div class="link">
-                <a href="https://benhvienlaokhoa.vn/bai-tap-co-ban-giup-thu-gian-cho-nguoi-cham-soc-bai-tap-gian-co" target="_blank">Xem chi tiết bài tập</a>
+            <h2 style="cursor:pointer;" onclick="toggleExerciseMenu()">Gợi ý bài tập &#9660;</h2>
+            <div id="exercise-menu" style="display:none;">
+                <div style="margin-bottom: 15px; display: flex; flex-wrap: wrap; gap: 10px;">
+                    <button class="btn exercise-btn" onclick="showExercise('tay')">Tập tay</button>
+                    <button class="btn exercise-btn" onclick="showExercise('chan')">Tập chân</button>
+                    <button class="btn exercise-btn" onclick="showExercise('vai')">Tập vai</button>
+                    <button class="btn exercise-btn" onclick="showExercise('dui')">Tập đùi</button>
+                    <button class="btn exercise-btn" onclick="showExercise('lung')">Tập lưng</button>
+                    <button class="btn exercise-btn" onclick="showExercise('bung')">Tập bụng</button>
+                </div>
+                <div id="ex-tay" class="exercise-detail" style="display:none;">
+                    <strong>Tập tay:</strong> Chống đẩy, nâng tạ, kéo xà.<br>
+                    <em>Hiệu quả:</em> Cánh tay thon gọn, khỏe mạnh, tăng sức bền.<br>
+                    <em>Lặp lại:</em> 3 hiệp, mỗi hiệp 12-15 lần.<br>
+                    <span class="link">
+                        <a href="https://www.vinmec.com/vie/bai-viet/10-bai-tap-tang-cuong-suc-manh-tot-nhat-cho-co-tay-vi" target="_blank">Xem chi tiết bài tập</a>
+                    </span>
+                </div>
+                <div id="ex-chan" class="exercise-detail" style="display:none;">
+                    <strong>Tập chân:</strong> Squat, lunges, nhảy dây, đạp xe.<br>
+                    <em>Hiệu quả:</em> Đôi chân săn chắc, cải thiện vận động, giảm mỡ.<br>
+                    <em>Lặp lại:</em> 3 hiệp, mỗi hiệp 15-20 lần.<br>
+                    <span class="link">
+                        <a href="https://www.vinmec.com/vie/bai-viet/bai-tap-chan-hieu-qua-cho-nguoi-moi-bat-dau-vi" target="_blank">Xem chi tiết bài tập</a>
+                    </span>
+                </div>
+                <div id="ex-vai" class="exercise-detail" style="display:none;">
+                    <strong>Tập vai:</strong> Nâng tạ vai, chống đẩy, plank vai.<br>
+                    <em>Hiệu quả:</em> Vai rộng, cân đối, hỗ trợ thể thao.<br>
+                    <em>Lặp lại:</em> 3 hiệp, mỗi hiệp 12-15 lần.<br>
+                    <span class="link">
+                        <a href="https://www.vinmec.com/vie/bai-viet/cac-bai-tap-vai-tai-nha-de-ap-dung-vi" target="_blank">Xem chi tiết bài tập</a>
+                    </span>
+                </div>
+                <div id="ex-dui" class="exercise-detail" style="display:none;">
+                    <strong>Tập đùi:</strong> Squat, sumo squat, leg press.<br>
+                    <em>Hiệu quả:</em> Đùi săn chắc, giảm mỡ, tăng sức mạnh.<br>
+                    <em>Lặp lại:</em> 3 hiệp, mỗi hiệp 15-20 lần.<br>
+                    <span class="link">
+                        <a href="https://www.vinmec.com/vie/bai-viet/bai-tap-cho-dui-va-bap-chan-vi" target="_blank">Xem chi tiết bài tập</a>
+                    </span>
+                </div>
+                <div id="ex-lung" class="exercise-detail" style="display:none;">
+                    <strong>Tập lưng:</strong> Deadlift, kéo xà, superman.<br>
+                    <em>Hiệu quả:</em> Lưng khỏe, cải thiện tư thế, giảm đau lưng.<br>
+                    <em>Lặp lại:</em> 3 hiệp, mỗi hiệp 10-12 lần.<br>
+                    <span class="link">
+                        <a href="https://www.vinmec.com/vie/bai-viet/15-bai-tap-lung-de-tang-cuong-co-bap-va-ngan-ngua-chan-thuong-vi" target="_blank">Xem chi tiết bài tập</a>
+                    </span>
+                </div>
+                <div id="ex-bung" class="exercise-detail" style="display:none;">
+                    <strong>Tập bụng:</strong> Plank, crunches, leg raise.<br>
+                    <em>Hiệu quả:</em> Bụng phẳng, săn chắc, cải thiện vóc dáng.<br>
+                    <em>Lặp lại:</em> 3 hiệp, mỗi hiệp 15-20 lần.<br>
+                    <span class="link">
+                        <a href="https://www.vinmec.com/vie/bai-viet/cac-bai-tap-bung-tot-nhat-ban-co-lam-vi" target="_blank">Xem chi tiết bài tập</a>
+                    </span>
+                </div>
             </div>
         </div>
 
@@ -114,5 +209,20 @@
             <p>Liên hệ: contact@lamdep.com | Hotline: 0123 456 789</p>
         </div>
     </div>
+    <script>
+        function toggleExerciseMenu() {
+            var menu = document.getElementById('exercise-menu');
+            menu.style.display = (menu.style.display === 'none' || menu.style.display === '') ? 'block' : 'none';
+        }
+        function showExercise(type) {
+            const ids = ['tay', 'chan', 'vai', 'dui', 'lung', 'bung'];
+            ids.forEach(id => {
+                document.getElementById('ex-' + id).style.display = 'none';
+                document.querySelector('.btn.exercise-btn[onclick*="' + id + '"]').classList.remove('active-ex');
+            });
+            document.getElementById('ex-' + type).style.display = 'block';
+            document.querySelector('.btn.exercise-btn[onclick*="' + type + '"]').classList.add('active-ex');
+        }
+    </script>
 </body>
 </html>
