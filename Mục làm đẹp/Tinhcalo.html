@@ -154,11 +154,23 @@
                         <option value="1.9">Hoạt động rất nhiều (vận động viên)</option>
                     </select>
                 </div>
+                <button type="button" class="btn" onclick="showCaloInput()">Tính calo cần nạp</button>
+            </form>
+            <div id="caloNeedResult" class="result"></div>
+            <form id="inputCaloForm" style="display:none;" onsubmit="event.preventDefault(); checkCaloIntake();">
                 <div class="form-group">
-                    <label for="caloInput">Năng lượng nạp vào hôm nay (kcal):</label>
-                    <input type="number" id="caloInput" placeholder="Nhập tổng calo đã nạp" required>
+                    <label for="caloSang">Calo buổi sáng:</label>
+                    <input type="number" id="caloSang" placeholder="Nhập calo buổi sáng" required>
                 </div>
-                <button type="submit" class="btn">Tính toán</button>
+                <div class="form-group">
+                    <label for="caloTrua">Calo buổi trưa:</label>
+                    <input type="number" id="caloTrua" placeholder="Nhập calo buổi trưa" required>
+                </div>
+                <div class="form-group">
+                    <label for="caloToi">Calo buổi tối:</label>
+                    <input type="number" id="caloToi" placeholder="Nhập calo buổi tối" required>
+                </div>
+                <button type="submit" class="btn">Kiểm tra mức năng lượng</button>
             </form>
             <div id="caloResult" class="result"></div>
             <div class="energy-bar-container">
@@ -182,87 +194,114 @@
         </div>
     </div>
     <script>
-        function showTab(tab) {
-            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
-            document.querySelectorAll('.tab-content').forEach(tabC => tabC.classList.remove('active'));
-            if(tab === 'calo') {
-                document.querySelector('.tab-btn:nth-child(1)').classList.add('active');
-                document.getElementById('tab-calo').classList.add('active');
-            } else {
-                document.querySelector('.tab-btn:nth-child(2)').classList.add('active');
-                document.getElementById('tab-bmi').classList.add('active');
-            }
-        }
+let calories = 0;
 
-        function calculateCalories() {
-            const weight = parseFloat(document.getElementById('weight').value);
-            const height = parseFloat(document.getElementById('height').value);
-            const age = parseInt(document.getElementById('age').value);
-            const gender = document.getElementById('gender').value;
-            const activity = parseFloat(document.getElementById('activity').value);
-            const caloInput = parseFloat(document.getElementById('caloInput').value);
+function showTab(tab) {
+    document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+    document.querySelectorAll('.tab-content').forEach(tabC => tabC.classList.remove('active'));
+    if(tab === 'calo') {
+        document.querySelector('.tab-btn:nth-child(1)').classList.add('active');
+        document.getElementById('tab-calo').classList.add('active');
+    } else {
+        document.querySelector('.tab-btn:nth-child(2)').classList.add('active');
+        document.getElementById('tab-bmi').classList.add('active');
+    }
+}
 
-            if (isNaN(weight) || isNaN(height) || isNaN(age) || !activity || isNaN(caloInput)) {
-                document.getElementById('caloResult').innerText = "Vui lòng nhập đầy đủ thông tin!";
-                document.getElementById('energyBar').style.width = '0';
-                document.getElementById('energyBar').classList.remove('over');
-                document.getElementById('energyBar').innerText = '';
-                return;
-            }
+function showCaloInput() {
+    const weight = parseFloat(document.getElementById('weight').value);
+    const height = parseFloat(document.getElementById('height').value);
+    const age = parseInt(document.getElementById('age').value);
+    const gender = document.getElementById('gender').value;
+    const activity = parseFloat(document.getElementById('activity').value);
 
-            let bmr;
-            if (gender === "male") {
-                bmr = 10 * weight + 6.25 * height - 5 * age + 5;
-            } else {
-                bmr = 10 * weight + 6.25 * height - 5 * age - 161;
-            }
-            const calories = Math.round(bmr * activity);
+    if (isNaN(weight) || isNaN(height) || isNaN(age) || !activity) {
+        document.getElementById('caloNeedResult').innerText = "Vui lòng nhập đầy đủ thông tin!";
+        document.getElementById('inputCaloForm').style.display = 'none';
+        document.getElementById('energyBar').style.width = '0';
+        document.getElementById('energyBar').classList.remove('over');
+        document.getElementById('energyBar').innerText = '';
+        document.getElementById('caloResult').innerText = '';
+        return;
+    }
 
-            let resultText = `Lượng calo cần thiết mỗi ngày: <strong>${calories} kcal</strong><br>`;
-            if (caloInput > calories) {
-                resultText += `<span style="color:#ff1744;">Bạn đã nạp vượt mức năng lượng cho phép!</span>`;
-            } else if (caloInput < calories * 0.8) {
-                resultText += `<span style="color:#ff9800;">Năng lượng nạp vào còn thiếu, hãy bổ sung thêm!</span>`;
-            } else {
-                resultText += `<span style="color:#4caf50;">Năng lượng nạp vào phù hợp!</span>`;
-            }
-            document.getElementById('caloResult').innerHTML = resultText;
+    let bmr;
+    if (gender === "male") {
+        bmr = 10 * weight + 6.25 * height - 5 * age + 5;
+    } else {
+        bmr = 10 * weight + 6.25 * height - 5 * age - 161;
+    }
+    calories = Math.round(bmr * activity);
 
-            // Thanh năng lượng
-            let percent = Math.min((caloInput / calories) * 100, 120);
-            let bar = document.getElementById('energyBar');
-            bar.style.width = percent + '%';
-            bar.innerText = caloInput + ' kcal';
-            if (caloInput > calories) {
-                bar.classList.add('over');
-            } else {
-                bar.classList.remove('over');
-            }
-        }
+    document.getElementById('caloNeedResult').innerHTML = `Lượng calo cần thiết mỗi ngày: <strong>${calories} kcal</strong>`;
+    document.getElementById('inputCaloForm').style.display = 'block';
+    document.getElementById('caloResult').innerText = '';
+    document.getElementById('energyBar').style.width = '0';
+    document.getElementById('energyBar').classList.remove('over');
+    document.getElementById('energyBar').innerText = '';
+}
 
-        function calculateBMI() {
-            const weight = parseFloat(document.getElementById('bmiWeight').value);
-            const height = parseFloat(document.getElementById('bmiHeight').value) / 100;
-            if (isNaN(weight) || isNaN(height) || height <= 0 || weight <= 0) {
-                document.getElementById('bmiResult').innerText = "Vui lòng nhập giá trị hợp lệ!";
-                return;
-            }
-            const bmi = (weight / (height * height)).toFixed(2);
-            let category = "";
-            if (bmi < 18.5) {
-                category = "Gầy";
-            } else if (bmi >= 18.5 && bmi < 24.9) {
-                category = "Bình thường";
-            } else if (bmi >= 25 && bmi < 29.9) {
-                category = "Thừa cân";
-            } else {
-                category = "Béo phì";
-            }
-            document.getElementById('bmiResult').innerHTML = `
-                <p>Chỉ số BMI của bạn: <strong>${bmi}</strong></p>
-                <p>Phân loại: <strong>${category}</strong></p>
-            `;
-        }
+function checkCaloIntake() {
+    const sang = parseFloat(document.getElementById('caloSang').value);
+    const trua = parseFloat(document.getElementById('caloTrua').value);
+    const toi = parseFloat(document.getElementById('caloToi').value);
+
+    if (isNaN(sang) || isNaN(trua) || isNaN(toi) || calories === 0) {
+        document.getElementById('caloResult').innerText = "Vui lòng nhập đầy đủ lượng calo đã nạp!";
+        document.getElementById('energyBar').style.width = '0';
+        document.getElementById('energyBar').classList.remove('over');
+        document.getElementById('energyBar').innerText = '';
+        return;
+    }
+
+    const total = sang + trua + toi;
+    let resultText = `Tổng calo đã nạp: <strong>${total} kcal</strong><br>`;
+    if (total > calories) {
+        resultText += `<span style="color:#ff1744;">Bạn đã nạp vượt mức năng lượng cho phép!</span>`;
+    } else if (total < calories * 0.8) {
+        resultText += `<span style="color:#ff9800;">Năng lượng nạp vào còn thiếu, hãy bổ sung thêm!</span>`;
+    } else {
+        resultText += `<span style="color:#4caf50;">Năng lượng nạp vào phù hợp!</span>`;
+    }
+    document.getElementById('caloResult').innerHTML = resultText;
+
+    // Thanh năng lượng
+    let percent = Math.min((total / calories) * 100, 120);
+    let bar = document.getElementById('energyBar');
+    bar.style.width = percent + '%';
+    bar.innerText = total + ' kcal';
+    if (total > calories) {
+        bar.classList.add('over');
+        bar.style.background = 'linear-gradient(to right, #ff5252, #ff1744)';
+    } else {
+        bar.classList.remove('over');
+        bar.style.background = 'linear-gradient(to right, #4caf50, #8bc34a)';
+    }
+}
+
+function calculateBMI() {
+    const weight = parseFloat(document.getElementById('bmiWeight').value);
+    const height = parseFloat(document.getElementById('bmiHeight').value) / 100;
+    if (isNaN(weight) || isNaN(height) || height <= 0 || weight <= 0) {
+        document.getElementById('bmiResult').innerText = "Vui lòng nhập giá trị hợp lệ!";
+        return;
+    }
+    const bmi = (weight / (height * height)).toFixed(2);
+    let category = "";
+    if (bmi < 18.5) {
+        category = "Gầy";
+    } else if (bmi >= 18.5 && bmi < 24.9) {
+        category = "Bình thường";
+    } else if (bmi >= 25 && bmi < 29.9) {
+        category = "Thừa cân";
+    } else {
+        category = "Béo phì";
+    }
+    document.getElementById('bmiResult').innerHTML = `
+        <p>Chỉ số BMI của bạn: <strong>${bmi}</strong></p>
+        <p>Phân loại: <strong>${category}</strong></p>
+    `;
+}
     </script>
 </body>
 </html>
