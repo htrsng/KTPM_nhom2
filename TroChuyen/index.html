@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Chatbot Cảm Xúc</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(135deg, #e6f3ff 0%, #f0f8ff 100%);
+      overflow: hidden;
+    }
+
+    .emotion-panel {
+      position: fixed;
+      right: 30px;
+      top: 20%;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      z-index: 1000;
+    }
+
+    .emotion-ball {
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+      border: none;
+      font-size: 32px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .emotion-ball:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    .emotion-ball:active {
+      transform: scale(0.95);
+    }
+
+    .emotion-ball.happy { background: #ffd700; }
+    .emotion-ball.sad { background: #87ceeb; }
+    .emotion-ball.angry { background: #ff6347; }
+    .emotion-ball.share { background: #90ee90; }
+
+    .chat-box {
+      display: none;
+      position: fixed;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      width: 500px;
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+      padding: 25px;
+      animation: slideIn 0.3s ease-out;
+      backdrop-filter: blur(5px);
+    }
+
+    @keyframes slideIn {
+      from {
+        transform: translate(-50%, -60%);
+        opacity: 0;
+      }
+      to {
+        transform: translate(-50%, -50%);
+        opacity: 1;
+      }
+    }
+
+    .chat-box.active {
+      display: block;
+    }
+
+    .chat-header {
+      font-size: 24px;
+      font-weight: 600;
+      margin-bottom: 15px;
+      text-align: center;
+      color: #333;
+    }
+
+    .chat-content {
+      max-height: 400px;
+      overflow-y: auto;
+      margin-bottom: 15px;
+      padding: 10px;
+      border-radius: 10px;
+      background: rgba(0, 0, 0, 0.02);
+    }
+
+    .bot-message {
+      background: #e3f2fd;
+      padding: 12px 15px;
+      border-radius: 15px 15px 15px 3px;
+      margin: 8px 10px;
+      max-width: 70%;
+      animation: fadeIn 0.3s ease;
+    }
+
+    .user-message {
+      background: #c8e6c9;
+      padding: 12px 15px;
+      border-radius: 15px 15px 3px 15px;
+      margin: 8px 10px;
+      max-width: 70%;
+      text-align: right;
+      margin-left: auto;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    input {
+      width: 100%;
+      padding: 12px 15px;
+      border: none;
+      border-radius: 25px;
+      box-sizing: border-box;
+      background: #f5f5f5;
+      box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+      font-size: 16px;
+    }
+
+    input:focus {
+      outline: none;
+      background: #fff;
+      box-shadow: 0 0 10px rgba(0, 123, 255, 0.3);
+    }
+
+    .clear-button {
+      margin-top: 15px;
+      padding: 10px 20px;
+      background: linear-gradient(45deg, #2196f3, #64b5f6);
+      border: none;
+      border-radius: 25px;
+      cursor: pointer;
+      color: white;
+      font-weight: 500;
+      transition: all 0.3s ease;
+    }
+
+    .clear-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Custom scrollbar */
+    .chat-content::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    .chat-content::-webkit-scrollbar-track {
+      background: #f1f1f1;
+      border-radius: 10px;
+    }
+
+    .chat-content::-webkit-scrollbar-thumb {
+      background: #90caf9;
+      border-radius: 10px;
+    }
+
+    .chat-content::-webkit-scrollbar-thumb:hover {
+      background: #64b5f6;
+    }
+  </style>
+</head>
+<body>
+  <div class="emotion-panel">
+    <button class="emotion-ball happy" onclick="selectEmotion('happy')">😊</button>
+    <button class="emotion-ball sad" onclick="selectEmotion('sad')">😢</button>
+    <button class="emotion-ball angry" onclick="selectEmotion('angry')">😠</button>
+    <button class="emotion-ball share" onclick="selectEmotion('share')">🗣️</button>
+  </div>
+
+  <div class="chat-box" id="chatBox">
+    <div class="chat-header" id="chatHeader"></div>
+    <div class="chat-content" id="chatContent"></div>
+    <input type="text" id="userInput" placeholder="Gõ tin nhắn..." onkeypress="if(event.key === 'Enter') sendMessage()">
+    <button class="clear-button" onclick="clearChat()">Xóa Chat</button>
+  </div>
+
+  <script>
+    const emotionToMessage = {
+      happy: "Bạn có chuyện gì vui à? 🥰 Kể tôi nghe với nhé!",
+      sad: "Nay bạn buồn hở? 😢 Mình luôn ở đây vì bạn.",
+      angry: "Bạn đang giận chuyện gì đó hở 😠? Kể tớ nghe đi tớ giúp cậu xử lý? ",
+      share: "Bạn muốn chia sẻ điều gì phải không? Mình đang lắng nghe nè. 👂"
+    };
+
+    const staticResponses = {
+      happy: [
+        "Nghe vui ghê! Có chuyện gì vui cậu cứ kể tớ nha. Tớ luôn ở đây và sẵn sàng lắng nghe nè 😍",
+        "Vui thế! Còn gì có thể kể thêm mình nghe nha! 💛",
+        "Mỗi ngày có điều vui là tuyệt vời rồi đó! Cậu còn muốn chia sẻ gì với tớ nghe nữa không? ✨",
+        "Haha, bạn đáng yêu quá đi mất! Người đáng yêu này còn gì muốn kể tớ nghe nữa không? 🥳"
+      ],
+      sad: [
+        "Đừng buồn nữa nha, có mình ở đây nè. 🤗",
+        "Có mình ở bên, bạn không cô đơn đâu. 💙",
+        "Nếu khóc thì cứ khóc đi, rồi sẽ ổn thôi. 😭",
+        "Bạn ổn không? Mình nghe nè, kể hết đi. 😔"
+      ],
+      angry: [
+        "Đừng để cơn giận làm bạn mệt mỏi nhé! 😤",
+        "Hít thở sâu nào, rồi kể mình nghe nhé. 😮‍💨",
+        "Ai khiến bạn bực mình vậy? Có mình rồi, không lo! 😡❤️",
+        "Bạn xứng đáng được đối xử tốt hơn. 💪"
+      ],
+      share: [
+        "Nói đi nói đi, mình nghe từng chữ nè! 🐻",
+        "Thích nghe chuyện của bạn lắm đó! 😘",
+        "Mình đang hóng đây nè! 😆",
+        "Chia sẻ ra sẽ thấy dễ chịu hơn đó! 💌"
+      ]
+    };
+
+    let selectedEmotion = null;
+
+    function selectEmotion(emotion) {
+      selectedEmotion = emotion;
+      const chatBox = document.getElementById('chatBox');
+      const chatHeader = document.getElementById('chatHeader');
+      const chatContent = document.getElementById('chatContent');
+      chatBox.classList.add('active');
+      const headerText = {
+        happy: "Cảm xúc: Vui vẻ 😊",
+        sad: "Cảm xúc: Buồn 😢",
+        angry: "Cảm xúc: Tức giận 😠",
+        share: "Cảm xúc: Chia sẻ 🗣️"
+      };
+      chatHeader.textContent = headerText[emotion];
+      chatContent.innerHTML = `<p class="bot-message">${emotionToMessage[emotion]}</p>`;
+      document.getElementById('userInput').focus();
+    }
+
+    function sendMessage() {
+      const userInput = document.getElementById('userInput');
+      const userMessage = userInput.value.trim();
+      if (!userMessage || !selectedEmotion) {
+        alert("Vui lòng chọn cảm xúc và nhập tin nhắn!");
+        return;
+      }
+
+      const chatContent = document.getElementById('chatContent');
+      chatContent.innerHTML += `<p class="user-message">${userMessage}</p>`;
+      userInput.value = '';
+
+      const botReply = staticResponses[selectedEmotion][Math.floor(Math.random() * staticResponses[selectedEmotion].length)];
+      chatContent.innerHTML += `<p class="bot-message">${botReply}</p>`;
+      chatContent.scrollTop = chatContent.scrollHeight;
+    }
+
+    function clearChat() {
+      const chatContent = document.getElementById('chatContent');
+      chatContent.innerHTML = `<p class="bot-message">${emotionToMessage[selectedEmotion]}</p>`;
+      document.getElementById('userInput').focus();
+    }
+  </script>
+</body>
+</html>
