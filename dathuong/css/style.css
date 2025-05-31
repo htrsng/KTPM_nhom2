@@ -1,0 +1,43 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #E6F0FA;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+nav a {
+    transition: color 0.3s;
+}
+
+nav a:hover {
+    color: #4A90E2;
+}
+
+.grid > div {
+    transition: transform 0.3s;
+}
+
+.grid > div:hover {
+    transform: scale(1.05);
+}
+
+.banner {
+    position: relative;
+}
+
+.banner img {
+    filter: brightness(70%);
+}
+
+.banner h1, .banner p {
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+@media (max-width: 640px) {
+    .grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
