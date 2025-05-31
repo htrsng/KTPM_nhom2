@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
     products.forEach((product, index) => {
         product.style.opacity = '0';
         setTimeout(() => {
-            product.style.transition = 'opacity 0.5s';
+            product.style.transition = 'opacity 0.5s ease';
             product.style.opacity = '1';
         }, index * 100);
     });
