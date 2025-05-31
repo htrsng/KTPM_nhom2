@@ -2,7 +2,7 @@
 body {
     font-family: Arial, sans-serif;
     background-color: #E6F0FA;
-    overflow-x: hidden; /* Ngăn tràn ngang */
+    overflow-x: hidden; 
 }
 
 .container {
@@ -11,22 +11,22 @@ body {
 }
 
 nav a {
-    transition: color 0.3s ease, transform 0.2s ease; /* Thêm transform vào transition */
+    transition: color 0.3s ease, transform 0.2s ease; 
 }
 
 nav a:hover {
     color: #4A90E2;
-    transform: translateY(-2px); /* Hiệu ứng nâng nhẹ khi hover */
+    transform: translateY(-2px); 
 }
 
 .grid {
-    animation: fadeInGrid 1s ease forwards; /* Hiệu ứng fade-in cho grid */
+    animation: fadeInGrid 1s ease forwards; 
 }
 
 .grid > div {
     transition: all 0.3s ease;
-    animation: staggerIn 0.5s ease calc(var(--index) * 0.1s) forwards; /* Hiệu ứng stagger */
-    opacity: 0; /* Ẩn ban đầu để staggerIn hoạt động */
+    animation: staggerIn 0.5s ease calc(var(--index) * 0.1s) forwards; 
+    opacity: 0; 
 }
 
 .grid > div:hover {
@@ -40,11 +40,11 @@ nav a:hover {
 
 .banner img {
     filter: brightness(70%);
-    transition: filter 0.5s ease; /* Hiệu ứng chuyển đổi độ sáng */
+    transition: filter 0.5s ease; 
 }
 
 .banner img:hover {
-    filter: brightness(85%); /* Tăng độ sáng khi hover */
+    filter: brightness(85%); 
 }
 
 .banner h1, .banner p {
@@ -58,7 +58,7 @@ nav a:hover {
 }
 
 .hamburger:hover {
-    transform: rotate(90deg); /* Xoay nhẹ khi hover */
+    transform: rotate(90deg);
 }
 
 .nav-links {
@@ -70,7 +70,7 @@ nav a:hover {
     margin-bottom: 24px;
     padding: 12px 32px;
     gap: 18px;
-    transition: all 0.3s ease; /* Thêm transition cho nav-links */
+    transition: all 0.3s ease; 
 }
 
 .line-clamp-2 {
@@ -92,13 +92,13 @@ nav a:hover {
     margin: 18px;
     min-height: 420px;
     position: relative;
-    overflow: hidden; /* Ngăn tràn nội dung */
+    overflow: hidden; 
 }
 
 .product-card:hover {
     transform: translateY(-10px) scale(1.03);
     box-shadow: 0 12px 32px rgba(59,130,246,0.18);
-    background-color: #f8fafc; /* Chuyển màu nền nhẹ khi hover */
+    background-color: #f8fafc; 
 }
 
 .product-card img,
@@ -113,25 +113,25 @@ nav a:hover {
     display: block;
     background: #f3f4f6;
     image-rendering: -webkit-optimize-contrast;
-    transition: transform 0.3s ease, opacity 0.5s ease; /* Hiệu ứng cho ảnh */
-    opacity: 0.9; /* Độ mờ nhẹ ban đầu */
+    transition: transform 0.3s ease, opacity 0.5s ease; 
+    opacity: 0.9; 
 }
 
 .product-card:hover img,
 .product-card:hover .product-img {
-    transform: scale(1.1); /* Phóng to ảnh khi hover */
-    opacity: 1; /* Tăng độ rõ khi hover */
+    transform: scale(1.1); 
+    opacity: 1; 
 }
 
 .product-card h3,
 .product-card p {
-    transition: opacity 0.3s ease, transform 0.3s ease; /* Hiệu ứng fade-in cho text */
+    transition: opacity 0.3s ease, transform 0.3s ease; 
 }
 
 .product-card:hover h3,
 .product-card:hover p {
-    opacity: 0.8; /* Giảm độ mờ nhẹ khi hover */
-    transform: translateY(-2px); /* Nâng nhẹ text */
+    opacity: 0.8; 
+    transform: translateY(-2px); 
 }
 
 @media (max-width: 768px) {
@@ -191,15 +191,15 @@ nav a:hover {
     text-decoration: none;
     display: block;
     position: relative;
-    overflow: hidden; /* Ngăn tràn gradient */
+    overflow: hidden; 
 }
 
 .nav-item:hover, .nav-item.active {
-    background: linear-gradient(45deg, #2563eb, #4a90e2); /* Gradient khi hover/active */
+    background: linear-gradient(45deg, #2563eb, #4a90e2); 
     color: #fff !important;
     border-color: #2563eb;
     box-shadow: 0 4px 16px rgba(59,130,246,0.13);
-    transform: scale(1.05); /* Phóng to nhẹ */
+    transform: scale(1.05); 
 }
 
 .nav-item::before {
@@ -214,7 +214,7 @@ nav a:hover {
 }
 
 .nav-item:hover::before {
-    left: 100%; /* Hiệu ứng ánh sáng chạy ngang khi hover */
+    left: 100%; 
 }
 
 @media (max-width: 768px) {
@@ -232,19 +232,19 @@ nav a:hover {
         background-color: #FFFFFF;
         padding: 10px;
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        transform: translateX(-100%); /* Ẩn menu ngoài màn hình */
-        transition: transform 0.3s ease; /* Hiệu ứng slide-in */
+        transform: translateX(-100%); 
+        transition: transform 0.3s ease; 
     }
 
     .nav-links.active {
         display: flex;
-        transform: translateX(0); /* Slide-in khi active */
+        transform: translateX(0); 
     }
 
     .nav-item {
         opacity: 0;
-        transform: translateY(10px); /* Ẩn và dịch xuống ban đầu */
-        animation: fadeInNav 0.3s ease calc(var(--index) * 0.1s) forwards; /* Hiệu ứng fade-in lần lượt */
+        transform: translateY(10px); 
+        animation: fadeInNav 0.3s ease calc(var(--index) * 0.1s) forwards; 
     }
 
     .grid {
@@ -258,7 +258,7 @@ nav a:hover {
     }
 }
 
-/* Keyframes cho hiệu ứng */
+
 @keyframes fadeInGrid {
     from {
         opacity: 0;
@@ -290,9 +290,9 @@ nav a:hover {
     }
 }
 
-/* Hiệu ứng loading cho ảnh */
+
 .product-img:not([src]) {
-    animation: pulse 1.5s infinite ease-in-out; /* Hiệu ứng nhấp nháy khi ảnh chưa tải */
+    animation: pulse 1.5s infinite ease-in-out; 
 }
 
 @keyframes pulse {
@@ -304,12 +304,11 @@ nav a:hover {
     }
 }
 
-/* Hiệu ứng cho footer links */
 footer a {
     transition: color 0.3s ease, transform 0.2s ease;
 }
 
 footer a:hover {
     color: #4A90E2;
-    transform: translateY(-2px); /* Nâng nhẹ khi hover */
+    transform: translateY(-2px); 
 }
