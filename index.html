@@ -4,13 +4,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>Trang Chủ - Sức Khỏe & Làm Đẹp</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
   <style>
     body {
       font-family: 'Inter', sans-serif;
-      background: linear-gradient(135deg, #e0f7fa 0%, #b3e5fc 100%);
+      background: linear-gradient(135deg, #e0f7fa 0%, #b3e5fc 50%, #e1f5fe 100%);
       background-size: 200% 200%;
       animation: gradientAnimation 15s ease infinite;
     }
@@ -21,68 +21,109 @@
     }
     .nav-item {
       transition: all 0.3s ease;
-      padding: 0.5rem 1rem;
-      border-radius: 0.5rem;
+      padding: 0.75rem 1.5rem;
+      border-radius: 0.75rem;
+      color: #fff;
     }
     .nav-item:hover {
-      background-color: rgba(255, 255, 255, 0.2);
+      background: linear-gradient(45deg, #4fc3f7, #0288d1);
       transform: translateY(-2px);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
     }
     section {
       border-radius: 1.5rem;
       box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
       transition: transform 0.3s ease, box-shadow 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.3), transparent);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    section:hover::before {
+      opacity: 1;
     }
     section:hover {
       box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
       transform: translateY(-5px);
     }
+    .cta-button {
+      position: relative;
+      overflow: hidden;
+      transition: all 0.3s ease;
+    }
+    .cta-button::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+      transition: 0.5s;
+    }
+    .cta-button:hover::before {
+      left: 100%;
+    }
+    .cta-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
   </style>
 </head>
 <body class="min-h-screen flex flex-col">
-  <!-- Navbar -->
 
   <!-- Main Content -->
   <main class="container mx-auto px-6 py-20 flex-grow flex flex-col items-center">
-    <h1 class="text-4xl font-extrabold text-center text-gray-800 dark:text-white mb-12">Chào Mừng Đến Với Sức Khỏe & Làm Đẹp</h1>
+    <h1 class="text-4xl md:text-5xl font-extrabold text-center text-gray-800 dark:text-white mb-12">Chào Mừng Đến Với Sức Khỏe & Làm Đẹp</h1>
     
     <!-- Sections -->
-    <div class="grid gap-10 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 justify-center">
+    <div class="grid gap-10 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 justify-center mx-auto">
       <!-- Mỹ Phẩm -->
-      <section class="bg-white dark:bg-gray-800 p-10 rounded-2xl w-full max-w-xs mx-auto flex flex-col items-center">
+      <section class="bg-gradient-to-br from-white to-blue-50 dark:from-gray-800 dark:to-gray-900 p-10 rounded-2xl w-full max-w-xs mx-auto flex flex-col items-center">
         <img src="https://source.unsplash.com/random/300x200?cosmetics" alt="Mỹ Phẩm" class="w-full h-48 object-cover rounded-lg mb-6">
         <h2 class="text-2xl font-semibold text-gray-700 dark:text-gray-200 mb-4 text-center">Mỹ Phẩm</h2>
         <p class="text-gray-600 dark:text-gray-300 mb-6 text-center">Khám phá các sản phẩm chăm sóc da phù hợp với mọi loại da, từ da nhạy cảm đến da thường.</p>
-        <a href="http://127.0.0.1:5000" class="bg-blue-600 text-white p-3 rounded-lg hover:bg-blue-700 transition-colors inline-block w-full text-center">Xem thêm</a>
+        <a href="http://127.0.0.1:5000" class="cta-button bg-gradient-to-r from-blue-400 to-blue-600 text-white p-3 rounded-lg w-full text-center">Xem thêm</a>
       </section>
       <!-- Vóc Dáng -->
-      <section class="bg-white dark:bg-gray-800 p-10 rounded-2xl w-full max-w-xs mx-auto flex flex-col items-center">
+      <section class="bg-gradient-to-br from-white to-pink-50 dark:from-gray-800 dark:to-gray-900 p-10 rounded-2xl w-full max-w-xs mx-auto flex flex-col items-center">
         <img src="https://source.unsplash.com/random/300x200?bodyshape" alt="Vóc Dáng" class="w-full h-48 object-cover rounded-lg mb-6">
         <h2 class="text-2xl font-semibold text-gray-700 dark:text-gray-200 mb-4 text-center">Vóc Dáng</h2>
         <p class="text-gray-600 dark:text-gray-300 mb-6 text-center">Khám phá vóc dáng của bạn và nhận gợi ý phối đồ, tập luyện phù hợp để tự tin hơn mỗi ngày.</p>
-        <a href="VocDang/index.html" class="bg-pink-500 text-white p-3 rounded-lg hover:bg-pink-600 transition-colors inline-block w-full text-center">Xem thêm</a>
+        <a href="VocDang/index.html" class="cta-button bg-gradient-to-r from-pink-400 to-pink-600 text-white p-3 rounded-lg w-full text-center">Xem thêm</a>
       </section>
       <!-- Trò Chuyện -->
-      <section class="bg-white dark:bg-gray-800 p-10 rounded-2xl w-full max-w-xs mx-auto flex flex-col items-center">
+      <section class="bg-gradient-to-br from-white to-purple-50 dark:from-gray-800 dark:to-gray-900 p-10 rounded-2xl w-full max-w-xs mx-auto flex flex-col items-center">
         <img src="https://source.unsplash.com/random/300x200?chat" alt="Trò Chuyện" class="w-full h-48 object-cover rounded-lg mb-6">
         <h2 class="text-2xl font-semibold text-gray-700 dark:text-gray-200 mb-4 text-center">Trò Chuyện</h2>
         <p class="text-gray-600 dark:text-gray-300 mb-6 text-center">Kết nối và chia sẻ kinh nghiệm chăm sóc sức khỏe và làm đẹp với cộng đồng.</p>
-        <a href="TroChuyen/index.html" class="bg-purple-500 text-white p-3 rounded-lg hover:bg-purple-600 transition-colors inline-block w-full text-center">Xem thêm</a>
+        <a href="TroChuyen/index.html" class="cta-button bg-gradient-to-r from-purple-400 to-purple-600 text-white p-3 rounded-lg w-full text-center">Xem thêm</a>
       </section>
     </div>
   </main>
 
-  <!-- Footer -->
-  <footer class="bg-gray-200 dark:bg-gray-800 py-6">
-    <div class="container mx-auto px-6 text-center text-gray-600 dark:text-gray-300">
-    </div>
-  </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
   <script>
     document.getElementById('themeToggle').addEventListener('click', () => {
       document.documentElement.classList.toggle('dark');
       localStorage.setItem('theme', document.documentElement.classList.contains('dark') ? 'dark' : 'light');
+      Toastify({
+        text: `Chuyển sang chế độ ${document.documentElement.classList.contains('dark') ? 'tối' : 'sáng'}`,
+        duration: 2000,
+        gravity: "bottom",
+        position: "right",
+        backgroundColor: document.documentElement.classList.contains('dark') ? "#1f2937" : "#38bdf8",
+      }).showToast();
     });
     // Load theme from localStorage
     if (localStorage.getItem('theme') === 'dark') {
