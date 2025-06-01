@@ -337,6 +337,14 @@ def cleanup():
         logger.error("Cleanup error: %s", e)
         return jsonify({"error": f"Dọn dẹp thất bại: {str(e)}"}), 500
 
+@app.route("/hotro")
+def hotro():
+    return render_template("hotro.html")
+
+@app.route("/cosmetic/<skin_type>/<page>")
+def cosmetic_page(skin_type, page):
+    return render_template(f"cosmetic/{skin_type}/{page}")
+
 if __name__ == "__main__":
     logger.info("Starting Flask server")
     app.run(debug=True, host="127.0.0.1", port=5000, use_reloader=False)
