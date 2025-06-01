@@ -22,9 +22,9 @@ function init() {
     foodLog[getCurrentDate()] = [];
   }
   loadFoodOptions();
-  loadFoodLog();
   setupEventListeners();
-  initChart();
+  initChart();      // <-- Đặt trước
+  loadFoodLog();    // <-- Đặt sau
 }
 
 function setupEventListeners() {
@@ -135,6 +135,15 @@ function updateProgress() {
   const progressBar = document.getElementById('progressBar');
   progressBar.style.width = `${progress}%`;
   progressBar.textContent = `${Math.round(progress)}%`;
+
+  // Đổi màu nếu vượt quá TDEE
+  if (tdee > 0 && consumedCalories > tdee) {
+    progressBar.classList.remove('bg-blue-600');
+    progressBar.classList.add('bg-red-600');
+  } else {
+    progressBar.classList.remove('bg-red-600');
+    progressBar.classList.add('bg-blue-600');
+  }
 
   const status = document.getElementById('calorieStatus');
   status.textContent = `Đã tiêu thụ ${consumedCalories} / ${tdee || '...'} calo`;
