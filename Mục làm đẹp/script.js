@@ -105,7 +105,10 @@ function addEntry(entry) {
   foodLog[getCurrentDate()].push(entry);
   saveFoodLog();
   loadFoodLog();
-  Toastify({ text: `Đã thêm: ${entry.name}`, backgroundColor: "green", duration: 2000 }).showToast();
+  Toastify({
+    text: "Thêm thành công!",
+    style: { background: "linear-gradient(to right, #00b09b, #96c93d)" }
+  }).showToast();
 }
 
 // Hiển thị danh sách đã ăn
@@ -140,13 +143,19 @@ function updateProgress() {
   if (tdee > 0 && consumedCalories > tdee) {
     progressBar.classList.remove('bg-blue-600');
     progressBar.classList.add('bg-red-600');
+    
   } else {
     progressBar.classList.remove('bg-red-600');
     progressBar.classList.add('bg-blue-600');
+    
   }
 
   const status = document.getElementById('calorieStatus');
   status.textContent = `Đã tiêu thụ ${consumedCalories} / ${tdee || '...'} calo`;
+
+  // Hiển thị số món ăn
+  const todayLog = foodLog[getCurrentDate()] || [];
+  document.getElementById('foodCount').textContent = `Số món: ${todayLog.length}`;
 }
 
 // Gợi ý giảm cân
