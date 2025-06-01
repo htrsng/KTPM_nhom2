@@ -24,38 +24,23 @@
   <main>
     <section class="shape-analyzer">
       <h1>Phân Tích Vóc Dáng Của Bạn</h1>
-      <p>Chọn hình dáng cơ thể phù hợp với bạn:</p>
+      <p>Nhập số đo cơ thể của bạn (cm) để xác định vóc dáng:</p>
       <form id="shape-form">
-        <div class="shape-options">
-          <div class="shape-option">
-            <input type="radio" id="apple" name="shape" value="apple" required>
-            <label for="apple">
-              <img src="../../assets/images/apple_shape.png" alt="Dáng quả táo" class="shape-img">
-              <span>Dáng quả táo</span>
-            </label>
-          </div>
-          <div class="shape-option">
-            <input type="radio" id="pear" name="shape" value="pear">
-            <label for="pear">
-              <img src="../../assets/images/pear_shape.png" alt="Dáng quả lê" class="shape-img">
-              <span>Dáng quả lê</span>
-            </label>
-          </div>
-          <div class="shape-option">
-            <input type="radio" id="hourglass" name="shape" value="hourglass">
-            <label for="hourglass">
-              <img src="../../assets/images/hourglass_shape.png" alt="Dáng đồng hồ cát" class="shape-img">
-              <span>Dáng đồng hồ cát</span>
-            </label>
-          </div>
-          <div class="shape-option">
-            <input type="radio" id="rectangle" name="shape" value="rectangle">
-            <label for="rectangle">
-              <img src="../../assets/images/rectangle_shape.png" alt="Dáng chữ nhật" class="shape-img">
-              <span>Dáng chữ nhật</span>
-            </label>
-          </div>
-        </div>
+        <label for="shoulder">Số đo vai:</label>
+        <input type="number" id="shoulder" required min="20" max="100" placeholder="Nhập số đo vai (cm)">
+
+        <label for="chest">Số đo ngực:</label>
+        <input type="number" id="chest" required min="50" max="150" placeholder="Nhập số đo ngực (cm)">
+
+        <label for="waist">Số đo eo:</label>
+        <input type="number" id="waist" required min="40" max="120" placeholder="Nhập số đo eo (cm)">
+
+        <label for="hip">Số đo hông:</label>
+        <input type="number" id="hip" required min="50" max="150" placeholder="Nhập số đo hông (cm)">
+
+        <label for="height">Chiều cao:</label>
+        <input type="number" id="height" required min="100" max="250" placeholder="Nhập chiều cao (cm)">
+
         <button type="submit">Xác Định Vóc Dáng</button>
       </form>
 
@@ -75,9 +60,7 @@
     </section>
   </main>
 
-  <footer>
-    <p>© 2025 Tự Tin Ngoại Hình. All rights reserved.</p>
-  </footer>
+  
 
   <script src="shape.js"></script>
 </body>

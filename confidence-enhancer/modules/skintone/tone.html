@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nhận Diện Tông Da - Tự Tin Ngoại Hình</title>
+  <link rel="stylesheet" href="../../style.css">
+  <link rel="stylesheet" href="tone.css">
+</head>
+<body>
+  <nav class="navbar">
+    <div class="logo">Tự Tin Ngoại Hình</div>
+    <div>
+      <ul class="nav-links">
+        <li><a href="../../index.html">Trang Chủ</a></li>
+        <li><a href="../weight/tdee.html">Mục Tiêu Cân Nặng</a></li>
+        <li><a href="../bodyshape/shape.html">Vóc Dáng</a></li>
+        <li><a href="tone.html">Tông Da & Màu Sắc</a></li>
+      </ul>
+      <button id="dark-mode-toggle">🌙 Chế độ tối</button>
+    </div>
+  </nav>
+
+  <main>
+    <section class="tone-analyzer">
+      <h1>Nhận Diện Tông Da Của Bạn</h1>
+      <p>Trả lời các câu hỏi dưới đây để xác định tông da và bảng màu phù hợp:</p>
+      <form id="tone-form">
+        <div class="question">
+          <label>1. Khi bạn nhìn vào tĩnh mạch ở cổ tay dưới ánh sáng tự nhiên, màu gì nổi bật nhất?</label>
+          <div class="options">
+            <input type="radio" id="vein_blue" name="vein_color" value="cool" required>
+            <label for="vein_blue">Xanh dương hoặc tím</label>
+            <input type="radio" id="vein_green" name="vein_color" value="warm">
+            <label for="vein_green">Xanh lá hoặc hơi ngả xanh lục</label>
+            <input type="radio" id="vein_mixed" name="vein_color" value="neutral">
+            <label for="vein_mixed">Khó phân biệt rõ (xanh + xanh lá lẫn lộn)</label>
+          </div>
+        </div>
+        <div class="question">
+          <label>2. Khi bạn mặc đồ màu trắng tinh khôi và đồ màu kem nhạt, màu nào khiến da bạn rạng rỡ hơn?</label>
+          <div class="options">
+            <input type="radio" id="white" name="clothing_color" value="cool" required>
+            <label for="white">Trắng tinh</label>
+            <input type="radio" id="ivory" name="clothing_color" value="warm">
+            <label for="ivory">Kem hoặc be vàng</label>
+            <input type="radio" id="both_clothing" name="clothing_color" value="neutral">
+            <label for="both_clothing">Cả hai đều ổn</label>
+          </div>
+        </div>
+        <div class="question">
+          <label>3. Trang sức nào làm bạn trông nổi bật và hợp hơn?</label>
+          <div class="options">
+            <input type="radio" id="silver" name="jewelry" value="cool" required>
+            <label for="silver">Bạc, vàng trắng</label>
+            <input type="radio" id="gold" name="jewelry" value="warm">
+            <label for="gold">Vàng, đồng</label>
+            <input type="radio" id="both_jewelry" name="jewelry" value="neutral">
+            <label for="both_jewelry">Cả hai đều hợp</label>
+          </div>
+        </div>
+        <div class="question">
+          <label>4. Dưới nắng mặt trời, làn da bạn thường phản ứng thế nào?</label>
+          <div class="options">
+            <input type="radio" id="sunburn" name="sun_reaction" value="cool" required>
+            <label for="sunburn">Dễ bị cháy nắng, đỏ</label>
+            <input type="radio" id="tan" name="sun_reaction" value="warm">
+            <label for="tan">Dễ rám nắng (sạm nâu)</label>
+            <input type="radio" id="no_change" name="sun_reaction" value="neutral">
+            <label for="no_change">Không rõ ràng hoặc xen lẫn</label>
+          </div>
+        </div>
+        <div class="question">
+          <label>5. Màu tóc tự nhiên của bạn là gì?</label>
+          <div class="options">
+            <input type="radio" id="cool_hair" name="hair_color" value="cool" required>
+            <label for="cool_hair">Đen xanh, nâu tro, nâu lạnh</label>
+            <input type="radio" id="warm_hair" name="hair_color" value="warm">
+            <label for="warm_hair">Đen nâu ấm, nâu đỏ, vàng nâu</label>
+            <input type="radio" id="neutral_hair" name="hair_color" value="neutral">
+            <label for="neutral_hair">Màu trung tính hoặc khó xác định</label>
+          </div>
+        </div>
+        <div class="question">
+          <label>6. Màu mắt của bạn?</label>
+          <div class="options">
+            <input type="radio" id="cool_eyes" name="eye_color" value="cool" required>
+            <label for="cool_eyes">Nâu đen, xám, xanh, nâu tro</label>
+            <input type="radio" id="warm_eyes" name="eye_color" value="warm">
+            <label for="warm_eyes">Nâu hổ phách, nâu vàng, nâu sáng</label>
+            <input type="radio" id="neutral_eyes" name="eye_color" value="neutral">
+            <label for="neutral_eyes">Màu hỗn hợp hoặc không rõ</label>
+          </div>
+        </div>
+        <div class="question">
+          <label>7. Độ sáng của làn da bạn?</label>
+          <div class="options">
+            <input type="radio" id="bright" name="skin_brightness" value="bright" required>
+            <label for="bright">Sáng (nhạt, trắng)</label>
+            <input type="radio" id="medium" name="skin_brightness" value="medium">
+            <label for="medium">Trung bình hoặc ngăm</label>
+          </div>
+        </div>
+        <button type="submit">Xác Định Tông Da</button>
+      </form>
+
+      <div id="error" class="error-message" style="display: none;"></div>
+
+      <div id="result" style="display: none;">
+        <h2>Kết Quả Nhận Diện Tông Da</h2>
+        <div class="result-details">
+          <h3 id="tone-title"></h3>
+          <p id="tone-description"></p>
+          <h4>Bảng màu phù hợp:</h4>
+          <div id="color-palette" class="color-palette"></div>
+          <h4>Gợi ý phối đồ:</h4>
+          <ul id="style-suggestions"></ul>
+          <h4>Gợi ý màu son:</h4>
+          <ul id="lip-suggestions"></ul>
+          <h4>Gợi ý màu tóc:</h4>
+          <ul id="hair-suggestions"></ul>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2025 Tự Tin Ngoại Hình. All rights reserved.</p>
+  </footer>
+
+  <script src="tone.js"></script>
+</body>
+</html>

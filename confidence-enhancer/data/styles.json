@@ -1,0 +1,58 @@
+{
+  "apple": {
+    "title": "Dáng Quả Táo",
+    "description": "Vóc dáng quả táo có đặc điểm phần thân trên (vai, ngực) rộng hơn hông, eo thường đầy đặn hơn.",
+    "recommendations": [
+      "Áo khoác dáng dài hoặc áo blazer để kéo dài thân hình.",
+      "Váy chữ A hoặc váy suông giúp che phần eo.",
+      "Quần ống rộng hoặc ống suông để cân bằng tỷ lệ cơ thể."
+    ],
+    "avoid": [
+      "Áo bó sát hoặc áo crop top làm lộ phần eo.",
+      "Quần skinny sáng màu làm nổi bật phần dưới nhỏ hơn.",
+      "Áo có chi tiết rườm rà ở vùng vai hoặc ngực."
+    ]
+  },
+  "pear": {
+    "title": "Dáng Quả Lê",
+    "description": "Vóc dáng quả lê có phần hông và đùi rộng hơn vai và ngực, tạo cảm giác phần dưới nặng hơn.",
+    "recommendations": [
+      "Áo có vai phồng hoặc chi tiết nổi bật để thu hút sự chú ý lên thân trên.",
+      "Váy chữ A hoặc váy xòe giúp che phần hông rộng.",
+      "Quần tối màu, ống suông hoặc ống loe để cân bằng tỷ lệ."
+    ],
+    "avoid": [
+      "Quần skinny sáng màu làm nổi bật phần hông.",
+      "Áo quá dài che mất vòng eo tự nhiên.",
+      "Váy bó sát làm lộ phần hông và đùi."
+    ]
+  },
+  "hourglass": {
+    "title": "Dáng Đồng Hồ Cát",
+    "description": "Vóc dáng đồng hồ cát có vai và hông cân đối, với vòng eo thon gọn rõ rệt.",
+    "recommendations": [
+      "Váy ôm hoặc váy bút chì tôn lên đường cong cơ thể.",
+      "Áo bó sát hoặc áo peplum làm nổi bật vòng eo.",
+      "Quần cạp cao hoặc thắt lưng để nhấn mạnh eo."
+    ],
+    "avoid": [
+      "Trang phục quá rộng làm mất đi đường cong tự nhiên.",
+      "Áo khoác dáng hộp hoặc quá dài che mất vòng eo.",
+      "Quần ống rộng quá mức làm mất cân đối."
+    ]
+  },
+  "rectangle": {
+    "title": "Dáng Chữ Nhật",
+    "description": "Vóc dáng chữ nhật có vai, eo và hông gần bằng nhau, tạo cảm giác thẳng và ít đường cong.",
+    "recommendations": [
+      "Áo có chi tiết bèo nhún hoặc peplum để tạo ảo giác vòng eo.",
+      "Váy xòe hoặc váy có thắt lưng để tạo đường cong.",
+      "Quần ống loe hoặc quần palazzo để thêm độ mềm mại."
+    ],
+    "avoid": [
+      "Trang phục quá bó sát làm lộ thiếu đường cong.",
+      "Áo dài thẳng không có điểm nhấn ở eo.",
+      "Quần ống suông không tạo được tỷ lệ cơ thể."
+    ]
+  }
+}

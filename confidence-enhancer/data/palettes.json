@@ -1,22 +1,34 @@
 {
   "Spring": {
-    "description": "Tông màu ấm, tươi sáng, phù hợp với mùa xuân",
+    "title": "Mùa Xuân",
+    "description": "Tông màu ấm, tươi sáng, phù hợp với mùa xuân. Da sáng với undertone ấm, rạng rỡ với các màu nhẹ nhàng.",
     "colors": ["#FF6F61", "#FFD700", "#90EE90", "#87CEEB"],
-    "style_suggestions": ["Váy hoa nhẹ nhàng", "Áo màu pastel", "Phụ kiện vàng sáng"]
+    "style_suggestions": ["Váy hoa nhẹ nhàng", "Áo màu pastel", "Phụ kiện vàng sáng"],
+    "lip_colors": ["Hồng đào", "San hô", "Đỏ cam nhẹ"],
+    "hair_colors": ["Nâu vàng", "Vàng mật ong", "Nâu caramel"]
   },
   "Summer": {
-    "description": "Tông màu lạnh, dịu nhẹ, phù hợp với mùa hè",
+    "title": "Mùa Hè",
+    "description": "Tông màu lạnh, dịu nhẹ, phù hợp với mùa hè. Da trung bình với undertone lạnh, hợp với màu nhạt và nhẹ.",
     "colors": ["#4682B4", "#D3D3D3", "#FFB6C1", "#E6E6FA"],
-    "style_suggestions": ["Áo sơ mi trắng", "Quần jeans xanh nhạt", "Phụ kiện bạc"]
+    "style_suggestions": ["Áo sơ mi trắng", "Quần jeans xanh nhạt", "Phụ kiện bạc"],
+    "lip_colors": ["Hồng phấn", "Tím nhạt", "Đỏ berry"],
+    "hair_colors": ["Nâu tro", "Vàng bạch kim", "Đen xanh"]
   },
   "Autumn": {
-    "description": "Tông màu ấm, trầm, phù hợp với mùa thu",
+    "title": "Mùa Thu",
+    "description": "Tông màu ấm, trầm, phù hợp với mùa thu. Da trung bình hoặc ngăm với undertone ấm, hợp với màu đất.",
     "colors": ["#8B4513", "#DAA520", "#228B22", "#A0522D"],
-    "style_suggestions": ["Áo len nâu", "Khăn quàng màu đất", "Bốt da"]
+    "style_suggestions": ["Áo len nâu", "Khăn quàng màu đất", "Bốt da"],
+    "lip_colors": ["Đỏ gạch", "Cam cháy", "Nâu đất"],
+    "hair_colors": ["Nâu đỏ", "Nâu hạt dẻ", "Đồng ánh đỏ"]
   },
   "Winter": {
-    "description": "Tông màu lạnh, đậm, phù hợp với mùa đông",
+    "title": "Mùa Đông",
+    "description": "Tông màu lạnh, đậm, phù hợp với mùa đông. Da sáng với undertone lạnh, hợp với màu sắc nổi bật.",
     "colors": ["#000080", "#4B0082", "#DC143C", "#000000"],
-    "style_suggestions": ["Áo khoác đen", "Váy màu jewel tone", "Phụ kiện ánh kim"]
+    "style_suggestions": ["Áo khoác đen", "Váy màu jewel tone", "Phụ kiện ánh kim"],
+    "lip_colors": ["Đỏ đậm", "Tím đậm", "Fuchsia"],
+    "hair_colors": ["Đen tuyền", "Nâu lạnh", "Xám bạc"]
   }
 }
