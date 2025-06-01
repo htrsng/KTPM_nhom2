@@ -6,6 +6,7 @@
   <meta name="description" content="Khảo sát chẩn đoán loại da để tìm sản phẩm chăm sóc da phù hợp với bạn.">
   <meta name="keywords" content="chẩn đoán da, loại da, da dầu, da khô, da nhạy cảm, chăm sóc da">
   <title>Chẩn đoán loại da</title>
+  <link rel="stylesheet" href="/cosmetic-dathuong/css/style.css">
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-gray-100 font-sans">
@@ -75,12 +76,17 @@
       <div class="bg-white p-6 rounded-lg shadow-lg max-w-md w-full">
         <h3 class="text-xl font-bold mb-4">Kết quả chẩn đoán</h3>
         <p id="modalResult" class="text-lg"></p>
-        <button onclick="closeModal()" class="mt-4 bg-teal-500 text-white px-4 py-2 rounded hover:bg-teal-600">Đóng</button>
+        <div class="flex justify-between mt-4">
+          <button onclick="closeModal()" class="bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-600">Đóng</button>
+          <button onclick="redirectToSkinType()" id="redirectButton" class="bg-teal-500 text-white px-4 py-2 rounded hover:bg-teal-600">Xem sản phẩm phù hợp</button>
+        </div>
       </div>
     </div>
   </div>
 
   <script>
+    let selectedSkinType = '';
+
     function analyze() {
       const form = document.forms['skinForm'];
       const errorDiv = document.getElementById('error');
@@ -99,15 +105,24 @@
       // Thu thập đáp án
       const scores = { oily: 0, dry: 0, combo_oily: 0, combo_dry: 0, normal: 0, sensitive: 0 };
       for (let i = 1; i <= 5; i++) {
-        const selected = form[`q${i}`]?.value;
-        if (!selected) {
+        const radios = form['q' + i];
+        let selected = '';
+        if (radios) {
+          if (radios.length) {
+            for (let r of radios) if (r.checked) selected = r.value;
+          } else if (radios.checked) {
+            selected = radios.value;
+          }
+        }
+        if (scores.hasOwnProperty(selected)) {
+          scores[selected]++;
+        } else {
           errorDiv.innerText = 'Vui lòng trả lời đầy đủ tất cả các câu hỏi!';
           errorDiv.classList.remove('hidden');
           buttonText.innerText = 'Xác định loại da';
           spinner.classList.add('hidden');
           return;
         }
-        scores[selected]++;
       }
 
       // Xác định loại da
@@ -115,6 +130,8 @@
         ([type, max], [currType, score]) => (score > max ? [currType, score] : [type, max]),
         ['normal', 0]
       );
+
+      selectedSkinType = result;
 
       const skinNames = {
         oily: 'Da dầu',
@@ -129,12 +146,24 @@
       setTimeout(() => {
         modalResult.innerHTML = `
           🎯 Bạn thuộc loại: <span class="text-green-600">${skinNames[result]}</span><br><br>
-          <a href="san-pham.html?type=${result}" class="text-teal-500 underline hover:text-teal-700">👉 Xem các sản phẩm phù hợp với loại da này</a>
+          Nhấn "Xem sản phẩm phù hợp" để khám phá các sản phẩm dành cho ${skinNames[result].toLowerCase()}.
         `;
         modal.classList.remove('hidden');
         buttonText.innerText = 'Xác định loại da';
         spinner.classList.add('hidden');
       }, 500); // Giả lập thời gian xử lý
+    }
+
+    function redirectToSkinType() {
+      const skinUrls = {
+        oily: './cosmetic/dadau/dadau.html',
+        dry: './cosmetic/dakho/dakho.html',
+        combo_oily: './cosmetic/dahonhop-thiendau/dahonhop-thiendau.html',
+        combo_dry: './cosmetic/dahonhop-thienkho/dahonhop-thienkho.html',
+        normal: './cosmetic/dathuong/dathuong.html',
+        sensitive: './cosmetic/danhaycam/danhaycam.html'
+      };
+      window.location.href = skinUrls[selectedSkinType] || './cosmetic/dathuong/dathuong.html';
     }
 
     function closeModal() {
