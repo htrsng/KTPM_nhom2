@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Khảo sát chẩn đoán loại da để tìm sản phẩm chăm sóc da phù hợp với bạn.">
+  <meta name="keywords" content="chẩn đoán da, loại da, da dầu, da khô, da nhạy cảm, chăm sóc da">
+  <title>Chẩn đoán loại da</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 font-sans">
+  <div class="container mx-auto p-6 max-w-3xl">
+    <h2 class="text-2xl font-bold text-teal-600 mb-6 text-center">🧴 Khảo sát tình trạng da của bạn</h2>
+    <div id="error" class="text-red-600 text-center mb-4 hidden" role="alert"></div>
+    <form id="skinForm" name="skinForm" class="bg-white p-6 rounded-lg shadow-md">
+      <!-- Câu hỏi 1 -->
+      <div class="question mb-6">
+        <p class="font-semibold mb-2" id="q1-label">1. Sau khi rửa mặt 30 phút, da bạn cảm thấy thế nào?</p>
+        <label class="block mb-1"><input type="radio" name="q1" value="dry" class="mr-2" required aria-describedby="q1-label"> Khô, căng rát</label>
+        <label class="block mb-1"><input type="radio" name="q1" value="oily" class="mr-2"> Nhờn bóng ở chữ T</label>
+        <label class="block mb-1"><input type="radio" name="q1" value="combo_dry" class="mr-2"> Chữ T bóng nhẹ, má khô</label>
+        <label class="block mb-1"><input type="radio" name="q1" value="combo_oily" class="mr-2"> Chữ T bóng nhiều, má bình thường</label>
+        <label class="block mb-1"><input type="radio" name="q1" value="normal" class="mr-2"> Không nhờn cũng không khô</label>
+        <label class="block mb-1"><input type="radio" name="q1" value="sensitive" class="mr-2"> Bị nóng rát, châm chích nhẹ</label>
+      </div>
+      <!-- Câu hỏi 2 -->
+      <div class="question mb-6">
+        <p class="font-semibold mb-2" id="q2-label">2. Lỗ chân lông của bạn như thế nào?</p>
+        <label class="block mb-1"><input type="radio" name="q2" value="dry" class="mr-2" required aria-describedby="q2-label"> Nhỏ, khó thấy</label>
+        <label class="block mb-1"><input type="radio" name="q2" value="oily" class="mr-2"> To rõ vùng chữ T</label>
+        <label class="block mb-1"><input type="radio" name="q2" value="combo_oily" class="mr-2"> To ở chữ T, nhỏ ở má</label>
+        <label class="block mb-1"><input type="radio" name="q2" value="combo_dry" class="mr-2"> Nhỏ ở má, chữ T hơi to</label>
+        <label class="block mb-1"><input type="radio" name="q2" value="normal" class="mr-2"> Đều, không nổi bật</label>
+        <label class="block mb-1"><input type="radio" name="q2" value="sensitive" class="mr-2"> Dễ nổi đỏ, kích ứng</label>
+      </div>
+      <!-- Câu hỏi 3 -->
+      <div class="question mb-6">
+        <p class="font-semibold mb-2" id="q3-label">3. Bạn thường gặp vấn đề gì?</p>
+        <label class="block mb-1"><input type="radio" name="q3" value="dry" class="mr-2" required aria-describedby="q3-label"> Bong tróc, nứt nẻ</label>
+        <label class="block mb-1"><input type="radio" name="q3" value="oily" class="mr-2"> Nhờn, mụn đầu đen, mụn viêm</label>
+        <label class="block mb-1"><input type="radio" name="q3" value="combo_oily" class="mr-2"> Mụn đầu đen vùng chữ T, má khô</label>
+        <label class="block mb-1"><input type="radio" name="q3" value="combo_dry" class="mr-2"> Mụn đầu trắng và má khô nhẹ</label>
+        <label class="block mb-1"><input type="radio" name="q3" value="normal" class="mr-2"> Ít vấn đề, đôi khi nổi mụn</label>
+        <label class="block mb-1"><input type="radio" name="q3" value="sensitive" class="mr-2"> Ngứa, đỏ, châm chích</label>
+      </div>
+      <!-- Câu hỏi 4 -->
+      <div class="question mb-6">
+        <p class="font-semibold mb-2" id="q4-label">4. Bạn cảm thấy da thay đổi thế nào trong ngày?</p>
+        <label class="block mb-1"><input type="radio" name="q4" value="dry" class="mr-2" required aria-describedby="q4-label"> Càng về chiều càng khô, khó chịu</label>
+        <label class="block mb-1"><input type="radio" name="q4" value="oily" class="mr-2"> Dầu nhiều rõ rệt sau vài tiếng</label>
+        <label class="block mb-1"><input type="radio" name="q4" value="combo_oily" class="mr-2"> Ban đầu khô, nhưng vùng chữ T bắt đầu đổ dầu sau vài tiếng</label>
+        <label class="block mb-1"><input type="radio" name="q4" value="combo_dry" class="mr-2"> Khô vùng má, nhưng chữ T vẫn ra ít dầu</label>
+        <label class="block mb-1"><input type="radio" name="q4" value="normal" class="mr-2"> Gần như không thay đổi, ổn định cả ngày</label>
+        <label class="block mb-1"><input type="radio" name="q4" value="sensitive" class="mr-2"> Thay đổi liên tục, dễ bị kích ứng khi trời nóng, lạnh hoặc khi makeup</label>
+      </div>
+      <!-- Câu hỏi 5 -->
+      <div class="question mb-6">
+        <p class="font-semibold mb-2" id="q5-label">5. Khi sử dụng mỹ phẩm lạ, bạn thường gặp tình trạng nào?</p>
+        <label class="block mb-1"><input type="radio" name="q5" value="normal" class="mr-2" required aria-describedby="q5-label"> Không có vấn đề gì</label>
+        <label class="block mb-1"><input type="radio" name="q5" value="oily" class="mr-2"> Dầu nhiều hơn, dễ nổi mụn</label>
+        <label class="block mb-1"><input type="radio" name="q5" value="dry" class="mr-2"> Châm chích nhẹ vùng da khô</label>
+        <label class="block mb-1"><input type="radio" name="q5" value="combo_oily" class="mr-2"> Mụn đầu đen vùng mũi, khô má</label>
+        <label class="block mb-1"><input type="radio" name="q5" value="combo_dry" class="mr-2"> Căng nhẹ nhưng không kích ứng</label>
+        <label class="block mb-1"><input type="radio" name="q5" value="sensitive" class="mr-2"> Rát, đỏ, ngứa hoặc nổi mụn li ti</label>
+      </div>
+      <button type="button" onclick="analyze()" class="bg-teal-500 text-white px-4 py-2 rounded hover:bg-teal-600 w-full flex items-center justify-center">
+        <span id="buttonText">Xác định loại da</span>
+        <svg id="loadingSpinner" class="animate-spin h-5 w-5 ml-2 hidden" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+          <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+          <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+        </svg>
+      </button>
+    </form>
+    <div id="resultModal" class="fixed inset-0 bg-gray-600 bg-opacity-50 flex items-center justify-center hidden">
+      <div class="bg-white p-6 rounded-lg shadow-lg max-w-md w-full">
+        <h3 class="text-xl font-bold mb-4">Kết quả chẩn đoán</h3>
+        <p id="modalResult" class="text-lg"></p>
+        <button onclick="closeModal()" class="mt-4 bg-teal-500 text-white px-4 py-2 rounded hover:bg-teal-600">Đóng</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function analyze() {
+      const form = document.forms['skinForm'];
+      const errorDiv = document.getElementById('error');
+      const buttonText = document.getElementById('buttonText');
+      const spinner = document.getElementById('loadingSpinner');
+      const modal = document.getElementById('resultModal');
+      const modalResult = document.getElementById('modalResult');
+
+      // Reset error
+      errorDiv.classList.add('hidden');
+
+      // Hiển thị loading
+      buttonText.innerText = 'Đang xử lý...';
+      spinner.classList.remove('hidden');
+
+      // Thu thập đáp án
+      const scores = { oily: 0, dry: 0, combo_oily: 0, combo_dry: 0, normal: 0, sensitive: 0 };
+      for (let i = 1; i <= 5; i++) {
+        const selected = form[`q${i}`]?.value;
+        if (!selected) {
+          errorDiv.innerText = 'Vui lòng trả lời đầy đủ tất cả các câu hỏi!';
+          errorDiv.classList.remove('hidden');
+          buttonText.innerText = 'Xác định loại da';
+          spinner.classList.add('hidden');
+          return;
+        }
+        scores[selected]++;
+      }
+
+      // Xác định loại da
+      const [result, maxScore] = Object.entries(scores).reduce(
+        ([type, max], [currType, score]) => (score > max ? [currType, score] : [type, max]),
+        ['normal', 0]
+      );
+
+      const skinNames = {
+        oily: 'Da dầu',
+        dry: 'Da khô',
+        combo_oily: 'Da hỗn hợp thiên dầu',
+        combo_dry: 'Da hỗn hợp thiên khô',
+        normal: 'Da thường',
+        sensitive: 'Da nhạy cảm'
+      };
+
+      // Hiển thị kết quả trong modal
+      setTimeout(() => {
+        modalResult.innerHTML = `
+          🎯 Bạn thuộc loại: <span class="text-green-600">${skinNames[result]}</span><br><br>
+          <a href="san-pham.html?type=${result}" class="text-teal-500 underline hover:text-teal-700">👉 Xem các sản phẩm phù hợp với loại da này</a>
+        `;
+        modal.classList.remove('hidden');
+        buttonText.innerText = 'Xác định loại da';
+        spinner.classList.add('hidden');
+      }, 500); // Giả lập thời gian xử lý
+    }
+
+    function closeModal() {
+      document.getElementById('resultModal').classList.add('hidden');
+    }
+  </script>
+</body>
+</html>
