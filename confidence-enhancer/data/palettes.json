@@ -1,0 +1,22 @@
+{
+  "Spring": {
+    "description": "Tông màu ấm, tươi sáng, phù hợp với mùa xuân",
+    "colors": ["#FF6F61", "#FFD700", "#90EE90", "#87CEEB"],
+    "style_suggestions": ["Váy hoa nhẹ nhàng", "Áo màu pastel", "Phụ kiện vàng sáng"]
+  },
+  "Summer": {
+    "description": "Tông màu lạnh, dịu nhẹ, phù hợp với mùa hè",
+    "colors": ["#4682B4", "#D3D3D3", "#FFB6C1", "#E6E6FA"],
+    "style_suggestions": ["Áo sơ mi trắng", "Quần jeans xanh nhạt", "Phụ kiện bạc"]
+  },
+  "Autumn": {
+    "description": "Tông màu ấm, trầm, phù hợp với mùa thu",
+    "colors": ["#8B4513", "#DAA520", "#228B22", "#A0522D"],
+    "style_suggestions": ["Áo len nâu", "Khăn quàng màu đất", "Bốt da"]
+  },
+  "Winter": {
+    "description": "Tông màu lạnh, đậm, phù hợp với mùa đông",
+    "colors": ["#000080", "#4B0082", "#DC143C", "#000000"],
+    "style_suggestions": ["Áo khoác đen", "Váy màu jewel tone", "Phụ kiện ánh kim"]
+  }
+}

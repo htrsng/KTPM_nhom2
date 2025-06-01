@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Phân Tích Vóc Dáng - Tự Tin Ngoại Hình</title>
+  <link rel="stylesheet" href="../../style.css">
+  <link rel="stylesheet" href="shape.css">
+</head>
+<body>
+  <nav class="navbar">
+    <div class="logo">Tự Tin Ngoại Hình</div>
+    <div>
+      <ul class="nav-links">
+        <li><a href="../../index.html">Trang Chủ</a></li>
+        <li><a href="../weight/tdee.html">Mục Tiêu Cân Nặng</a></li>
+        <li><a href="shape.html">Vóc Dáng</a></li>
+        <li><a href="../skintone/tone.html">Tông Da & Màu Sắc</a></li>
+      </ul>
+      <button id="dark-mode-toggle">🌙 Chế độ tối</button>
+    </div>
+  </nav>
+
+  <main>
+    <section class="shape-analyzer">
+      <h1>Phân Tích Vóc Dáng Của Bạn</h1>
+      <p>Chọn hình dáng cơ thể phù hợp với bạn:</p>
+      <form id="shape-form">
+        <div class="shape-options">
+          <div class="shape-option">
+            <input type="radio" id="apple" name="shape" value="apple" required>
+            <label for="apple">
+              <img src="../../assets/images/apple_shape.png" alt="Dáng quả táo" class="shape-img">
+              <span>Dáng quả táo</span>
+            </label>
+          </div>
+          <div class="shape-option">
+            <input type="radio" id="pear" name="shape" value="pear">
+            <label for="pear">
+              <img src="../../assets/images/pear_shape.png" alt="Dáng quả lê" class="shape-img">
+              <span>Dáng quả lê</span>
+            </label>
+          </div>
+          <div class="shape-option">
+            <input type="radio" id="hourglass" name="shape" value="hourglass">
+            <label for="hourglass">
+              <img src="../../assets/images/hourglass_shape.png" alt="Dáng đồng hồ cát" class="shape-img">
+              <span>Dáng đồng hồ cát</span>
+            </label>
+          </div>
+          <div class="shape-option">
+            <input type="radio" id="rectangle" name="shape" value="rectangle">
+            <label for="rectangle">
+              <img src="../../assets/images/rectangle_shape.png" alt="Dáng chữ nhật" class="shape-img">
+              <span>Dáng chữ nhật</span>
+            </label>
+          </div>
+        </div>
+        <button type="submit">Xác Định Vóc Dáng</button>
+      </form>
+
+      <div id="error" class="error-message" style="display: none;"></div>
+
+      <div id="result" style="display: none;">
+        <h2>Kết Quả Phân Tích Vóc Dáng</h2>
+        <div class="result-details">
+          <h3 id="shape-title"></h3>
+          <p id="shape-description"></p>
+          <h4>Nên mặc:</h4>
+          <ul id="shape-recommendations"></ul>
+          <h4>Nên tránh:</h4>
+          <ul id="shape-avoid"></ul>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2025 Tự Tin Ngoại Hình. All rights reserved.</p>
+  </footer>
+
+  <script src="shape.js"></script>
+</body>
+</html>
