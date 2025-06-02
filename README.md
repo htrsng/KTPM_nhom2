@@ -21,16 +21,12 @@ Một trang web hiện đại giúp người dùng chăm sóc bản thân toàn 
 - Tùy vào cảm xúc hiện tại người dùng có thể chọn trạng thái phù hợp để có thể nói chuyện choa đổi cùng phần trò chuyện.
 - Giao diện có hiệu ứng đổi màu theo trạng thái cảm xúc (vui, buồn, tức giận, muốn tâm sự).
 - Chatbot trả lời tự động hỗ trợ tâm lý, tạo cảm giác thân thiện và gần gũi.
-- 
+
 ##  Công nghệ sử dụng
 
 - Backend: Python với Flask framework xử lý logic, phân tích ảnh AI, API và render template.
-
 - Frontend: HTML5, JavaScript, Tailwind CSS thiết kế giao diện hiện đại, responsive.
-
 - Hiệu ứng: Animation và gradient động tạo trải nghiệm bắt mắt, mượt mà.
-
 - AI: Mô hình YOLOv8 tự train dùng nhận diện các vấn đề da.
-
 - Ảnh: Xử lý ảnh đầu vào (resize, kiểm tra nét, tăng sáng/tương phản) trước khi phân tích
 
