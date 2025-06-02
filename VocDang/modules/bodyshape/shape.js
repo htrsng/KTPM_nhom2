@@ -9,25 +9,23 @@ document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('height').value = savedData.height || '';
   }
 
+  // Load saved result if exists
+  const savedResult = localStorage.getItem('savedShapeResult');
+  if (savedResult) {
+    displayResult(JSON.parse(savedResult));
+  }
+
   // Dark mode toggle
   const darkModeToggle = document.getElementById('dark-mode-toggle');
   if (localStorage.getItem('darkMode') === 'enabled') {
-    document.body.classList.add('dark-mode');
-    document.querySelector('.shape-analyzer').classList.add('dark-mode');
-    document.querySelector('#result').classList.add('dark-mode');
-    document.querySelector('.result-details').classList.add('dark-mode');
-    document.querySelector('.navbar').classList.add('dark-mode');
-    document.querySelector('footer').classList.add('dark-mode');
+    enableDarkMode();
     darkModeToggle.textContent = '☀️ Chế độ sáng';
   }
 
   darkModeToggle.addEventListener('click', () => {
     document.body.classList.toggle('dark-mode');
     document.querySelector('.shape-analyzer').classList.toggle('dark-mode');
-    document.querySelector('#result').classList.toggle('dark-mode');
-    document.querySelector('.result-details').classList.toggle('dark-mode');
-    document.querySelector('.navbar').classList.toggle('dark-mode');
-    document.querySelector('footer').classList.toggle('dark-mode');
+    
     if (document.body.classList.contains('dark-mode')) {
       localStorage.setItem('darkMode', 'enabled');
       darkModeToggle.textContent = '☀️ Chế độ sáng';
@@ -36,65 +34,110 @@ document.addEventListener('DOMContentLoaded', function() {
       darkModeToggle.textContent = '🌙 Chế độ tối';
     }
   });
+
+  // Shape icon click event
+  document.querySelectorAll('.shape-icon').forEach(icon => {
+    icon.addEventListener('click', function() {
+      const shape = this.getAttribute('data-shape');
+      showShapeInfo(shape);
+    });
+  });
+
+  // Save result button
+  document.getElementById('save-result')?.addEventListener('click', function() {
+    const currentResult = localStorage.getItem('currentShapeResult');
+    if (currentResult) {
+      localStorage.setItem('savedShapeResult', currentResult);
+      this.innerHTML = '<i class="fas fa-check"></i> Đã lưu';
+      setTimeout(() => {
+        this.innerHTML = '<i class="fas fa-bookmark"></i> Lưu kết quả';
+      }, 2000);
+    }
+  });
 });
 
-// Mock data (to be replaced with fetch from styles.json)
+function enableDarkMode() {
+  document.body.classList.add('dark-mode');
+  document.querySelector('.shape-analyzer').classList.add('dark-mode');
+  document.querySelector('.navbar').classList.add('dark-mode');
+}
+
 const bodyShapes = {
   apple: {
     title: "Dáng Quả Táo",
-    description: "Vóc dáng quả táo có đặc điểm phần thân trên (vai, ngực) rộng hơn hông, eo thường đầy đặn hơn.",
+    description: "Vóc dáng quả táo có đặc điểm phần thân trên (vai, ngực) rộng hơn hông, eo thường đầy đặn hơn. Bạn có đường cong tập trung ở phần trên cơ thể với chân thon gọn.",
     recommendations: [
-      "Áo khoác dáng dài hoặc áo blazer để kéo dài thân hình.",
-      "Váy chữ A hoặc váy suông giúp che phần eo.",
-      "Quần ống rộng hoặc ống suông để cân bằng tỷ lệ cơ thể."
+      "Áo khoác dáng dài hoặc áo blazer để kéo dài thân hình",
+      "Váy chữ A hoặc váy suông giúp che phần eo",
+      "Quần ống rộng hoặc ống suông để cân bằng tỷ lệ cơ thể",
+      "Áo cổ V sâu giúp kéo dài phần thân trên",
+      "Đầm empire waist (đường eo cao ngay dưới ngực)"
     ],
     avoid: [
-      "Áo bó sát hoặc áo crop top làm lộ phần eo.",
-      "Quần skinny sáng màu làm nổi bật phần dưới nhỏ hơn.",
-      "Áo có chi tiết rườm rà ở vùng vai hoặc ngực."
-    ]
+      "Áo bó sát hoặc áo crop top làm lộ phần eo",
+      "Quần skinny sáng màu làm nổi bật phần dưới nhỏ hơn",
+      "Áo có chi tiết rườm rà ở vùng vai hoặc ngực",
+      "Thắt lưng rộng hoặc nổi bật ở eo",
+      "Quần hoặc váy có túi lớn ở hông"
+    ],
+    image: "images/apple-shape-detail.png"
   },
   pear: {
     title: "Dáng Quả Lê",
-    description: "Vóc dáng quả lê có phần hông và đùi rộng hơn vai và ngực, tạo cảm giác phần dưới nặng hơn.",
+    description: "Vóc dáng quả lê có phần hông và đùi rộng hơn vai và ngực, tạo cảm giác phần dưới nặng hơn. Bạn có đường cong tập trung ở phần dưới cơ thể với thân trên thon gọn.",
     recommendations: [
-      "Áo có vai phồng hoặc chi tiết nổi bật để thu hút sự chú ý lên thân trên.",
-      "Váy chữ A hoặc váy xòe giúp che phần hông rộng.",
-      "Quần tối màu, ống suông hoặc ống loe để cân bằng tỷ lệ."
+      "Áo có vai phồng hoặc chi tiết nổi bật để thu hút sự chú ý lên thân trên",
+      "Váy chữ A hoặc váy xòe giúp che phần hông rộng",
+      "Quần tối màu, ống suông hoặc ống loe để cân bằng tỷ lệ",
+      "Áo sáng màu hoặc họa tiết để làm nổi bật thân trên",
+      "Đầm fit and flare (ôm phần thân trên và xòe từ eo)"
     ],
     avoid: [
-      "Quần skinny sáng màu làm nổi bật phần hông.",
-      "Áo quá dài che mất vòng eo tự nhiên.",
-      "Váy bó sát làm lộ phần hông và đùi."
-    ]
+      "Quần skinny sáng màu làm nổi bật phần hông",
+      "Áo quá dài che mất vòng eo tự nhiên",
+      "Váy bó sát làm lộ phần hông và đùi",
+      "Quần có túi lớn hoặc chi tiết ở mông",
+      "Áo cropped quá ngắn làm lộ phần hông rộng"
+    ],
+    image: "images/pear-shape-detail.png"
   },
   hourglass: {
     title: "Dáng Đồng Hồ Cát",
-    description: "Vóc dáng đồng hồ cát có vai và hông cân đối, với vòng eo thon gọn rõ rệt.",
+    description: "Vóc dáng đồng hồ cát có vai và hông cân đối, với vòng eo thon gọn rõ rệt. Bạn có đường cong cân đối và tỷ lệ cơ thể lý tưởng.",
     recommendations: [
-      "Váy ôm hoặc váy bút chì tôn lên đường cong cơ thể.",
-      "Áo bó sát hoặc áo peplum làm nổi bật vòng eo.",
-      "Quần cạp cao hoặc thắt lưng để nhấn mạnh eo."
+      "Váy ôm hoặc váy bút chì tôn lên đường cong cơ thể",
+      "Áo bó sát hoặc áo peplum làm nổi bật vòng eo",
+      "Quần cạp cao hoặc thắt lưng để nhấn mạnh eo",
+      "Đầm bodycon ôm sát cơ thể",
+      "Áo crop top kết hợp với chân váy bút chì"
     ],
     avoid: [
-      "Trang phục quá rộng làm mất đi đường cong tự nhiên.",
-      "Áo khoác dáng hộp hoặc quá dài che mất vòng eo.",
-      "Quần ống rộng quá mức làm mất cân đối."
-    ]
+      "Trang phục quá rộng làm mất đi đường cong tự nhiên",
+      "Áo khoác dáng hộp hoặc quá dài che mất vòng eo",
+      "Quần ống rộng quá mức làm mất cân đối",
+      "Áo không có đường eo rõ ràng",
+      "Trang phục nhiều lớp làm che khuất đường cong"
+    ],
+    image: "images/hourglass-shape-detail.png"
   },
   rectangle: {
     title: "Dáng Chữ Nhật",
-    description: "Vóc dáng chữ nhật có vai, eo và hông gần bằng nhau, tạo cảm giác thẳng và ít đường cong.",
+    description: "Vóc dáng chữ nhật có vai, eo và hông gần bằng nhau, tạo cảm giác thẳng và ít đường cong. Bạn có thân hình mảnh mai với ít sự khác biệt giữa các số đo.",
     recommendations: [
-      "Áo có chi tiết bèo nhún hoặc peplum để tạo ảo giác vòng eo.",
-      "Váy xòe hoặc váy có thắt lưng để tạo đường cong.",
-      "Quần ống loe hoặc quần palazzo để thêm độ mềm mại."
+      "Áo có chi tiết bèo nhún hoặc peplum để tạo ảo giác vòng eo",
+      "Váy xòe hoặc váy có thắt lưng để tạo đường cong",
+      "Quần ống loe hoặc quần palazzo để thêm độ mềm mại",
+      "Áo có họa tiết hoặc chi tiết để tạo chiều sâu",
+      "Đầm wrap dress tạo đường cong nhân tạo"
     ],
     avoid: [
-      "Trang phục quá bó sát làm lộ thiếu đường cong.",
-      "Áo dài thẳng không có điểm nhấn ở eo.",
-      "Quần ống suông không tạo được tỷ lệ cơ thể."
-    ]
+      "Trang phục quá bó sát làm lộ thiếu đường cong",
+      "Áo dài thẳng không có điểm nhấn ở eo",
+      "Quần ống suông không tạo được tỷ lệ cơ thể",
+      "Trang phục đơn điệu một màu",
+      "Áo tank top hoặc áo ba lỗ làm lộ vai thẳng"
+    ],
+    image: "images/rectangle-shape-detail.png"
   }
 };
 
@@ -110,32 +153,23 @@ document.getElementById('shape-form').addEventListener('submit', function(e) {
 
   // Input validation
   const errorDiv = document.getElementById('error');
-  if (shoulder < 20 || shoulder > 100) {
-    errorDiv.innerText = 'Số đo vai phải từ 20 đến 100 cm.';
-    errorDiv.style.display = 'block';
-    return;
-  }
-  if (chest < 50 || chest > 150) {
-    errorDiv.innerText = 'Số đo ngực phải từ 50 đến 150 cm.';
-    errorDiv.style.display = 'block';
-    return;
-  }
-  if (waist < 40 || waist > 120) {
-    errorDiv.innerText = 'Số đo eo phải từ 40 đến 120 cm.';
-    errorDiv.style.display = 'block';
-    return;
-  }
-  if (hip < 50 || hip > 150) {
-    errorDiv.innerText = 'Số đo hông phải từ 50 đến 150 cm.';
-    errorDiv.style.display = 'block';
-    return;
-  }
-  if (height < 100 || height > 250) {
-    errorDiv.innerText = 'Chiều cao phải từ 100 đến 250 cm.';
-    errorDiv.style.display = 'block';
-    return;
-  }
   errorDiv.style.display = 'none';
+  
+  const inputs = [
+    { value: shoulder, name: 'vai', min: 20, max: 100 },
+    { value: chest, name: 'ngực', min: 50, max: 150 },
+    { value: waist, name: 'eo', min: 40, max: 120 },
+    { value: hip, name: 'hông', min: 50, max: 150 },
+    { value: height, name: 'chiều cao', min: 100, max: 250 }
+  ];
+
+  for (const input of inputs) {
+    if (isNaN(input.value) || input.value < input.min || input.value > input.max) {
+      errorDiv.innerText = `Số đo ${input.name} phải từ ${input.min} đến ${input.max} cm.`;
+      errorDiv.style.display = 'block';
+      return;
+    }
+  }
 
   // Save inputs to localStorage
   const shapeData = { shoulder, chest, waist, hip, height };
@@ -148,35 +182,60 @@ document.getElementById('shape-form').addEventListener('submit', function(e) {
 
   let shape;
   if (shoulderToHipRatio >= 1.05 && waistToHipRatio > 0.85) {
-    shape = 'apple'; // Upper body wider, fuller waist
+    shape = 'apple';
   } else if (shoulderToHipRatio < 0.95 && waistToHipRatio > 0.8) {
-    shape = 'pear'; // Lower body wider
+    shape = 'pear';
   } else if (shoulderToHipRatio >= 0.95 && shoulderToHipRatio <= 1.05 && waistToHipRatio <= 0.75) {
-    shape = 'hourglass'; // Balanced shoulders/hips, defined waist
+    shape = 'hourglass';
   } else {
-    shape = 'rectangle'; // Similar measurements, less defined waist
+    shape = 'rectangle';
   }
 
   // Display results
-  const selectedShape = bodyShapes[shape];
-  document.getElementById('shape-title').innerText = selectedShape.title;
-  document.getElementById('shape-description').innerText = selectedShape.description;
+  displayResult(bodyShapes[shape]);
+  
+  // Save current result
+  localStorage.setItem('currentShapeResult', JSON.stringify(bodyShapes[shape]));
+});
 
+function displayResult(shapeData) {
+  document.getElementById('shape-title').innerText = shapeData.title;
+  document.getElementById('shape-description').innerText = shapeData.description;
+  
+  // Set image
+  const resultImage = document.getElementById('result-image');
+  if (resultImage) {
+    resultImage.src = shapeData.image;
+    resultImage.alt = shapeData.title;
+  }
+
+  // Set recommendations
   const recommendationsList = document.getElementById('shape-recommendations');
   recommendationsList.innerHTML = '';
-  selectedShape.recommendations.forEach(item => {
+  shapeData.recommendations.forEach(item => {
     const li = document.createElement('li');
-    li.innerText = item;
+    li.innerHTML = `<i class="fas fa-check-circle"></i> ${item}`;
     recommendationsList.appendChild(li);
   });
 
+  // Set avoid items
   const avoidList = document.getElementById('shape-avoid');
   avoidList.innerHTML = '';
-  selectedShape.avoid.forEach(item => {
+  shapeData.avoid.forEach(item => {
     const li = document.createElement('li');
-    li.innerText = item;
+    li.innerHTML = `<i class="fas fa-times-circle"></i> ${item}`;
     avoidList.appendChild(li);
   });
 
-  document.getElementById('result').style.display = 'block';
-});
+  // Show result section with animation
+  const resultSection = document.getElementById('result');
+  resultSection.style.display = 'block';
+  resultSection.style.animation = 'fadeIn 0.5s ease';
+  
+  // Scroll to result
+  resultSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+function showShapeInfo(shape) {
+  displayResult(bodyShapes[shape]);
+}
