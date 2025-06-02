@@ -171,36 +171,56 @@ def calculate_skin_score(predictions):
     return round(score, 1), issue_counts, issue_confidences
 
 def suggest_improvements(issue_counts, issue_confidences):
-    improvements = {"acne": [], "pores": [], "pigment": []}
+    improvements = {"mụn": [], "lỗ chân lông to": [], "thâm/nám": []}
     if issue_counts["acne"] > 0:
         avg_conf = sum(issue_confidences["acne"]) / len(issue_confidences["acne"]) if issue_confidences["acne"] else 0
-        improvements["acne"] = [
-            "Rửa mặt 2 lần/ngày với sữa rửa mặt dịu nhẹ.",
-            "Dùng kem trị mụn không kê đơn (benzoyl peroxide)."
+        improvements["mụn"] = [
+            "Giữ da mặt sạch, rửa mặt 2 lần/ngày với sữa rửa mặt dịu nhẹ.",
+            "Tránh sờ tay lên mặt và không tự ý nặn mụn.",
+            "Sử dụng kem trị mụn không kê đơn (chứa benzoyl peroxide hoặc salicylic acid)."
         ] if avg_conf <= 0.5 else [
-            "Thăm bác sĩ da liễu để được tư vấn chuyên sâu.",
-            "Sử dụng kem trị mụn chứa BHA hoặc retinoid."
+            "Thăm khám bác sĩ da liễu để được tư vấn chuyên sâu.",
+            "Sử dụng sản phẩm trị mụn chứa BHA hoặc retinoid theo hướng dẫn của chuyên gia.",
+            "Hạn chế ăn đồ cay nóng, dầu mỡ và uống đủ nước."
         ]
     if issue_counts["pores"] > 0:
-        improvements["pores"] = [
-            "Tẩy tế bào chết 1-2 lần/tuần với sản phẩm dịu nhẹ.",
-            "Dùng toner se khít lỗ chân lông."
+        improvements["lỗ chân lông to"] = [
+            "Tẩy tế bào chết 1-2 lần/tuần với sản phẩm dịu nhẹ phù hợp da.",
+            "Sử dụng toner/nước hoa hồng giúp se khít lỗ chân lông.",
+            "Luôn tẩy trang sạch sẽ và giữ da thông thoáng.",
+            "Hạn chế trang điểm dày và tránh thức khuya."
         ]
     if issue_counts["pigment"] > 0:
-        improvements["pigment"] = [
-            "Dùng kem chống nắng SPF 30+ mỗi ngày.",
-            "Sử dụng serum vitamin C để làm sáng da."
+        improvements["thâm/nám"] = [
+            "Dùng kem chống nắng SPF 30+ mỗi ngày, thoa lại sau mỗi 2-3 tiếng.",
+            "Sử dụng serum vitamin C hoặc sản phẩm làm sáng da có nguồn gốc rõ ràng.",
+            "Tránh nắng kỹ, đội mũ/nón và đeo khẩu trang khi ra ngoài."
         ]
     return improvements
 
 def suggest_products(issue_counts):
-    products = {"acne": [], "pores": [], "pigment": []}
+    products = {"mụn": [], "lỗ chân lông to": [], "thâm/nám": []}
     if issue_counts["acne"] > 0:
-        products["acne"] = ["Cetaphil Gentle Cleanser", "Differin Gel"]
+        products["mụn"] = [
+            "Sữa rửa mặt Cetaphil Gentle Cleanser (dịu nhẹ cho da mụn)",
+            "Gel trị mụn Differin (adapalene 0.1%)",
+            "Kem trị mụn La Roche-Posay Effaclar Duo+",
+            "Miếng dán mụn Some By Mi Clear Spot Patch"
+        ]
     if issue_counts["pores"] > 0:
-        products["pores"] = ["Paula’s Choice 2% BHA", "Innisfree Clay Mask"]
+        products["lỗ chân lông to"] = [
+            "Toner Paula’s Choice Skin Perfecting 2% BHA (giúp làm sạch sâu lỗ chân lông)",
+            "Mặt nạ đất sét Innisfree Super Volcanic Pore Clay Mask",
+            "Toner The Ordinary Glycolic Acid 7% (dùng 1-2 lần/tuần)",
+            "Serum The Ordinary Niacinamide 10% + Zinc 1% (hỗ trợ thu nhỏ lỗ chân lông)"
+        ]
     if issue_counts["pigment"] > 0:
-        products["pigment"] = ["The Ordinary Vitamin C", "La Roche-Posay SPF 50"]
+        products["thâm/nám"] = [
+            "Serum The Ordinary Vitamin C 23% + HA Spheres 2%",
+            "Kem chống nắng La Roche-Posay Anthelios SPF 50+",
+            "Serum Melano CC (vitamin C Nhật Bản)",
+            "Kem dưỡng sáng da Kiehl’s Clearly Corrective Dark Spot Solution"
+        ]
     return products
 
 def sanitize_filename(filename):
@@ -264,7 +284,11 @@ def predict():
         response = {
             "score": skin_score,
             "analysis": {
-                "left": [{"label": results["left"].names[int(box.cls)], "confidence": float(box.conf)} for box in results["left"].boxes] or [{"label": "Không phát hiện", "confidence": 0.0}],
+                "left": [
+                    {"label": box_label, "confidence": float(box.conf)}
+                    for box in results["left"].boxes
+                    if (box_label := results["left"].names[int(box.cls)]) not in ["pigment", "pores"]
+                ] or [{"label": "Không phát hiện", "confidence": 0.0}],
                 "right": [{"label": results["right"].names[int(box.cls)], "confidence": float(box.conf)} for box in results["right"].boxes] or [{"label": "Không phát hiện", "confidence": 0.0}],
                 "front": [{"label": results["front"].names[int(box.cls)], "confidence": float(box.conf)} for box in results["front"].boxes] or [{"label": "Không phát hiện", "confidence": 0.0}]
             },
