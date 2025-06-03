@@ -130,6 +130,7 @@ document.addEventListener('DOMContentLoaded', function () {
         swatch.setAttribute('data-color', color.name || color.hex || color);
         paletteDiv.appendChild(swatch);
       });
+      addColorTooltips(); // Thêm tooltip cho màu sắc
     }
 
     if (styleList) {
@@ -167,4 +168,15 @@ document.addEventListener('DOMContentLoaded', function () {
       });
     }
   });
+
+  // Thêm tooltip cho các màu sắc
+  function addColorTooltips() {
+    document.querySelectorAll('.color-swatch').forEach(swatch => {
+      const colorName = swatch.getAttribute('data-color');
+      const tooltip = document.createElement('span');
+      tooltip.className = 'tooltip';
+      tooltip.textContent = colorName;
+      swatch.appendChild(tooltip);
+    });
+  }
 });
