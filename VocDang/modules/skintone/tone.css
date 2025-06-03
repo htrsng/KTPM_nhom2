@@ -1,32 +1,31 @@
-/* Hệ thống màu hiện đại, tối ưu contrast */
+
 :root {
-  --primary-color: #4a6cf7;         /* Xanh dương điện tử tươi sáng */
-  --primary-light: #eef2ff;         /* Xanh nhạt cho nền */
-  --secondary-color: #f8fafc;       /* Nền trắng xám nhẹ */
-  --accent-color: #ff9a3c;          /* Cam sáng nhấn mạnh */
-  --accent-light: #fff4eb;          /* Cam nhạt cho nền */
-  --danger-color: #ff4757;          /* Đỏ cảnh báo */
-  --success-color: #4cd964;         /* Xanh lá */
-  --dark-color: #1e293b;            /* Xanh đen cho dark mode */
-  --light-color: #ffffff;           /* Nền sáng */
-  --text-color: #1e293b;            /* Chữ chính */
-  --text-light: #ffffff;            /* Chữ trên nền tối */
+  --primary-color: #4a6cf7;        
+  --primary-light: #eef2ff;        
+  --secondary-color: #f8fafc;       
+  --accent-color: #ff9a3c;         
+  --accent-light: #fff4eb;         
+  --danger-color: #ff4757;        
+  --success-color: #4cd964;      
+  --dark-color: #1e293b;            
+  --light-color: #ffffff;         
+  --text-light: #ffffff;          
   --shadow: 0 4px 24px rgba(74, 108, 247, 0.08);
   --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .dark-mode {
-  --primary-color: #5b7cff;         /* Xanh sáng hơn trong dark */
-  --primary-light: #1a2035;         /* Xanh đen nhạt */
-  --secondary-color: #1e293b;       /* Xanh đen đậm */
-  --accent-color: #ffa94d;          /* Cam sáng hơn */
-  --accent-light: #2a2118;          /* Cam đậm cho nền */
+  --primary-color: #5b7cff;         
+  --primary-light: #1a2035;         
+  --secondary-color: #1e293b;       
+  --accent-color: #ffa94d;         
+  --accent-light: #2a2118;          
   --danger-color: #ff6b81;
   --success-color: #5de874;
   --dark-color: #f8fafc;
-  --light-color: #0f172a;           /* Nền tối */
-  --text-color: #f1f5f9;            /* Chữ sáng */
-  --text-light: #0f172a;            /* Chữ trên nền sáng */
+  --light-color: #0f172a;          
+  --text-color: #f1f5f9;            
+  --text-light: #0f172a;           
   --shadow: 0 4px 24px rgba(74, 108, 247, 0.18);
 }
 

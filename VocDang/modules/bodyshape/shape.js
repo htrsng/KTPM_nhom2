@@ -80,7 +80,7 @@ const bodyShapes = {
       "Thắt lưng rộng hoặc nổi bật ở eo",
       "Quần hoặc váy có túi lớn ở hông"
     ],
-    image: "images/apple-shape-detail.png"
+    image: "img_body/dangquatao.jpg"
   },
   pear: {
     title: "Dáng Quả Lê",
@@ -99,7 +99,7 @@ const bodyShapes = {
       "Quần có túi lớn hoặc chi tiết ở mông",
       "Áo cropped quá ngắn làm lộ phần hông rộng"
     ],
-    image: "images/pear-shape-detail.png"
+    image: "img_body/dangquale.jpg"
   },
   hourglass: {
     title: "Dáng Đồng Hồ Cát",
@@ -118,7 +118,7 @@ const bodyShapes = {
       "Áo không có đường eo rõ ràng",
       "Trang phục nhiều lớp làm che khuất đường cong"
     ],
-    image: "images/hourglass-shape-detail.png"
+    image: "img_body/dangdonghocat.jpg"
   },
   rectangle: {
     title: "Dáng Chữ Nhật",
@@ -137,7 +137,23 @@ const bodyShapes = {
       "Trang phục đơn điệu một màu",
       "Áo tank top hoặc áo ba lỗ làm lộ vai thẳng"
     ],
-    image: "images/rectangle-shape-detail.png"
+    image: "img_body/chunhat.png"
+  },
+  invertedTriangle: {
+    title: "Dáng Tam Giác Ngược",
+    description: "Vai rộng hơn hông, thân trên nổi bật, hông nhỏ và chân thon. Cần phối đồ để cân bằng phần dưới.",
+    recommendations: [
+      "Chọn quần/váy sáng màu, xếp ly, ống rộng để tạo cân đối",
+      "Váy chữ A, váy xòe, quần baggy hoặc ống loe",
+      "Áo cổ chữ V, cổ sâu, màu tối, đơn giản",
+      "Tránh áo cầu vai, tay phồng, áo cổ rộng"
+    ],
+    avoid: [
+      "Áo có chi tiết nổi bật ở vai/ngực",
+      "Áo cổ thuyền, áo sát nách",
+      "Quần bó sát, váy bó sát phần dưới"
+    ],
+    image: "img_body/dangtamgiacnguoc.jpg"
   }
 };
 
@@ -187,6 +203,8 @@ document.getElementById('shape-form').addEventListener('submit', function(e) {
     shape = 'pear';
   } else if (shoulderToHipRatio >= 0.95 && shoulderToHipRatio <= 1.05 && waistToHipRatio <= 0.75) {
     shape = 'hourglass';
+  } else if (shoulderToHipRatio > 1.05 && waistToHipRatio <= 0.75) {
+    shape = 'invertedTriangle';
   } else {
     shape = 'rectangle';
   }
