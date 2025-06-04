@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
-  // Load saved data from localStorage (nếu có)
+  // Load saved data from localStorage 
   const savedData = JSON.parse(localStorage.getItem('toneData'));
   if (savedData) {
     [

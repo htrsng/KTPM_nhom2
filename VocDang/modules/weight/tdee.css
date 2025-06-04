@@ -1,4 +1,4 @@
-/* Hệ thống màu sắc hiện đại, đồng bộ */
+
 :root {
   --primary-color: #4a6cf7;
   --primary-light: #eef2ff;
@@ -30,7 +30,20 @@
   --shadow: 0 4px 24px rgba(74, 108, 247, 0.18);
 }
 
-/* General Styling */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  transition: var(--transition);
+}
+
+body {
+  background-color: var(--light-color);
+  color: var(--text-color);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
 .tdee-calculator {
   max-width: 900px;
   margin: 2rem auto;
