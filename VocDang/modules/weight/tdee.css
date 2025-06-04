@@ -60,6 +60,49 @@ body {
   color: var(--text-color);
   box-shadow: var(--shadow);
 }
+nav.navbar {
+  background-color: var(--light-color);
+  padding: 0.8rem 0;
+  box-shadow: var(--shadow);
+}
+
+.navbar .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 2rem;
+  justify-content: flex-end;
+}
+
+.nav-links a {
+  color: var(--text-color);
+  background: var(--primary-light);
+  font-weight: 500;
+  padding: 0.6rem 1.4rem;
+  border-radius: 8px;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: var(--transition);
+}
+
+.nav-links a:hover {
+  background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+  color: var(--text-light);
+  transform: translateY(-3px);
+  box-shadow: 0 4px 12px rgba(74, 108, 247, 0.2);
+}
+
+.nav-links i {
+  font-size: 1.1rem;
+}
+
 
 .calculator-header {
   text-align: center;

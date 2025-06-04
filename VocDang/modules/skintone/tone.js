@@ -1,5 +1,18 @@
 document.addEventListener('DOMContentLoaded', function () {
   // Load saved data from localStorage 
+  function applyTheme() {
+    const darkMode = localStorage.getItem('darkMode');
+    const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)");
+    
+    if (darkMode === 'enabled' || (!darkMode && prefersDarkScheme.matches)) {
+      document.body.classList.add('dark-mode');
+    } else {
+      document.body.classList.remove('dark-mode');
+    }
+  }
+
+  // Áp dụng chủ đề khi tải trang
+  applyTheme();
   const savedData = JSON.parse(localStorage.getItem('toneData'));
   if (savedData) {
     [
