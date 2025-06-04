@@ -20,6 +20,7 @@
         <li><a href="../weight/tdee.html"><i class="fas fa-weight"></i> Mục Tiêu Cân Nặng</a></li>
         <li><a href="../bodyshape/shape.html"><i class="fas fa-tshirt"></i> Vóc Dáng</a></li>
         <li><a href="../skintone/tone.html"><i class="fas fa-magic"></i> Tông Da & Màu Sắc</a></li>
+      
       </ul>
     </div>
   </nav>
@@ -28,34 +29,43 @@
     <section class="shape-analyzer">
       <div class="shape-header">
         <h1><i class="fas fa-user-tie"></i> Phân Tích Vóc Dáng Của Bạn</h1>
-        <p class="subtitle">Nhập số đo cơ thể của bạn (cm) để xác định vóc dáng và nhận gợi ý phong cách phù hợp</p>
+        <p class="subtitle">Nhập số đo cơ thể của bạn (cm) và chọn giới tính để xác định vóc dáng và nhận gợi ý phong cách phù hợp</p>
       </div>
       
       <div class="shape-container">
         <form id="shape-form" class="shape-form">
           <div class="form-group">
+            <label for="gender"><i class="fas fa-venus-mars"></i> Giới tính:</label>
+            <select id="gender" name="gender" required>
+              <option value="" disabled selected>Chọn giới tính</option>
+              <option value="female">Nữ</option>
+              <option value="male">Nam</option>
+            </select>
+          </div>
+          
+          <div class="form-group">
             <label for="shoulder"><i class="fas fa-arrows-alt-h"></i> Số đo vai (cm):</label>
-            <input type="number" id="shoulder" required min="20" max="100" placeholder="Ví dụ: 40">
+            <input type="number" id="shoulder" name="shoulder" required min="20" max="100" placeholder="Ví dụ: 40">
           </div>
           
           <div class="form-group">
             <label for="chest"><i class="fas fa-tshirt"></i> Số đo ngực (cm):</label>
-            <input type="number" id="chest" required min="50" max="150" placeholder="Ví dụ: 90">
+            <input type="number" id="chest" name="chest" required min="50" max="150" placeholder="Ví dụ: 90">
           </div>
           
           <div class="form-group">
             <label for="waist"><i class="fas fa-waist"></i> Số đo eo (cm):</label>
-            <input type="number" id="waist" required min="40" max="120" placeholder="Ví dụ: 70">
+            <input type="number" id="waist" name="waist" required min="40" max="120" placeholder="Ví dụ: 70">
           </div>
           
           <div class="form-group">
             <label for="hip"><i class="fas fa-venus"></i> Số đo hông (cm):</label>
-            <input type="number" id="hip" required min="50" max="150" placeholder="Ví dụ: 95">
+            <input type="number" id="hip" name="hip" required min="50" max="150" placeholder="Ví dụ: 95">
           </div>
           
           <div class="form-group">
             <label for="height"><i class="fas fa-ruler-vertical"></i> Chiều cao (cm):</label>
-            <input type="number" id="height" required min="100" max="250" placeholder="Ví dụ: 165">
+            <input type="number" id="height" name="height" required min="100" max="250" placeholder="Ví dụ: 165">
           </div>
 
           <button type="submit" class="btn-submit">
@@ -65,25 +75,35 @@
 
         <div class="shape-visual">
           <div class="body-shapes">
-            <div class="shape-icon" data-shape="apple">
-              <img src="/VocDang/modules/bodyshape/img_body/qt.png" alt="Dáng quả táo">
-              <span>Dáng quả táo</span>
+            <div class="item">
+              <div class="shape-icon" data-shape="apple">
+                <img src="img_body/qt.png" alt="Dáng quả táo">
+                <span>Dáng quả táo</span>
+              </div>
             </div>
-            <div class="shape-icon" data-shape="pear">
-              <img src="/VocDang/modules/bodyshape/img_body/ql.png" alt="Dáng quả lê">
-              <span>Dáng quả lê</span>
+            <div class="item">
+              <div class="shape-icon" data-shape="pear">
+                <img src="img_body/ql.png" alt="Dáng quả lê">
+                <span>Dáng quả lê</span>
+              </div>
             </div>
-            <div class="shape-icon" data-shape="hourglass">
-              <img src="/VocDang/modules/bodyshape/img_body/dhc.png" alt="Dáng đồng hồ cát">
-              <span>Dáng đồng hồ cát</span>
+            <div class="item">
+              <div class="shape-icon" data-shape="hourglass">
+                <img src="img_body/dhc.png" alt="Dáng đồng hồ cát">
+                <span>Dáng đồng hồ cát</span>
+              </div>
             </div>
-            <div class="shape-icon" data-shape="rectangle">
-              <img src="/VocDang/modules/bodyshape/img_body/hcn.png" alt="Dáng chữ nhật">
-              <span>Dáng chữ nhật</span>
+            <div class="item">
+              <div class="shape-icon" data-shape="rectangle">
+                <img src="img_body/hcn.png" alt="Dáng chữ nhật">
+                <span>Dáng chữ nhật</span>
+              </div>
             </div>
-            <div class="shape-icon" data-shape="inverted-triangle">
-              <img src="/VocDang/modules/bodyshape/img_body/tgn.png" alt="Dáng tam giác ngược">
-              <span>Dáng tam giác ngược</span>
+            <div class="item">
+              <div class="shape-icon" data-shape="inverted-triangle">
+                <img src="img_body/tgn.png" alt="Dáng tam giác ngược">
+                <span>Dáng tam giác ngược</span>
+              </div>
             </div>
           </div>
           <p class="visual-guide">Hình minh họa các dáng cơ thể phổ biến</p>
