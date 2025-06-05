@@ -14,24 +14,28 @@ document.addEventListener('DOMContentLoaded', function () {
     displayResult(JSON.parse(savedResult));
   }
 
-  // Dark mode setup
+  // Khi load trang, áp dụng theme nếu có
   const darkModeToggle = document.getElementById('dark-mode-toggle');
+  if (
+    localStorage.getItem('theme') === 'dark' ||
+    (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)
+  ) {
+    document.documentElement.classList.add('dark');
+    if (darkModeToggle) darkModeToggle.textContent = '☀️ Chế độ sáng';
+  } else {
+    document.documentElement.classList.remove('dark');
+    if (darkModeToggle) darkModeToggle.textContent = '🌙 Chế độ tối';
+  }
+
+  // Dark mode setup
   if (darkModeToggle) {
-    if (localStorage.getItem('darkMode') === 'enabled') {
-      enableDarkMode();
-      darkModeToggle.textContent = '☀️ Chế độ sáng';
-    }
-
     darkModeToggle.addEventListener('click', () => {
-      document.body.classList.toggle('dark-mode');
-      document.querySelector('.shape-analyzer')?.classList.toggle('dark-mode');
-      document.querySelector('.navbar')?.classList.toggle('dark-mode');
-
-      if (document.body.classList.contains('dark-mode')) {
-        localStorage.setItem('darkMode', 'enabled');
+      document.documentElement.classList.toggle('dark');
+      if (document.documentElement.classList.contains('dark')) {
+        localStorage.setItem('theme', 'dark');
         darkModeToggle.textContent = '☀️ Chế độ sáng';
       } else {
-        localStorage.setItem('darkMode', 'disabled');
+        localStorage.setItem('theme', 'light');
         darkModeToggle.textContent = '🌙 Chế độ tối';
       }
     });
@@ -434,7 +438,7 @@ document.getElementById('shape-form')?.addEventListener('submit', function (e) {
     shape = 'rectangle';
   }
 
-  const resultData = { ...window.bodyShapes[shape], gender };
+  const resultData = { ...window.bodyShapes[shape], gender, shape }; // Thêm shape vào đây
   displayResult(resultData);
   localStorage.setItem('currentShapeResult', JSON.stringify(resultData));
 });
@@ -455,11 +459,11 @@ function displayResult(shapeData) {
   shapeDescription.textContent = description || 'Không có mô tả';
 
   const imageMap = {
-    apple: '/VocDang/modules/bodyshape/img_body/qt.png',
-    pear: '/VocDang/modules/bodyshape/img_body/ql.png',
-    hourglass: '/VocDang/modules/bodyshape/img_body/dhc.png',
-    rectangle: '/VocDang/modules/bodyshape/img_body/hcn.png',
-    'inverted-triangle': '/VocDang/modules/bodyshape/img_body/tgn.png',
+    apple: 'img_body/qt.png',
+    pear: 'img_body/ql.png',
+    hourglass: 'img_body/dhc.png',
+    rectangle: 'img_body/hcn.png',
+    'inverted-triangle': 'img_body/tgn.png',
   };
 
   const resultImage = document.getElementById('result-image');
@@ -509,9 +513,3 @@ function showShapeInfo(shape, gender) {
   }
 }
 
-// Hàm kích hoạt chế độ tối
-function enableDarkMode() {
-  document.body.classList.add('dark-mode');
-  document.querySelector('.shape-analyzer')?.classList.add('dark-mode');
-  document.querySelector('.navbar')?.classList.add('dark-mode');
-}
