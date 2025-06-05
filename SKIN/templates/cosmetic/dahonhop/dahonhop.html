@@ -4,14 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Trang Chủ - Mỹ Phẩm Da Thường</title>
-    <link rel="stylesheet" href="css/dahonhop.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='cosmetic/css/styles.css') }}">
 </head>
 <body class="bg-gray-100">
     <!-- Header -->
     <header class="bg-white shadow">
         <nav class="container mx-auto px-6 py-4 flex items-center justify-between">
             <div class="w-full flex justify-between items-center font-semibold text-gray-800 nav-links bg-blue-50 rounded-xl px-6 py-3 shadow-md mt-6 mb-6">
-                <a href="index.html" class="nav-item active">Trang Chủ</a>
+                <a href="dathuong.html" class="nav-item active">Trang Chủ</a>
                 <a href="taytrang.html" class="nav-item">Tẩy Trang</a>
                 <a href="suaruamat.html" class="nav-item">Sữa Rửa Mặt</a>
                 <a href="serum.html" class="nav-item">Serum</a>
@@ -25,7 +25,7 @@
         <h2 class="text-3xl font-bold text-blue-700 mb-8 text-center">Mỹ Phẩm Dành Cho Da Thường</h2>
         <div class="grid gap-12 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 mt-8">
             <div class="product-card">
-                <img src="img/taytrang/ttnbdathuong.webp" alt="Tẩy Trang 1" class="product-img">
+                <img src="{{ url_for('static', filename='img_dathuong/taytrang/ttnbdathuong.webp') }}" alt="Tẩy Trang 1" class="product-img">
                 <h3>Bioderma Sensibio H2O Micellar Water (Nắp Hồng)</h3>
                 <div><strong>Thành phần chính</strong>: Công nghệ Micellar, Glycerin (dưỡng ẩm), chiết xuất dưa leo (làm dịu).</div>
                 <div><strong>Công dụng</strong>: Làm sạch nhẹ nhàng lớp trang điểm, bụi bẩn và dầu thừa, giữ da mềm mại, không khô căng.</div>
@@ -35,7 +35,7 @@
                 <div class="text-pink-600 font-bold mt-2">Giá tham khảo: ~350.000 - 450.000 VND/500ml</div>
             </div>
             <div class="product-card">
-                <img src="img/suaruamat/srmnbdathuong.webp" alt="Sữa Rửa Mặt 1" class="product-img">
+                <img src="{{ url_for('static', filename='img_dathuong/suaruamat/srmnbdathuong.webp') }}" alt="Sữa Rửa Mặt 1" class="product-img">
                 <h3>CeraVe Foaming Facial Cleanser (Xanh Lá)</h3>
                 <div><strong>Thành phần chính</strong>: Ceramides (phục hồi hàng rào bảo vệ da), Niacinamide (làm dịu, làm sáng), Hyaluronic Acid (dưỡng ẩm).</div>
                 <div><strong>Công dụng</strong>: Làm sạch sâu bụi bẩn và dầu thừa, dưỡng ẩm, giữ da mềm mại và khỏe mạnh.</div>
@@ -45,7 +45,7 @@
                 <div class="text-pink-600 font-bold mt-2">Giá tham khảo: ~300.000 - 400.000 VND/355ml</div>
             </div>
             <div class="product-card">
-                <img src="img/serum/srnbdathuong.webp" alt="Serum 1" class="product-img">
+                <img src="{{ url_for('static', filename='img_dathuong/serum/srnbdathuong.webp') }}" alt="Serum 1" class="product-img">
                 <h3>Vichy Mineral 89 Serum</h3>
                 <div><strong>Thành phần chính</strong>: Nước khoáng Vichy 89% (làm dịu), Hyaluronic Acid (cấp ẩm), Niacinamide (làm sáng).</div>
                 <div><strong>Công dụng</strong>: Cấp ẩm sâu, củng cố hàng rào bảo vệ da, làm sáng và cải thiện độ đều màu da.</div>
@@ -55,7 +55,7 @@
                 <div class="text-pink-600 font-bold mt-2">Giá tham khảo: ~700.000 - 900.000 VND/50ml</div>
             </div>
             <div class="product-card">
-                <img src="img/kemchongnang/kcnnbdathuong.webp" alt="Kem Chống Nắng 1" class="product-img">
+                <img src="{{ url_for('static', filename='img_dathuong/kemchongnang/kcndathuong-1.webp') }}" alt="Kem Chống Nắng 1" class="product-img">
                 <h3>L’Oreal Paris UV Defender Matte & Fresh SPF 50+ PA++++ (Vạch Đỏ)</h3>
                 <div><strong>Thành phần chính</strong>: Mexoryl SX/XL (bộ lọc UV), Niacinamide (làm sáng), bột kiềm dầu.</div>
                 <div><strong>Công dụng</strong>: Bảo vệ da khỏi tia UVA/UVB, kiểm soát dầu, làm sáng da, mang lại lớp finish mờ lì.</div>
@@ -73,6 +73,6 @@
         </div>
     </footer>
 
-    <script src="js/dahonhop.js"></script>
+    <script src="{{ url_for('static', filename='cosmetic/js/main.js') }}"></script>
 </body>
 </html>

@@ -4,14 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kem Chống Nắng - Mỹ Phẩm Da Thường</title>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='cosmetic/css/styles.css') }}">
 </head>
 <body class="bg-gray-100">
     <!-- Header -->
     <header class="bg-white shadow">
         <nav class="container mx-auto px-6 py-4 flex items-center justify-between">
             <div class="w-full flex justify-between items-center font-semibold text-gray-800 nav-links bg-blue-50 rounded-xl px-6 py-3 shadow-md mt-6 mb-6">
-                <a href="index.html" class="nav-item">Trang Chủ</a>
+                <a href="dathuong.html" class="nav-item">Trang Chủ</a>
                 <a href="taytrang.html" class="nav-item">Tẩy Trang</a>
                 <a href="suaruamat.html" class="nav-item">Sữa Rửa Mặt</a>
                 <a href="serum.html" class="nav-item">Serum</a>
@@ -25,7 +25,7 @@
         <h2 class="text-2xl font-bold text-gray-800 mb-6">Kem Chống Nắng Dành Cho Da Thường</h2>
         <div class="grid gap-12 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 mt-8">
             <div class="product-card">
-                <img src="img/kemchongnang/kcndathuong-1.webp" alt="Kem Chống Nắng 1" class="product-img">
+                <img src="{{ url_for('static', filename='img_dathuong/kemchongnang/kcndathuong-1.webp') }}" alt="Kem Chống Nắng 1" class="product-img">
                 <h3>Kem Chống Nắng Anessa</h3>
                 <div><strong>Thành phần chính</strong>: Zinc Oxide, Octinoxate (bộ lọc UV), Hyaluronic Acid (dưỡng ẩm), chiết xuất lô hội (làm dịu).</div>
                 <div><strong>Công dụng</strong>: Bảo vệ da khỏi tia UVA/UVB, dưỡng ẩm, chống nước, giữ da mềm mại và rạng rỡ.</div>
@@ -35,7 +35,7 @@
                 <div class="text-pink-600 font-bold mt-2">Giá tham khảo: ~500.000 - 650.000 VND/60ml</div>
             </div>
             <div class="product-card">
-                <img src="img/kemchongnang/kcndathuong-2.png" alt="Kem Chống Nắng 2" class="product-img">
+                <img src="{{ url_for('static', filename='img_dathuong/kemchongnang/kcndathuong-2.png') }}" alt="Kem Chống Nắng 2" class="product-img">
                 <h3>Kem Chống Nắng La Roche-Posay</h3>
                 <div><strong>Thành phần chính</strong>: Mexoryl SX/XL (bộ lọc UV), nước khoáng La Roche-Posay (làm dịu), Glycerin (dưỡng ẩm).</div>
                 <div><strong>Công dụng</strong>: Bảo vệ da khỏi tia UV, làm dịu da, cấp ẩm, mang lại làn da mềm mịn và khỏe mạnh.</div>
@@ -45,7 +45,7 @@
                 <div class="text-pink-600 font-bold mt-2">Giá tham khảo: ~450.000 - 550.000 VND/50ml</div>
             </div>
             <div class="product-card">
-                <img src="img/kemchongnang/kcndathuong-31.jpg" alt="Kem Chống Nắng 3" class="product-img">
+                <img src="{{ url_for('static', filename='img_dathuong/kemchongnang/kcndathuong-31.jpg') }}" alt="Kem Chống Nắng 3" class="product-img">
                 <h3>Kem Chống Nắng Giảm Nhờn Eucerin Sun Dry Touch Oil Control Face SPF50+ PA+++ (50ml)</h3>
                 <div><strong>Thành phần chính</strong>: Licochalcone A (chống oxy hóa), Glycyrrhetinic Acid (phục hồi da), bột kiềm dầu.</div>
                 <div><strong>Công dụng</strong>: Bảo vệ da khỏi tia UV, kiểm soát dầu thừa, ngăn ngừa bóng nhờn, giữ da khô thoáng.</div>
@@ -55,7 +55,7 @@
                 <div class="text-pink-600 font-bold mt-2">Giá tham khảo: ~400.000 - 500.000 VND/50ml</div>
             </div>
             <div class="product-card">
-                <img src="img/kemchongnang/kcndathuong-4.webp" alt="Kem Chống Nắng 4" class="product-img">
+                <img src="{{ url_for('static', filename='img_dathuong/kemchongnang/kcndathuong-4.webp') }}" alt="Kem Chống Nắng 4" class="product-img">
                 <h3>Kem Chống Nắng Skin1004</h3>
                 <div><strong>Thành phần chính</strong>: Zinc Oxide (chống nắng vật lý), chiết xuất rau má (làm dịu), Niacinamide (làm sáng).</div>
                 <div><strong>Công dụng</strong>: Bảo vệ da khỏi tia UV, làm dịu da, làm sáng nhẹ, giữ da căng mịn.</div>
@@ -65,7 +65,7 @@
                 <div class="text-pink-600 font-bold mt-2">Giá tham khảo: ~350.000 - 450.000 VND/50ml</div>
             </div>
             <div class="product-card">
-                <img src="img/kemchongnang/kcndathuong-51.jpg" alt="Kem Chống Nắng 5" class="product-img">
+                <img src="{{ url_for('static', filename='img_dathuong/kemchongnang/kcndathuong-51.jpg') }}" alt="Kem Chống Nắng 5" class="product-img">
                 <h3>Kem Chống Nắng L'Oreal Mịn Nhẹ, Bảo Vệ Da, Ngăn Ngừa Lão Hóa UV</h3>
                 <div><strong>Thành phần chính</strong>: Mexoryl SX/XL (bộ lọc UV), Niacinamide (làm sáng), Vitamin E (chống oxy hóa).</div>
                 <div><strong>Công dụng</strong>: Bảo vệ da khỏi tia UV, ngăn ngừa lão hóa sớm, làm sáng da, giữ da mịn màng.</div>
@@ -75,7 +75,7 @@
                 <div class="text-pink-600 font-bold mt-2">Giá tham khảo: ~250.000 - 350.000 VND/50ml</div>
             </div>
             <div class="product-card">
-                <img src="img/kemchongnang/kcndathuong-6.webp" alt="Kem Chống Nắng 6" class="product-img">
+                <img src="{{ url_for('static', filename='img_dathuong/kemchongnang/kcndathuong-6.webp') }}" alt="Kem Chống Nắng 6" class="product-img">
                 <h3>Kem Chống Nắng Beplain Xanh Lá</h3>
                 <div><strong>Thành phần chính</strong>: Zinc Oxide, Titanium Dioxide (chống nắng vật lý), chiết xuất trà xanh (chống oxy hóa), Hyaluronic Acid.</div>
                 <div><strong>Công dụng</strong>: Bảo vệ da khỏi tia UV, dưỡng ẩm, làm dịu da, mang lại cảm giác tươi mát.</div>
@@ -85,7 +85,7 @@
                 <div class="text-pink-600 font-bold mt-2">Giá tham khảo: ~300.000 - 400.000 VND/50ml</div>
             </div>
             <div class="product-card">
-                <img src="img/kemchongnang/kcndathuong-7.webp" alt="Kem Chống Nắng 7" class="product-img">
+                <img src="{{ url_for('static', filename='img_dathuong/kemchongnang/kcndathuong-7.webp') }}" alt="Kem Chống Nắng 7" class="product-img">
                 <h3>Kem Chống Nắng Beplain Xanh Dương</h3>
                 <div><strong>Thành phần chính</strong>: Tinosorb S, Uvinul A Plus (bộ lọc UV), Centella Asiatica (làm dịu), Glycerin.</div>
                 <div><strong>Công dụng</strong>: Bảo vệ da khỏi tia UV, làm dịu da, cấp ẩm, giữ da mềm mại và khỏe mạnh.</div>
@@ -95,7 +95,7 @@
                 <div class="text-pink-600 font-bold mt-2">Giá tham khảo: ~350.000 - 450.000 VND/50ml</div>
             </div>
             <div class="product-card">
-                <img src="img/kemchongnang/kcndathuong-81.jpg" alt="Kem Chống Nắng 8" class="product-img">
+                <img src="{{ url_for('static', filename='img_dathuong/kemchongnang/kcndathuong-81.jpg') }}" alt="Kem Chống Nắng 8" class="product-img">
                 <h3>Sữa Chống Nắng Dưỡng Trắng Sunplay Skin Aqua Clear White SPF50+ PA++++ 25g</h3>
                 <div><strong>Thành phần chính</strong>: Zinc Oxide, Octinoxate (bộ lọc UV), Hyaluronic Acid (dưỡng ẩm), Vitamin C (làm sáng).</div>
                 <div><strong>Công dụng</strong>: Bảo vệ da khỏi tia UV, làm sáng da, cấp ẩm, mang lại làn da rạng rỡ.</div>
@@ -105,7 +105,7 @@
                 <div class="text-pink-600 font-bold mt-2">Giá tham khảo: ~100.000 - 150.000 VND/25g</div>
             </div>
             <div class="product-card">
-                <img src="img/kemchongnang/kcndathuong-91.jpg" alt="Kem Chống Nắng 9" class="product-img">
+                <img src="{{ url_for('static', filename='img_dathuong/kemchongnang/kcndathuong-91.jpg') }}" alt="Kem Chống Nắng 9" class="product-img">
                 <h3>Kem Chống Nắng Prem Xanh Lá</h3>
                 <div><strong>Thành phần chính</strong>: Zinc Oxide, Titanium Dioxide (chống nắng vật lý), chiết xuất trà xanh (chống oxy hóa), Glycerin.</div>
                 <div><strong>Công dụng</strong>: Bảo vệ da khỏi tia UV, kiểm soát dầu nhẹ, làm dịu da, giữ da mềm mại.</div>
@@ -115,7 +115,7 @@
                 <div class="text-pink-600 font-bold mt-2">Giá tham khảo: ~200.000 - 300.000 VND/50g</div>
             </div>
             <div class="product-card">
-                <img src="img/kemchongnang/kcndathuong-10.png" alt="Kem Chống Nắng 10" class="product-img">
+                <img src="{{ url_for('static', filename='img_dathuong/kemchongnang/kcndathuong-10.png') }}" alt="Kem Chống Nắng 10" class="product-img">
                 <h3>Cocoon Pomelosun Sunscreen SPF 50+ PA++++</h3>
                 <div><strong>Thành phần chính</strong>: Tinosorb S, Uvinul A Plus (bộ lọc UV), chiết xuất bưởi (chống oxy hóa), Niacinamide.</div>
                 <div><strong>Công dụng</strong>: Bảo vệ da khỏi tia UV, làm sáng da, kiểm soát dầu, giữ da mịn màng và rạng rỡ.</div>
@@ -133,6 +133,6 @@
         </div>
     </footer>
 
-    <script src="js/main.js"></script>
+    <script src="{{ url_for('static', filename='cosmetic/js/main.js') }}"></script>
 </body>
 </html>
