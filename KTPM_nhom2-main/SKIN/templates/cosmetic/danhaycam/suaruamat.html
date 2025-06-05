@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sữa Rửa Mặt - Mỹ Phẩm Da Nhạy Cảm</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='cosmetic/css/styles.css') }}">
+</head>
+<body class="bg-gray-100">
+    <!-- Header -->
+    <header class="bg-white shadow">
+        <nav class="container mx-auto px-6 py-4 flex items-center justify-between">
+            <div class="w-full flex justify-between items-center font-semibold text-gray-800 nav-links bg-blue-50 rounded-xl px-6 py-3 shadow-md mt-6 mb-6">
+                <a href="danhaycam.html" class="nav-item">Trang Chủ</a>
+                <a href="taytrang.html" class="nav-item">Tẩy Trang</a>
+                <a href="suaruamat.html" class="nav-item active">Sữa Rửa Mặt</a>
+                <a href="serum.html" class="nav-item">Serum</a>
+                <a href="kemchongnang.html" class="nav-item">Kem Chống Nắng</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main -->
+    <main class="container mx-auto px-6 py-8">
+        <h2 class="text-2xl font-bold text-gray-800 mb-6">Sữa Rửa Mặt Dành Cho Da Nhạy Cảm</h2>
+        <div class="grid gap-12 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 mt-8">
+            <div class="product-card">
+                <img src="{{ url_for('static', filename='img_danhaycam/suaruamat/srmdanhaycam-1.webp') }}" alt="Sữa Rửa Mặt 1" class="product-img">
+                <h3>Sữa Rửa Mặt CeraVe Hydrating Facial Cleanser</h3>
+                <div><strong>Thành phần chính</strong>: Ceramide, Hyaluronic Acid, Glycerin (dưỡng ẩm, phục hồi hàng rào da).</div>
+                <div><strong>Công dụng</strong>: Làm sạch dịu nhẹ, cấp ẩm, phục hồi da, không gây khô căng.</div>
+                <div><strong>Kết cấu</strong>: Gel lỏng, không tạo bọt nhiều, phù hợp da nhạy cảm.</div>
+                <div><strong>Đặc điểm nổi bật</strong>: Không hương liệu, không cồn, không paraben, kiểm nghiệm da liễu.</div>
+                <div class="text-blue-500 font-semibold">Phù hợp: Da nhạy cảm, Da thường</div>
+                <div class="text-pink-600 font-bold mt-2">Giá tham khảo: ~350.000 - 450.000 VND/355ml</div>
+            </div>
+            <div class="product-card">
+                <img src="{{ url_for('static', filename='img_danhaycam/suaruamat/srmdanhaycam-2.webp') }}" alt="Sữa Rửa Mặt 2" class="product-img">
+                <h3>Sữa Rửa Mặt La Roche-Posay Toleriane Hydrating Gentle Cleanser</h3>
+                <div><strong>Thành phần chính</strong>: Glycerin, Panthenol, Ceramide-3 (dưỡng ẩm, phục hồi, làm dịu).</div>
+                <div><strong>Công dụng</strong>: Làm sạch dịu nhẹ, dưỡng ẩm, giảm kích ứng, phục hồi hàng rào da.</div>
+                <div><strong>Kết cấu</strong>: Gel trong suốt, tạo bọt nhẹ, dễ rửa sạch.</div>
+                <div><strong>Đặc điểm nổi bật</strong>: Không hương liệu, không cồn, kiểm nghiệm da liễu, phù hợp da nhạy cảm.</div>
+                <div class="text-blue-500 font-semibold">Phù hợp: Da nhạy cảm, Da thường</div>
+                <div class="text-pink-600 font-bold mt-2">Giá tham khảo: ~400.000 - 500.000 VND/200ml</div>
+            </div>
+            <div class="product-card">
+                <img src="{{ url_for('static', filename='img_danhaycam/suaruamat/srmdanhaycam-3.jpg') }}" alt="Sữa Rửa Mặt 3" class="product-img">
+                <h3>Sữa Rửa Mặt Avene Extremely Gentle Cleanser Lotion</h3>
+                <div><strong>Thành phần chính</strong>: Nước khoáng Avene, Glycerin (làm dịu, dưỡng ẩm).</div>
+                <div><strong>Công dụng</strong>: Làm sạch dịu nhẹ, giảm kích ứng, cấp ẩm, phục hồi da nhạy cảm.</div>
+                <div><strong>Kết cấu</strong>: Dạng lotion lỏng, không tạo bọt.</div>
+                <div><strong>Đặc điểm nổi bật</strong>: Không hương liệu, không cồn, phù hợp da nhạy cảm, da kích ứng.</div>
+                <div class="text-blue-500 font-semibold">Phù hợp: Da nhạy cảm</div>
+                <div class="text-pink-600 font-bold mt-2">Giá tham khảo: ~350.000 - 450.000 VND/200ml</div>
+            </div>
+            <div class="product-card">
+                <img src="{{ url_for('static', filename='img_danhaycam/suaruamat/srmdanhaycam-4.jpg') }}" alt="Sữa Rửa Mặt 4" class="product-img">
+                <h3>Sữa Rửa Mặt Simple Kind to Skin Refreshing Facial Wash</h3>
+                <div><strong>Thành phần chính</strong>: Pro-Vitamin B5, Vitamin E, Bisabolol (làm dịu, chống oxy hóa).</div>
+                <div><strong>Công dụng</strong>: Làm sạch dịu nhẹ, loại bỏ bụi bẩn, dầu thừa, giữ da mềm mại và không bị khô.</div>
+                <div><strong>Kết cấu</strong>: Gel trong, tạo bọt nhẹ, dễ rửa sạch.</div>
+                <div><strong>Đặc điểm nổi bật</strong>: Không hương liệu, không màu nhân tạo, phù hợp da nhạy cảm.</div>
+                <div class="text-blue-500 font-semibold">Phù hợp: Da nhạy cảm, Da thường</div>
+                <div class="text-pink-600 font-bold mt-2">Giá tham khảo: ~120.000 - 180.000 VND/150ml</div>
+            </div>
+            <div class="product-card">
+                <img src="{{ url_for('static', filename='img_danhaycam/suaruamat/srmdanhaycam-5.webp') }}" alt="Sữa Rửa Mặt 5" class="product-img">
+                <h3>Sữa Rửa Mặt Bioderma Sensibio Gel Moussant</h3>
+                <div><strong>Thành phần chính</strong>: Coco Glucoside, Glycerin, D.A.F Complex (làm sạch dịu nhẹ, dưỡng ẩm).</div>
+                <div><strong>Công dụng</strong>: Làm sạch sâu, giữ ẩm, giảm kích ứng, phục hồi da nhạy cảm.</div>
+                <div><strong>Kết cấu</strong>: Gel tạo bọt nhẹ, không gây khô da.</div>
+                <div><strong>Đặc điểm nổi bật</strong>: Không paraben, không hương liệu, phù hợp da nhạy cảm.</div>
+                <div class="text-blue-500 font-semibold">Phù hợp: Da nhạy cảm</div>
+                <div class="text-pink-600 font-bold mt-2">Giá tham khảo: ~350.000 - 450.000 VND/200ml</div>
+            </div>
+            <div class="product-card">
+                <img src="{{ url_for('static', filename='img_danhaycam/suaruamat/srmdanhaycam-6.jpg') }}" alt="Sữa Rửa Mặt 6" class="product-img">
+                <h3>Vanicream Gentle Facial Cleanser</h3>
+                <div><strong>Thành phần chính</strong>: Glycerin, Sodium Cocoyl Glycinate (làm sạch dịu nhẹ, dưỡng ẩm).</div>
+                <div><strong>Công dụng</strong>: Làm sạch nhẹ nhàng, không gây kích ứng, giữ ẩm cho da nhạy cảm.</div>
+                <div><strong>Kết cấu</strong>: Gel lỏng, không tạo bọt nhiều.</div>
+                <div><strong>Đặc điểm nổi bật</strong>: Không hương liệu, không paraben, không sulfate, phù hợp da nhạy cảm.</div>
+                <div class="text-blue-500 font-semibold">Phù hợp: Da nhạy cảm</div>
+                <div class="text-pink-600 font-bold mt-2">Giá tham khảo: ~250.000 - 350.000 VND/237ml</div>
+            </div>
+            <div class="product-card">
+                <img src="{{ url_for('static', filename='img_danhaycam/suaruamat/srmdanhaycam-7.webp') }}" alt="Sữa Rửa Mặt 7" class="product-img">
+                <h3>Eucerin Dermatoclean Cleansing Gel</h3>
+                <div><strong>Thành phần chính</strong>: APG Complex, Glycerin, Hyaluronic Acid (làm sạch dịu nhẹ, dưỡng ẩm).</div>
+                <div><strong>Công dụng</strong>: Làm sạch sâu, giữ ẩm, phục hồi da nhạy cảm.</div>
+                <div><strong>Kết cấu</strong>: Gel tạo bọt nhẹ, không gây khô da.</div>
+                <div><strong>Đặc điểm nổi bật</strong>: Không cồn, không hương liệu, phù hợp da nhạy cảm.</div>
+                <div class="text-blue-500 font-semibold">Phù hợp: Da nhạy cảm</div>
+                <div class="text-pink-600 font-bold mt-2">Giá tham khảo: ~300.000 - 400.000 VND/200ml</div>
+            </div>
+            <div class="product-card">
+                <img src="{{ url_for('static', filename='img_danhaycam/suaruamat/srmdanhaycam-8.jpg') }}" alt="Sữa Rửa Mặt 8" class="product-img">
+                <h3>Neutrogena Ultra Gentle Hydrating Cleanser</h3>
+                <div><strong>Thành phần chính</strong>: Glycerin, Coco-Glucoside (dưỡng ẩm, làm sạch dịu nhẹ).</div>
+                <div><strong>Công dụng</strong>: Làm sạch dịu nhẹ, loại bỏ bụi bẩn, dầu thừa, giữ da mềm mại.</div>
+                <div><strong>Kết cấu</strong>: Gel trong suốt, không tạo bọt nhiều.</div>
+                <div><strong>Đặc điểm nổi bật</strong>: Không hương liệu, không chất gây kích ứng, phù hợp da nhạy cảm.</div>
+                <div class="text-blue-500 font-semibold">Phù hợp: Da nhạy cảm</div>
+                <div class="text-pink-600 font-bold mt-2">Giá tham khảo: ~200.000 - 300.000 VND/177ml</div>
+            </div>
+            <div class="product-card">
+                <img src="{{ url_for('static', filename='img_danhaycam/suaruamat/srmdanhaycam-9.webp') }}" alt="Sữa Rửa Mặt 9" class="product-img">
+                <h3>Hada Labo Gokujyun Foaming Cleanser</h3>
+                <div><strong>Thành phần chính</strong>: Hyaluronic Acid, Glycerin (dưỡng ẩm, làm sạch dịu nhẹ).</div>
+                <div><strong>Công dụng</strong>: Làm sạch sâu, giữ ẩm, phục hồi da nhạy cảm.</div>
+                <div><strong>Kết cấu</strong>: Gel tạo bọt nhẹ, không gây khô da.</div>
+                <div><strong>Đặc điểm nổi bật</strong>: Không cồn, không hương liệu, phù hợp da nhạy cảm.</div>
+                <div class="text-blue-500 font-semibold">Phù hợp: Da nhạy cảm</div>
+                <div class="text-pink-600 font-bold mt-2">Giá tham khảo: ~200.000 - 300.000 VND/100g</div>
+            </div>
+            <div class="product-card">
+                <img src="{{ url_for('static', filename='img_danhaycam/suaruamat/srmdanhaycam-10.webp') }}" alt="Sữa Rửa Mặt 10" class="product-img">
+                <h3>La Roche-Posay Effaclar Purifying Foaming Gel</h3>
+                <div><strong>Thành phần chính</strong>: Zinc PCA, Nước khoáng La Roche-Posay, Glycerin (làm dịu, kiểm soát dầu).</div>
+                <div><strong>Công dụng</strong>: Làm sạch sâu, kiểm soát dầu, giảm kích ứng, giữ da mềm mại.</div>
+                <div><strong>Kết cấu</strong>: Gel tạo bọt nhẹ, không gây khô da.</div>
+                <div><strong>Đặc điểm nổi bật</strong>: Không cồn, không hương liệu, phù hợp da nhạy cảm, da dầu nhẹ.</div>
+                <div class="text-blue-500 font-semibold">Phù hợp: Da nhạy cảm, Da dầu</div>
+                <div class="text-pink-600 font-bold mt-2">Giá tham khảo: ~300.000 - 400.000 VND/140ml</div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-200 py-6">
+        <div class="container mx-auto px-6 text-center">
+        </div>
+    </footer>
+
+    <script src="{{ url_for('static', filename='cosmetic/js/main.js') }}"></script>
+</body>
+</html>

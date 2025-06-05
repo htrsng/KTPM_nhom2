@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tính TDEE - Tự Tin Ngoại Hình</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="../../style.css">
+  <link rel="stylesheet" href="tdee.css">
+</head>
+<body>
+  <nav class="navbar">
+    <div class="container">
+      <div class="logo">
+        <i class="fas fa-star"></i>
+        <span>Tự Tin Ngoại Hình</span>
+      </div>
+      <ul class="nav-links">
+        <li><a href="../../index.html"><i class="fas fa-home"></i> Trang Chủ</a></li>
+        <li><a href="../weight/tdee.html"><i class="fas fa-weight"></i> Mục Tiêu Cân Nặng</a></li>
+        <li><a href="../bodyshape/shape.html"><i class="fas fa-tshirt"></i> Vóc Dáng</a></li>
+        <li><a href="tone.html"><i class="fas fa-magic"></i> Tông Da & Màu Sắc</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main>
+    <section class="tdee-calculator">
+      <div class="calculator-header">
+        <h1><i class="fas fa-calculator"></i> Tính TDEE của bạn</h1>
+        <p class="subtitle">Công cụ tính tổng năng lượng tiêu hao hàng ngày giúp bạn đạt mục tiêu cân nặng</p>
+      </div>
+      
+      <form id="tdee-form" class="calculator-form">
+        <div class="form-grid">
+          <div class="form-group">
+            <label for="goal"><i class="fas fa-bullseye"></i> Mục tiêu của bạn:</label>
+            <select id="goal" required>
+              <option value="" disabled selected>Chọn mục tiêu</option>
+              <option value="maintain">Duy trì cân nặng</option>
+              <option value="lose">Giảm cân</option>
+              <option value="gain">Tăng cân</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="age"><i class="fas fa-birthday-cake"></i> Tuổi:</label>
+            <input type="number" id="age" required min="1" max="120" placeholder="Nhập tuổi">
+          </div>
+
+          <div class="form-group">
+            <label for="gender"><i class="fas fa-venus-mars"></i> Giới tính:</label>
+            <select id="gender" required>
+              <option value="" disabled selected>Chọn giới tính</option>
+              <option value="male">Nam</option>
+              <option value="female">Nữ</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="height"><i class="fas fa-ruler-vertical"></i> Chiều cao (cm):</label>
+            <input type="number" id="height" required min="50" max="250" placeholder="Nhập chiều cao">
+          </div>
+
+          <div class="form-group">
+            <label for="weight"><i class="fas fa-weight-hanging"></i> Cân nặng (kg):</label>
+            <input type="number" id="weight" required min="20" max="300" placeholder="Nhập cân nặng">
+          </div>
+
+          <div class="form-group">
+            <label for="activity"><i class="fas fa-running"></i> Mức vận động:</label>
+            <select id="activity" required>
+              <option value="" disabled selected>Chọn mức vận động</option>
+              <option value="1.2">Ít vận động (ngồi nhiều)</option>
+              <option value="1.375">Nhẹ (tập 1-3 ngày/tuần)</option>
+              <option value="1.55">Trung bình (tập 3-5 ngày/tuần)</option>
+              <option value="1.725">Nặng (tập 6-7 ngày/tuần)</option>
+              <option value="1.9">Rất nặng (vận động viên)</option>
+            </select>
+          </div>
+        </div>
+
+        <button type="submit" class="btn-primary">
+          <i class="fas fa-calculator"></i> Tính TDEE
+        </button>
+        <div id="error" class="error-message" style="display: none;"></div>
+      </form>
+
+      <div id="result" class="result-container" style="display: none;">
+        <div class="result-header">
+          <h2><i class="fas fa-chart-line"></i> Kết quả TDEE</h2>
+          <button id="save-result" class="btn-secondary">
+            <i class="fas fa-save"></i> Lưu kết quả
+          </button>
+        </div>
+        
+        <div class="result-content">
+          <div class="result-details">
+            <div class="result-card">
+              <i class="fas fa-fire"></i>
+              <p id="bmr-value"></p>
+            </div>
+            <div class="result-card">
+              <i class="fas fa-burn"></i>
+              <p id="tdee-value"></p>
+            </div>
+            <div class="result-card highlight">
+              <i class="fas fa-utensils"></i>
+              <p id="calorie-suggestion"></p>
+            </div>
+            <div class="explanation">
+              <p id="explanation"></p>
+            </div>
+          </div>
+
+          <div class="chart-container">
+            <canvas id="tdee-chart" width="400" height="300"></canvas>
+          </div>
+        </div>
+
+        <div class="suggestions-section">
+          <h3><i class="fas fa-lightbulb"></i> Gợi ý kế hoạch</h3>
+          <div id="suggestions" class="suggestions-grid"></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="tdee.js"></script>
+</body>
+</html>

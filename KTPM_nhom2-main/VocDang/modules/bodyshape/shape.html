@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Phân Tích Vóc Dáng - Tự Tin Ngoại Hình</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="stylesheet" href="../../style.css">
+  <link rel="stylesheet" href="shape.css">
+</head>
+<body>
+  <nav class="navbar">
+    <div class="container">
+      <div class="logo">
+        <i class="fas fa-star"></i>
+        <span>Tự Tin Ngoại Hình</span>
+      </div>
+      <ul class="nav-links">
+        <li><a href="../../index.html"><i class="fas fa-home"></i> Trang Chủ</a></li>
+        <li><a href="../weight/tdee.html"><i class="fas fa-weight"></i> Mục Tiêu Cân Nặng</a></li>
+        <li><a href="../bodyshape/shape.html"><i class="fas fa-tshirt"></i> Vóc Dáng</a></li>
+        <li><a href="../skintone/tone.html"><i class="fas fa-magic"></i> Tông Da & Màu Sắc</a></li>
+      
+      </ul>
+    </div>
+  </nav>
+
+  <main>
+    <section class="shape-analyzer">
+      <div class="shape-header">
+        <h1><i class="fas fa-user-tie"></i> Phân Tích Vóc Dáng Của Bạn</h1>
+        <p class="subtitle">Nhập số đo cơ thể của bạn (cm) và chọn giới tính để xác định vóc dáng và nhận gợi ý phong cách phù hợp</p>
+      </div>
+      
+      <div class="shape-container">
+        <form id="shape-form" class="shape-form">
+          <div class="form-group">
+            <label for="gender"><i class="fas fa-venus-mars"></i> Giới tính:</label>
+            <select id="gender" name="gender" required>
+              <option value="" disabled selected>Chọn giới tính</option>
+              <option value="female">Nữ</option>
+              <option value="male">Nam</option>
+            </select>
+          </div>
+          
+          <div class="form-group">
+            <label for="shoulder"><i class="fas fa-arrows-alt-h"></i> Số đo vai (cm):</label>
+            <input type="number" id="shoulder" name="shoulder" required min="20" max="100" placeholder="Ví dụ: 40">
+          </div>
+          
+          <div class="form-group">
+            <label for="chest"><i class="fas fa-tshirt"></i> Số đo ngực (cm):</label>
+            <input type="number" id="chest" name="chest" required min="50" max="150" placeholder="Ví dụ: 90">
+          </div>
+          
+          <div class="form-group">
+            <label for="waist"><i class="fas fa-waist"></i> Số đo eo (cm):</label>
+            <input type="number" id="waist" name="waist" required min="40" max="120" placeholder="Ví dụ: 70">
+          </div>
+          
+          <div class="form-group">
+            <label for="hip"><i class="fas fa-venus"></i> Số đo hông (cm):</label>
+            <input type="number" id="hip" name="hip" required min="50" max="150" placeholder="Ví dụ: 95">
+          </div>
+          
+          <div class="form-group">
+            <label for="height"><i class="fas fa-ruler-vertical"></i> Chiều cao (cm):</label>
+            <input type="number" id="height" name="height" required min="100" max="250" placeholder="Ví dụ: 165">
+          </div>
+
+          <button type="submit" class="btn-submit">
+            <i class="fas fa-magic"></i> Xác Định Vóc Dáng
+          </button>
+        </form>
+
+        <div class="shape-visual">
+          <div class="body-shapes">
+            <div class="item">
+              <div class="shape-icon" data-shape="apple">
+                <img src="img_body/qt.png" alt="Dáng quả táo">
+                <span>Dáng quả táo</span>
+              </div>
+            </div>
+            <div class="item">
+              <div class="shape-icon" data-shape="pear">
+                <img src="img_body/ql.png" alt="Dáng quả lê">
+                <span>Dáng quả lê</span>
+              </div>
+            </div>
+            <div class="item">
+              <div class="shape-icon" data-shape="hourglass">
+                <img src="img_body/dhc.png" alt="Dáng đồng hồ cát">
+                <span>Dáng đồng hồ cát</span>
+              </div>
+            </div>
+            <div class="item">
+              <div class="shape-icon" data-shape="rectangle">
+                <img src="img_body/hcn.png" alt="Dáng chữ nhật">
+                <span>Dáng chữ nhật</span>
+              </div>
+            </div>
+            <div class="item">
+              <div class="shape-icon" data-shape="inverted-triangle">
+                <img src="img_body/tgn.png" alt="Dáng tam giác ngược">
+                <span>Dáng tam giác ngược</span>
+              </div>
+            </div>
+          </div>
+          <p class="visual-guide">Hình minh họa các dáng cơ thể phổ biến</p>
+        </div>
+      </div>
+
+      <div id="error" class="error-message" style="display: none;"></div>
+
+      <div id="result" class="shape-result" style="display: none;">
+        <div class="result-header">
+          <h2><i class="fas fa-chart-pie"></i> Kết Quả Phân Tích Vóc Dáng</h2>
+          <button id="save-result" class="btn-save"><i class="fas fa-bookmark"></i> Lưu kết quả</button>
+        </div>
+        
+        <div class="result-content">
+          <div class="shape-image">
+            <img id="result-image" src="" alt="Vóc dáng của bạn">
+          </div>
+          
+          <div class="result-details">
+            <h3 id="shape-title" class="shape-name"></h3>
+            <p id="shape-description" class="shape-desc"></p>
+            
+            <div class="recommendation-box">
+              <h4><i class="fas fa-thumbs-up"></i> Nên mặc:</h4>
+              <ul id="shape-recommendations" class="recommendation-list"></ul>
+            </div>
+            
+            <div class="recommendation-box avoid">
+              <h4><i class="fas fa-thumbs-down"></i> Nên tránh:</h4>
+              <ul id="shape-avoid" class="recommendation-list"></ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="shape.js"></script>
+</body>
+</html>
