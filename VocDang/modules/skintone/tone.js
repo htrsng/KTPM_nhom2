@@ -143,7 +143,7 @@ document.addEventListener('DOMContentLoaded', function () {
         swatch.setAttribute('data-color', color.name || color.hex || color);
         paletteDiv.appendChild(swatch);
       });
-      addColorTooltips(); // Thêm tooltip cho màu sắc
+      addColorTooltips(); 
     }
 
     if (styleList) {

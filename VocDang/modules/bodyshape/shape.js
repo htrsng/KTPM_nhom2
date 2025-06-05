@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', function () {
     displayResult(JSON.parse(savedResult));
   }
 
-  // Khi load trang, áp dụng theme nếu có
+
   const darkModeToggle = document.getElementById('dark-mode-toggle');
   if (
     localStorage.getItem('theme') === 'dark' ||
@@ -41,7 +41,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
-  // Nhúng dữ liệu JSON trực tiếp
+
   window.bodyShapes = {
     apple: {
       title: "Dáng Quả Táo",
@@ -471,7 +471,7 @@ function displayResult(shapeData) {
     const imgKey = shapeData.shape || title?.toLowerCase().replace('dáng ', '').replace(/\s+/g, '-') || '';
     resultImage.src = imageMap[imgKey] || '';
     resultImage.alt = title || '';
-    console.log('Image Key:', imgKey, 'Image Src:', resultImage.src); // Debug
+    console.log('Image Key:', imgKey, 'Image Src:', resultImage.src); 
   } else {
     console.error('Không tìm thấy result-image trong DOM');
   }

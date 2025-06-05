@@ -438,12 +438,12 @@
 
                         // Nếu không phát hiện vấn đề thì KHÔNG render gì cả
                         if (result.analysis[side][0].label === "Không phát hiện") {
-                            // Không làm gì cả
+                           
                             return;
                         }
 
                         result.analysis[side].forEach(item => {
-                            // Ẩn các nhãn không mong muốn
+                            
                             if (
                                 item.label === "pigment" ||
                                 item.label === "pores" ||
@@ -492,7 +492,7 @@
                             const card = document.createElement("div");
                             card.className = "product-card bg-white p-5 rounded-lg border border-gray-100";
                             
-                            // Chọn màu và tiêu đề theo issue tiếng Việt
+                          
                             let iconColor = "text-yellow-500";
                             let titleColor = "text-yellow-700";
                             let bgColor = "bg-yellow-50";
