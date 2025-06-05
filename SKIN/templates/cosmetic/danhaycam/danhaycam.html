@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trang Chủ - Mỹ Phẩm Da Nhạy Cảm</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='cosmetic/css/styles.css') }}">
+</head>
+<body class="bg-gray-100">
+    <!-- Header -->
+    <header class="bg-white shadow">
+        <nav class="container mx-auto px-6 py-4 flex items-center justify-between">
+            <div class="w-full flex justify-between items-center font-semibold text-gray-800 nav-links bg-blue-50 rounded-xl px-6 py-3 shadow-md mt-6 mb-6">
+                <a href="danhaycam.html" class="nav-item active">Trang Chủ</a>
+                <a href="taytrang.html" class="nav-item">Tẩy Trang</a>
+                <a href="suaruamat.html" class="nav-item">Sữa Rửa Mặt</a>
+                <a href="serum.html" class="nav-item">Serum</a>
+                <a href="kemchongnang.html" class="nav-item">Kem Chống Nắng</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main -->
+    <main class="container mx-auto px-6 py-8">
+        <h2 class="text-3xl font-bold text-blue-700 mb-8 text-center">Mỹ Phẩm Dành Cho Da Nhạy Cảm</h2>
+        <div class="grid gap-12 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 mt-8">
+            <div class="product-card">
+                <img src="{{ url_for('static', filename='img_danhaycam/taytrang/ttnbdanhaycam.webp') }}" alt="Tẩy Trang Eucerin" class="product-img" loading="lazy">
+                <h3>Nước Tẩy Trang Eucerin Pro Acne Cleansing Water (200ml)</h3>
+                <div><strong>Thành phần chính</strong>: Công nghệ Micellar, APG Complex (làm sạch dịu nhẹ), Hyaluronic Acid (dưỡng ẩm).</div>
+                <div><strong>Công dụng</strong>: Làm sạch sâu trang điểm, bụi bẩn và dầu thừa. Giảm nhờn, ngăn ngừa mụn hiệu quả. Dưỡng ẩm, giữ da mềm mại, không khô căng.</div>
+                <div><strong>Kết cấu</strong>: Nước lỏng, không nhờn, dễ sử dụng với bông tẩy trang.</div>
+                <div><strong>Đặc điểm nổi bật</strong>: Không cồn, không hương liệu, kiểm nghiệm da liễu, phù hợp da nhạy cảm và da dầu mụn.</div>
+                <div class="text-blue-500 font-semibold">Phù hợp: Da Nhạy Cảm, Da Dầu Mụn</div>
+                <div class="text-pink-600 font-bold mt-2">Giá tham khảo: ~250.000 - 350.000 VND/200ml</div>
+            </div>
+            <div class="product-card">
+                <img src="{{ url_for('static', filename='img_danhaycam/suaruamat/srmnbdanhaycam.png') }}" alt="Sữa Rửa Mặt Cetaphil" class="product-img" loading="lazy">
+                <h3>Sữa Rửa Mặt Cetaphil Gentle Skin Cleanser (500ml)</h3>
+                <div><strong>Thành phần chính</strong>: Glycerin (dưỡng ẩm), Niacinamide (làm dịu), Panthenol (phục hồi da).</div>
+                <div><strong>Công dụng</strong>: Làm sạch dịu nhẹ bụi bẩn và dầu thừa. Dưỡng ẩm, duy trì hàng rào bảo vệ da. Giảm kích ứng, phù hợp cho da nhạy cảm.</div>
+                <div><strong>Kết cấu</strong>: Dạng gel lỏng, không tạo bọt, dễ rửa sạch.</div>
+                <div><strong>Đặc điểm nổi bật</strong>: Không xà phòng, không hương liệu, kiểm nghiệm da liễu, phù hợp mọi loại da.</div>
+                <div class="text-blue-500 font-semibold">Phù hợp: Da Nhạy Cảm</div>
+                <div class="text-pink-600 font-bold mt-2">Giá tham khảo: ~350.000 - 450.000 VND/500ml</div>
+            </div>
+            <div class="product-card">
+                <img src="{{ url_for('static', filename='img_danhaycam/serum/srnbdanhaycam.jpg') }}" alt="Serum La Roche-Posay" class="product-img" loading="lazy">
+                <h3>Serum La Roche-Posay Hyalu B5 (30ml)</h3>
+                <div><strong>Thành phần chính</strong>: Hyaluronic Acid (cấp ẩm), Panthenol (làm dịu), Madecassoside (phục hồi).</div>
+                <div><strong>Công dụng</strong>: Cấp ẩm sâu, làm da căng mịn. Phục hồi hàng rào bảo vệ da. Giảm kích ứng và cải thiện độ đàn hồi.</div>
+                <div><strong>Kết cấu</strong>: Dạng gel lỏng, thấm nhanh, không nhờn dính.</div>
+                <div><strong>Đặc điểm nổi bật</strong>: Không cồn, không hương liệu, kiểm nghiệm da liễu, lý tưởng cho da nhạy cảm.</div>
+                <div class="text-blue-500 font-semibold">Phù hợp: Da Nhạy Cảm</div>
+                <div class="text-pink-600 font-bold mt-2">Giá tham khảo: ~900.000 - 1.100.000 VND/30ml</div>
+            </div>
+            <div class="product-card">
+                <img src="{{ url_for('static', filename='img_danhaycam/kemchongnang/kcndanhaycam.png') }}" alt="Kem Chống Nắng Anessa" class="product-img" loading="lazy">
+                <h3>Sữa Chống Nắng Anessa Perfect UV Sunscreen Mild Milk SPF 50+ PA++++ (60ml)</h3>
+                <div><strong>Thành phần chính</strong>: Zinc Oxide, Titanium Dioxide (bộ lọc UV vật lý), Hyaluronic Acid (dưỡng ẩm).</div>
+                <div><strong>Công dụng</strong>: Bảo vệ da khỏi tia UVA/UVB. Dưỡng ẩm, giữ da mềm mại. Giảm kích ứng, phù hợp da nhạy cảm.</div>
+                <div><strong>Kết cấu</strong>: Dạng sữa mỏng nhẹ, thấm nhanh, không để lại vệt trắng.</div>
+                <div><strong>Đặc điểm nổi bật</strong>: Không cồn, không hương liệu, kiểm nghiệm da liễu, lý tưởng cho da nhạy cảm.</div>
+                <div class="text-blue-500 font-semibold">Phù hợp: Da Nhạy Cảm</div>
+                <div class="text-pink-600 font-bold mt-2">Giá tham khảo: ~550.000 - 650.000 VND/60ml</div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-200 py-6">
+        <div class="container mx-auto px-6 text-center">
+        </div>
+    </footer>
+
+    <script src="{{ url_for('static', filename='cosmetic/js/main.js') }}"></script>
+</body>
+</html>

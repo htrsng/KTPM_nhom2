@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nhận Diện Tông Da - Tự Tin Ngoại Hình</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="stylesheet" href="../../style.css">
+  <link rel="stylesheet" href="tone.css">
+</head>
+<body>
+  <nav class="navbar">
+    <div class="container">
+      <div class="logo">
+        <i class="fas fa-star"></i>
+        <span>Tự Tin Ngoại Hình</span>
+      </div>
+      <ul class="nav-links">
+        <li><a href="../../index.html"><i class="fas fa-home"></i> Trang Chủ</a></li>
+        <li><a href="../weight/tdee.html"><i class="fas fa-weight"></i> Mục Tiêu Cân Nặng</a></li>
+        <li><a href="../bodyshape/shape.html"><i class="fas fa-tshirt"></i> Vóc Dáng</a></li>
+        <li><a href="tone.html"><i class="fas fa-magic"></i> Tông Da & Màu Sắc</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main>
+    <section class="tone-analyzer">
+      <h1><i class="fas fa-magic"></i> Nhận Diện Tông Da Của Bạn</h1>
+      <p>Trả lời các câu hỏi dưới đây để xác định tông da và bảng màu phù hợp với bạn nhất</p>
+      
+      <form id="tone-form">
+        <div class="question">
+          <label>1. Khi bạn nhìn vào tĩnh mạch ở cổ tay dưới ánh sáng tự nhiên, màu gì nổi bật nhất?</label>
+          <div class="options">
+            <div class="option">
+              <input type="radio" id="vein_blue" name="vein_color" value="cool" required>
+              <label for="vein_blue">
+                <img src="/VocDang/modules/skintone/img_skintone/tonlanh.webp" alt="Tĩnh mạch xanh" class="option-image">
+                <span>Xanh dương hoặc tím</span>
+              </label>
+            </div>
+            <div class="option">
+              <input type="radio" id="vein_green" name="vein_color" value="warm">
+              <label for="vein_green">
+                <img src="/VocDang/modules/skintone/img_skintone/datongam.jpeg" alt="Tĩnh mạch xanh lá" class="option-image">
+                <span>Xanh lá hoặc hơi ngả xanh lục</span>
+              </label>
+            </div>
+            <div class="option">
+              <input type="radio" id="vein_mixed" name="vein_color" value="neutral">
+              <label for="vein_mixed">
+                <img src="/VocDang/modules/skintone/img_skintone/datrungtinh.jpg" alt="Tĩnh mạch khó phân biệt" class="option-image">
+                <span>Khó phân biệt rõ (xanh + xanh lá lẫn lộn)</span>
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <div class="question">
+          <label>2. Khi bạn mặc đồ màu trắng tinh khôi và đồ màu kem nhạt, màu nào khiến da bạn rạng rỡ hơn?</label>
+          <div class="options">
+            <div class="option">
+              <input type="radio" id="white" name="clothing_color" value="cool" required>
+              <label for="white">
+                <img src="/VocDang/modules/skintone/img_skintone/white-shirt.jpg" alt="Áo trắng tinh" class="option-image">
+                <span>Trắng tinh</span>
+              </label>
+            </div>
+            <div class="option">
+              <input type="radio" id="ivory" name="clothing_color" value="warm">
+              <label for="ivory">
+                <img src="/VocDang/modules/skintone/img_skintone/ivory-shirt.jpg.jpg" alt="Áo kem/be vàng" class="option-image">
+                <span>Kem hoặc be vàng</span>
+              </label>
+            </div>
+            <div class="option">
+              <input type="radio" id="both_clothing" name="clothing_color" value="neutral">
+              <label for="both_clothing" class="no-image-label">
+                <span>Cả hai đều ổn</span>
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <div class="question">
+          <label>3. Trang sức nào làm bạn trông nổi bật và hợp hơn?</label>
+          <div class="options">
+            <div class="option">
+              <input type="radio" id="silver" name="jewelry" value="cool" required>
+              <label for="silver">
+                <img src="/VocDang/modules/skintone/img_skintone/vangbactrang.webp" alt="Trang sức bạc" class="option-image">
+                <span>Bạc, vàng trắng</span>
+              </label>
+            </div>
+            <div class="option">
+              <input type="radio" id="gold" name="jewelry" value="warm">
+              <label for="gold">
+                <img src="/VocDang/modules/skintone/img_skintone/vangdong.jpg" alt="Trang sức vàng" class="option-image">
+                <span>Vàng, đồng</span>
+              </label>
+            </div>
+            <div class="option">
+              <input type="radio" id="both_jewelry" name="jewelry" value="neutral">
+              <label for="both_jewelry" class="no-image-label">
+                <span>Cả hai đều hợp</span>
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <div class="question">
+          <label>4. Dưới nắng mặt trời, làn da bạn thường phản ứng thế nào?</label>
+          <div class="options">
+            <div class="option">
+              <input type="radio" id="sunburn" name="sun_reaction" value="cool" required>
+              <label for="sunburn">
+                <img src="/VocDang/modules/skintone/img_skintone/chaydo.jpg" alt="Cháy nắng" class="option-image">
+                <span>Dễ bị cháy nắng, đỏ</span>
+              </label>
+            </div>
+            <div class="option">
+              <input type="radio" id="tan" name="sun_reaction" value="warm">
+              <label for="tan">
+                <img src="/VocDang/modules/skintone/img_skintone/da-bi-chay-nang-sam-den-1.jpg" alt="Rám nắng" class="option-image">
+                <span>Dễ rám nắng (sạm nâu)</span>
+              </label>
+            </div>
+            <div class="option">
+              <input type="radio" id="no_change" name="sun_reaction" value="neutral">
+              <label for="no_change" class="no-image-label">
+                <span>Không rõ ràng hoặc xen lẫn</span>
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <div class="question question-5">
+          <label>5. Màu tóc tự nhiên của bạn là gì?</label>
+          <div class="options">
+            <div class="option">
+              <input type="radio" id="cool_hair" name="hair_color" value="cool" required>
+              <label for="cool_hair">
+                <img src="/VocDang/modules/skintone/img_skintone/toclanh.png" alt="Tóc đen xanh, nâu tro" class="option-image">
+                <span>Đen xanh, nâu tro, nâu lạnh</span>
+              </label>
+            </div>
+            <div class="option">
+              <input type="radio" id="warm_hair" name="hair_color" value="warm">
+              <label for="warm_hair">
+                <img src="/VocDang/modules/skintone/img_skintone/tocam.png" alt="Tóc nâu đỏ, vàng nâu" class="option-image">
+                <span>Đen nâu ấm, nâu đỏ, vàng nâu</span>
+              </label>
+            </div>
+            <div class="option">
+              <input type="radio" id="neutral_hair" name="hair_color" value="neutral">
+              <label for="neutral_hair" class="no-image-label">
+                <span>Màu trung tính hoặc khó xác định</span>
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <div class="question">
+          <label>6. Màu mắt của bạn?</label>
+          <div class="options">
+            <div class="option">
+              <input type="radio" id="cool_eyes" name="eye_color" value="cool" required>
+              <label for="cool_eyes">
+                <img src="/VocDang/modules/skintone/img_skintone/matnauden.jpg" alt="Mắt nâu đen, xám, xanh" class="option-image">
+                <span>Nâu đen, xám, xanh, nâu tro</span>
+              </label>
+            </div>
+            <div class="option">
+              <input type="radio" id="warm_eyes" name="eye_color" value="warm">
+              <label for="warm_eyes">
+                <img src="/VocDang/modules/skintone/img_skintone/nauhophach.jpg" alt="Mắt nâu vàng, hổ phách" class="option-image">
+                <span>Nâu hổ phách, nâu vàng, nâu sáng</span>
+              </label>
+            </div>
+            <div class="option">
+              <input type="radio" id="neutral_eyes" name="eye_color" value="neutral">
+              <label for="neutral_eyes" class="no-image-label">
+                <span>Màu hỗn hợp hoặc không rõ</span>
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <div class="question">
+          <label>7. Độ sáng của làn da bạn?</label>
+          <div class="options">
+            <div class="option">
+              <input type="radio" id="bright" name="skin_brightness" value="bright" required>
+              <label for="bright">
+                <img src="/VocDang/modules/skintone/img_skintone/dasang.png" alt="Da sáng" class="option-image">
+                <span>Sáng (nhạt, trắng)</span>
+              </label>
+            </div>
+            <div class="option">
+              <input type="radio" id="medium" name="skin_brightness" value="medium">
+              <label for="medium">
+                <img src="/VocDang/modules/skintone/img_skintone/datbngam.jpg" alt="Da trung bình" class="option-image">
+                <span>Trung bình hoặc ngăm</span>
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <button type="submit">
+          <i class="fas fa-magic"></i> Xác Định Tông Da
+        </button>
+      </form>
+
+      <div id="error" class="error-message" style="display: none;"></div>
+
+      <div id="result" style="display: none;">
+        <h2><i class="fas fa-star"></i> Kết Quả Nhận Diện Tông Da</h2>
+        <div class="result-details">
+          <h3 id="tone-title"></h3>
+          <p id="tone-description"></p>
+          
+          <h4><i class="fas fa-palette"></i> Bảng màu phù hợp:</h4>
+          <div id="color-palette" class="color-palette"></div>
+          
+          <h4><i class="fas fa-tshirt"></i> Gợi ý phối đồ:</h4>
+          <ul id="style-suggestions"></ul>
+          
+          <h4><i class="fas fa-lips"></i> Gợi ý màu son:</h4>
+          <ul id="lip-suggestions"></ul>
+          
+          <h4><i class="fas fa-cut"></i> Gợi ý màu tóc:</h4>
+          <ul id="hair-suggestions"></ul>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  
+  <script src="tone.js"></script>
+</body>
+</html>

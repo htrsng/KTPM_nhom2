@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Serum - Mỹ Phẩm Da Nhạy Cảm</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='cosmetic/css/styles.css') }}">
+</head>
+<body class="bg-gray-100">
+    <!-- Header -->
+    <header class="bg-white shadow">
+        <nav class="container mx-auto px-6 py-4 flex items-center justify-between">
+            <div class="w-full flex justify-between items-center font-semibold text-gray-800 nav-links bg-blue-50 rounded-xl px-6 py-3 shadow-md mt-6 mb-6">
+                <a href="danhaycam.html" class="nav-item">Trang Chủ</a>
+                <a href="taytrang.html" class="nav-item">Tẩy Trang</a>
+                <a href="suaruamat.html" class="nav-item">Sữa Rửa Mặt</a>
+                <a href="serum.html" class="nav-item active">Serum</a>
+                <a href="kemchongnang.html" class="nav-item">Kem Chống Nắng</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main -->
+    <main class="container mx-auto px-6 py-8">
+        <h2 class="text-2xl font-bold text-gray-800 mb-6">Serum Dành Cho Da Nhạy Cảm</h2>
+        <div class="grid gap-12 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 mt-8">
+            <div class="product-card">
+                <img src="{{ url_for('static', filename='img_danhaycam/serum/srnbdanhaycam-1.jpg') }}" alt="Serum La Roche-Posay Toleriane Ultra Dermallergo" class="product-img" loading="lazy">
+                <h3>La Roche-Posay Toleriane Ultra Dermallergo Serum (20ml)</h3>
+                <div><strong>Thành phần chính</strong>: Neurosensine (làm dịu), Osmolyte (dưỡng ẩm), Nước khoáng La Roche-Posay (củng cố da).</div>
+                <div><strong>Công dụng</strong>: Làm dịu, giảm kích ứng da. Dưỡng ẩm, củng cố hàng rào da. Cải thiện da nhạy cảm, giữ da mềm mịn.</div>
+                <div><strong>Kết cấu</strong>: Dạng lỏng nhẹ, thấm nhanh, không nhờn dính.</div>
+                <div><strong>Đặc điểm nổi bật</strong>: Không cồn, không hương liệu, kiểm nghiệm da liễu, lý tưởng da nhạy cảm.</div>
+                <div class="text-blue-500 font-semibold">Phù hợp: Da thường, Da nhạy cảm</div>
+                <div class="text-pink-600 font-bold mt-2">Giá tham khảo: ~700.000 - 850.000 VND/20ml</div>
+            </div>
+            <div class="product-card">
+                <img src="{{ url_for('static', filename='img_danhaycam/serum/srnbdanhaycam-2.webp') }}" alt="Serum Skin1004 Madagascar Centella Ampoule" class="product-img" loading="lazy">
+                <h3>Skin1004 Madagascar Centella Ampoule (55ml)</h3>
+                <div><strong>Thành phần chính</strong>: Chiết xuất rau má 100% (làm dịu, phục hồi).</div>
+                <div><strong>Công dụng</strong>: Làm dịu, giảm kích ứng và mẩn đỏ. Phục hồi hàng rào bảo vệ da. Dưỡng ẩm, giữ da mềm mại.</div>
+                <div><strong>Kết cấu</strong>: Dạng lỏng nhẹ, thấm nhanh, không nhờn dính.</div>
+                <div><strong>Đặc điểm nổi bật</strong>: Công thức tối giản, không cồn, phù hợp mọi loại da.</div>
+                <div class="text-blue-500 font-semibold">Phù hợp: Da thường, Da nhạy cảm</div>
+                <div class="text-pink-600 font-bold mt-2">Giá tham khảo: ~350.000 - 450.000 VND/55ml</div>
+            </div>
+            <div class="product-card">
+                <img src="{{ url_for('static', filename='img_danhaycam/serum/srnbdanhaycam-3.avif') }}" alt="Serum Bioderma Sensibio Defensive" class="product-img" loading="lazy">
+                <h3>Bioderma Sensibio Defensive Serum (30ml)</h3>
+                <div><strong>Thành phần chính</strong>: Carnosine (chống oxy hóa), Tetrapeptide-10 (bảo vệ da), Chiết xuất cam thảo (làm dịu).</div>
+                <div><strong>Công dụng</strong>: Bảo vệ da khỏi tác nhân môi trường. Làm dịu, giảm kích ứng da. Dưỡng ẩm, cải thiện độ đàn hồi.</div>
+                <div><strong>Kết cấu</strong>: Dạng lỏng nhẹ, thấm nhanh, không nhờn dính.</div>
+                <div><strong>Đặc điểm nổi bật</strong>: Không hương liệu, không cồn, kiểm nghiệm da liễu.</div>
+                <div class="text-blue-500 font-semibold">Phù hợp: Da thường, Da nhạy cảm</div>
+                <div class="text-pink-600 font-bold mt-2">Giá tham khảo: ~600.000 - 750.000 VND/30ml</div>
+            </div>
+            <div class="product-card">
+                <img src="{{ url_for('static', filename='img_danhaycam/serum/srnbdanhaycam-4.webp') }}" alt="Serum Dr. Jart+ Cicapair Tiger Grass" class="product-img" loading="lazy">
+                <h3>Dr. Jart+ Cicapair Tiger Grass Serum (30ml)</h3>
+                <div><strong>Thành phần chính</strong>: Chiết xuất rau má (làm dịu), Madecassoside (phục hồi), Niacinamide (làm sáng).</div>
+                <div><strong>Công dụng</strong>: Làm dịu, giảm mẩn đỏ và kích ứng. Phục hồi da tổn thương. Làm sáng, cải thiện tông da.</div>
+                <div><strong>Kết cấu</strong>: Dạng lỏng nhẹ, thấm nhanh, không nhờn dính.</div>
+                <div><strong>Đặc điểm nổi bật</strong>: Công thức lành tính, không paraben, kiểm nghiệm da liễu.</div>
+                <div class="text-blue-500 font-semibold">Phù hợp: Da thường, Da nhạy cảm</div>
+                <div class="text-pink-600 font-bold mt-2">Giá tham khảo: ~800.000 - 950.000 VND/30ml</div>
+            </div>
+            <div class="product-card">
+                <img src="{{ url_for('static', filename='img_danhaycam/serum/srnbdanhaycam-5.webp') }}" alt="Serum Klairs Rich Moist Soothing" class="product-img" loading="lazy">
+                <h3>Klairs Rich Moist Soothing Serum (80ml)</h3>
+                <div><strong>Thành phần chính</strong>: Hyaluronic Acid (cấp ẩm), Chiết xuất cần tây (làm dịu), Ceramide NP (phục hồi).</div>
+                <div><strong>Công dụng</strong>: Cấp ẩm sâu, làm da căng mịn. Làm dịu, giảm kích ứng da. Phục hồi hàng rào bảo vệ da.</div>
+                <div><strong>Kết cấu</strong>: Dạng lỏng nhẹ, thấm nhanh, không bết dính.</div>
+                <div><strong>Đặc điểm nổi bật</strong>: Công thức thuần chay, không cồn, kiểm nghiệm da liễu.</div>
+                <div class="text-blue-500 font-semibold">Phù hợp: Da thường, Da khô</div>
+                <div class="text-pink-600 font-bold mt-2">Giá tham khảo: ~400.000 - 500.000 VND/80ml</div>
+            </div>
+            <div class="product-card">
+                <img src="{{ url_for('static', filename='img_danhaycam/serum/srnbdanhaycam-6.webp') }}" alt="Serum The Ordinary Niacinamide 10% + Zinc 1%" class="product-img" loading="lazy">
+                <h3>The Ordinary Niacinamide 10% + Zinc 1% (30ml)</h3>
+                <div><strong>Thành phần chính</strong>: Niacinamide 10% (làm sáng), Zinc PCA 1% (kiểm soát dầu), Glycerin (dưỡng ẩm).</div>
+                <div><strong>Công dụng</strong>: Làm sáng, cải thiện tông da. Kiểm soát dầu, thu nhỏ lỗ chân lông. Giảm mụn và mẩn đỏ.</div>
+                <div><strong>Kết cấu</strong>: Dạng lỏng nhẹ, thấm nhanh, hơi dính nhẹ.</div>
+                <div><strong>Đặc điểm nổi bật</strong>: Giá phải chăng, không cồn, kiểm nghiệm da liễu.</div>
+                <div class="text-blue-500 font-semibold">Phù hợp: Da thường, Da dầu</div>
+                <div class="text-pink-600 font-bold mt-2">Giá tham khảo: ~200.000 - 300.000 VND/30ml</div>
+            </div>
+            <div class="product-card">
+                <img src="{{ url_for('static', filename='img_danhaycam/serum/srnbdanhaycam-7.avif') }}" alt="Serum Avene Hydrance Intense Rehydrating" class="product-img" loading="lazy">
+                <h3>Avene Hydrance Intense Rehydrating Serum (30ml)</h3>
+                <div><strong>Thành phần chính</strong>: Nước khoáng Avene (làm dịu), Hyaluronic Acid (cấp ẩm), Cohederm Complex (dưỡng ẩm).</div>
+                <div><strong>Công dụng</strong>: Cấp ẩm sâu, làm da căng mịn. Làm dịu, giảm kích ứng da. Phục hồi da khô, tăng độ đàn hồi.</div>
+                <div><strong>Kết cấu</strong>: Dạng gel lỏng, thấm nhanh, không nhờn dính.</div>
+                <div><strong>Đặc điểm nổi bật</strong>: Không cồn, không hương liệu, kiểm nghiệm da liễu.</div>
+                <div class="text-blue-500 font-semibold">Phù hợp: Da thường, Da khô</div>
+                <div class="text-pink-600 font-bold mt-2">Giá tham khảo: ~700.000 - 850.000 VND/30ml</div>
+            </div>
+            <div class="product-card">
+                <img src="{{ url_for('static', filename='img_danhaycam/serum/srnbdanhaycam-9.avif') }}" alt="Serum Vichy Mineral 89" class="product-img" loading="lazy">
+                <h3>Vichy Mineral 89 Serum (50ml)</h3>
+                <div><strong>Thành phần chính</strong>: Nước khoáng Vichy 89% (củng cố da), Hyaluronic Acid (cấp ẩm), Glycerin (dưỡng ẩm).</div>
+                <div><strong>Công dụng</strong>: Cấp ẩm, làm da căng mịn. Củng cố hàng rào bảo vệ da. Giúp da khỏe mạnh, rạng rỡ.</div>
+                <div><strong>Kết cấu</strong>: Dạng gel lỏng, thấm cực nhanh, không bết dính.</div>
+                <div><strong>Đặc điểm nổi bật</strong>: Không cồn, không hương liệu, kiểm nghiệm da liễu.</div>
+                <div class="text-blue-500 font-semibold">Phù hợp: Da thường</div>
+                <div class="text-pink-600 font-bold mt-2">Giá tham khảo: ~650.000 - 800.000 VND/50ml</div>
+            </div>
+            <div class="product-card">
+                <img src="{{ url_for('static', filename='img_danhaycam/serum/srnbdanhaycam-8.jpg') }}" alt="Serum GoodnDoc Hydra B5" class="product-img" loading="lazy">
+                <h3>GoodnDoc Hydra B5 Serum (30ml)</h3>
+                <div><strong>Thành phần chính</strong>: Hyaluronic Acid (cấp ẩm), Panthenol (phục hồi), Niacinamide (làm sáng).</div>
+                <div><strong>Công dụng</strong>: Cấp ẩm sâu, làm da căng mịn. Phục hồi da tổn thương, giảm thâm. Làm sáng, cải thiện tông da.</div>
+                <div><strong>Kết cấu</strong>: Dạng gel lỏng, thấm nhanh, không nhờn dính.</div>
+                <div><strong>Đặc điểm nổi bật</strong>: Công thức dịu nhẹ, không cồn, giá hợp lý.</div>
+                <div class="text-blue-500 font-semibold">Phù hợp: Da thường, Da nhạy cảm</div>
+                <div class="text-pink-600 font-bold mt-2">Giá tham khảo: ~300.000 - 400.000 VND/30ml</div>
+            </div>
+            <div class="product-card">
+                <img src="{{ url_for('static', filename='img_danhaycam/serum/srnbdanhaycam-10.jpg') }}" alt="Serum La Roche-Posay Hyalu B5" class="product-img" loading="lazy">
+                <h3>La Roche-Posay Hyalu B5 Serum (30ml)</h3>
+                <div><strong>Thành phần chính</strong>: Hyaluronic Acid (cấp ẩm), Panthenol (làm dịu), Madecassoside (phục hồi).</div>
+                <div><strong>Công dụng</strong>: Cấp ẩm sâu, làm da căng mịn. Phục hồi hàng rào bảo vệ da. Giảm kích ứng, cải thiện độ đàn hồi.</div>
+                <div><strong>Kết cấu</strong>: Dạng gel lỏng, thấm nhanh, không nhờn dính.</div>
+                <div><strong>Đặc điểm nổi bật</strong>: Không cồn, không hương liệu, kiểm nghiệm da liễu.</div>
+                <div class="text-blue-500 font-semibold">Phù hợp: Da thường, Da nhạy cảm</div>
+                <div class="text-pink-600 font-bold mt-2">Giá tham khảo: ~900.000 - 1.100.000 VND/30ml</div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-200 py-6">
+        <div class="container mx-auto px-6 text-center">
+        </div>
+    </footer>
+
+    <script src="{{ url_for('static', filename='cosmetic/js/main.js') }}"></script>
+</body>
+</html>

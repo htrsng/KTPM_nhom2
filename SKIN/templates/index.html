@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phân tích da - SKIN AI</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc;
+        }
+        .hidden {
+            display: none;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-radius: 16px;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        .gradient-text {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        .gradient-spinner {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .score-circle {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto;
+            position: relative;
+        }
+        .score-circle::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            border: 8px solid #e2e8f0;
+        }
+        .score-circle-inner {
+            width: calc(100% - 30px);
+            height: calc(100% - 30px);
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: white;
+            box-shadow: inset 0 4px 15px rgba(0, 0, 0, 0.05);
+        }
+        .image-hover-effect {
+            transition: all 0.3s ease;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+        .image-hover-effect:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        .toast {
+            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+        .issue-tag {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-right: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+        .product-card {
+            transition: all 0.3s ease;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+        }
+    </style>
+</head>
+<body class="min-h-screen">
+    <!-- Header -->
+    <header class="gradient-bg text-white py-8">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col items-center text-center">
+                <div class="w-16 h-16 bg-white bg-opacity-20 rounded-full flex items-center justify-center mb-4">
+                    <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"></path>
+                    </svg>
+                </div>
+                <h1 class="text-3xl md:text-4xl font-bold mb-2">Phân tích da với AI</h1>
+                <p class="text-lg text-white text-opacity-90 max-w-2xl">Tải lên ảnh khuôn mặt để nhận phân tích chuyên sâu và đề xuất chăm sóc da cá nhân hóa</p>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto py-8 px-4 sm:px-6 -mt-10">
+        <!-- Toast Notification -->
+        <div id="toast" class="fixed top-4 right-4 px-6 py-3 rounded-lg shadow-xl hidden toast z-50">
+            <div class="flex items-center">
+                <svg id="toastIcon" class="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                </svg>
+                <span id="toastMessage" class="font-medium"></span>
+            </div>
+        </div>
+
+        <!-- Upload Section -->
+        <section class="glass-card p-6 mb-8">
+            <form id="uploadForm" enctype="multipart/form-data">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <!-- Left Image -->
+                    <div class="space-y-2">
+                        <label class="block text-sm font-medium text-gray-700">Ảnh góc trái</label>
+                        <div class="relative group">
+                            <div class="border-2 border-dashed border-gray-300 rounded-xl h-48 flex items-center justify-center overflow-hidden transition duration-300 group-hover:border-indigo-400">
+                                <div id="leftPreview" class="absolute inset-0 bg-gray-100 flex items-center justify-center hidden">
+                                    <img id="leftPreviewImage" class="object-cover w-full h-full">
+                                </div>
+                                <div id="leftPlaceholder" class="text-center p-4">
+                                    <svg class="mx-auto h-12 w-12 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                                    </svg>
+                                    <p class="mt-1 text-sm text-gray-600">Nhấn để chọn ảnh</p>
+                                </div>
+                            </div>
+                            <input type="file" name="left" accept="image/jpeg,image/png" class="absolute inset-0 w-full h-full opacity-0 cursor-pointer">
+                        </div>
+                    </div>
+                    
+                    <!-- Front Image -->
+                    <div class="space-y-2">
+                        <label class="block text-sm font-medium text-gray-700">Ảnh chính diện</label>
+                        <div class="relative group">
+                            <div class="border-2 border-dashed border-gray-300 rounded-xl h-48 flex items-center justify-center overflow-hidden transition duration-300 group-hover:border-indigo-400">
+                                <div id="frontPreview" class="absolute inset-0 bg-gray-100 flex items-center justify-center hidden">
+                                    <img id="frontPreviewImage" class="object-cover w-full h-full">
+                                </div>
+                                <div id="frontPlaceholder" class="text-center p-4">
+                                    <svg class="mx-auto h-12 w-12 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                                    </svg>
+                                    <p class="mt-1 text-sm text-gray-600">Nhấn để chọn ảnh</p>
+                                </div>
+                            </div>
+                            <input type="file" name="front" accept="image/jpeg,image/png" class="absolute inset-0 w-full h-full opacity-0 cursor-pointer">
+                        </div>
+                    </div>
+                    
+                    <!-- Right Image -->
+                    <div class="space-y-2">
+                        <label class="block text-sm font-medium text-gray-700">Ảnh góc phải</label>
+                        <div class="relative group">
+                            <div class="border-2 border-dashed border-gray-300 rounded-xl h-48 flex items-center justify-center overflow-hidden transition duration-300 group-hover:border-indigo-400">
+                                <div id="rightPreview" class="absolute inset-0 bg-gray-100 flex items-center justify-center hidden">
+                                    <img id="rightPreviewImage" class="object-cover w-full h-full">
+                                </div>
+                                <div id="rightPlaceholder" class="text-center p-4">
+                                    <svg class="mx-auto h-12 w-12 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                                    </svg>
+                                    <p class="mt-1 text-sm text-gray-600">Nhấn để chọn ảnh</p>
+                                </div>
+                            </div>
+                            <input type="file" name="right" accept="image/jpeg,image/png" class="absolute inset-0 w-full h-full opacity-0 cursor-pointer">
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mt-8 flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-4">
+                    <button type="submit" class="gradient-bg text-white px-8 py-3 rounded-xl hover:opacity-90 transition duration-300 font-medium flex items-center shadow-lg hover:shadow-indigo-300/50">
+                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path>
+                        </svg>
+                        Phân tích ngay
+                    </button>
+                    <button type="button" id="cleanupButton" class="bg-white text-gray-700 px-8 py-3 rounded-xl border border-gray-300 hover:bg-gray-50 transition duration-300 font-medium flex items-center shadow-sm">
+                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path>
+                        </svg>
+                        Xóa dữ liệu
+                    </button>
+                </div>
+            </form>
+            
+            <div id="loading" class="hidden mt-8 text-center animate__animated animate__fadeIn">
+                <div class="flex flex-col items-center justify-center">
+                    <svg class="animate-spin h-10 w-10 gradient-spinner mx-auto" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                    </svg>
+                    <p class="mt-4 text-gray-600 font-medium">AI đang phân tích làn da của bạn...</p>
+                    <p class="text-sm text-gray-500 mt-1">Vui lòng chờ trong giây lát</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Results Section -->
+        <section id="results" class="hidden animate__animated animate__fadeIn">
+            <!-- Skin Score -->
+            <div class="glass-card p-8 mb-8 text-center">
+                <h2 class="text-2xl font-semibold text-gray-800 mb-6">Điểm đánh giá làn da</h2>
+                <div class="score-circle">
+                    <div class="score-circle-inner">
+                        <span id="skinScore" class="text-5xl font-bold gradient-text">0</span>
+                        <span class="text-gray-500 mt-1">trên 10 điểm</span>
+                    </div>
+                </div>
+                <p id="skinComment" class="mt-6 text-gray-600 max-w-2xl mx-auto">Kết quả phân tích sẽ hiển thị ở đây</p>
+            </div>
+
+            <!-- Analysis Results -->
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
+                <!-- Left Analysis -->
+                <div class="glass-card p-6">
+                    <h3 class="text-xl font-semibold text-gray-800 mb-4 flex items-center">
+                        <svg class="w-5 h-5 mr-2 text-indigo-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"></path>
+                        </svg>
+                        Phân tích góc trái
+                    </h3>
+                    <div class="image-hover-effect mb-4">
+                        <img id="leftImage" src="" alt="Ảnh góc trái" class="w-full h-64 object-cover rounded-lg">
+                    </div>
+                    <div id="leftAnalysisTags" class="mb-4"></div>
+                    <ul id="leftAnalysis" class="space-y-3 text-gray-600"></ul>
+                </div>
+                
+                <!-- Front Analysis -->
+                <div class="glass-card p-6">
+                    <h3 class="text-xl font-semibold text-gray-800 mb-4 flex items-center">
+                        <svg class="w-5 h-5 mr-2 text-indigo-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
+                        </svg>
+                        Phân tích chính diện
+                    </h3>
+                    <div class="image-hover-effect mb-4">
+                        <img id="frontImage" src="" alt="Ảnh chính diện" class="w-full h-64 object-cover rounded-lg">
+                    </div>
+                    <div id="frontAnalysisTags" class="mb-4"></div>
+                    <ul id="frontAnalysis" class="space-y-3 text-gray-600"></ul>
+                </div>
+                
+                <!-- Right Analysis -->
+                <div class="glass-card p-6">
+                    <h3 class="text-xl font-semibold text-gray-800 mb-4 flex items-center">
+                        <svg class="w-5 h-5 mr-2 text-indigo-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"></path>
+                        </svg>
+                        Phân tích góc phải
+                    </h3>
+                    <div class="image-hover-effect mb-4">
+                        <img id="rightImage" src="" alt="Ảnh góc phải" class="w-full h-64 object-cover rounded-lg">
+                    </div>
+                    <div id="rightAnalysisTags" class="mb-4"></div>
+                    <ul id="rightAnalysis" class="space-y-3 text-gray-600"></ul>
+                </div>
+            </div>
+
+            <!-- Improvements -->
+            <div class="glass-card p-8 mb-8">
+                <h2 class="text-2xl font-semibold text-gray-800 mb-6 flex items-center">
+                    <svg class="w-6 h-6 mr-3 text-indigo-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    </svg>
+                    Phương pháp cải thiện làn da
+                </h2>
+                <div id="improvements" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+            </div>
+
+            <!-- Product Recommendations -->
+            <div class="glass-card p-8">
+                <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-6">
+                    <h2 class="text-2xl font-semibold text-gray-800 flex items-center">
+                        <svg class="w-6 h-6 mr-3 text-indigo-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path>
+                        </svg>
+                        Sản phẩm đề xuất
+                    </h2>
+                    <a href="/hotro" target="_blank" class="mt-4 md:mt-0 inline-flex items-center px-4 py-2 bg-indigo-50 text-indigo-600 rounded-lg hover:bg-indigo-100 transition duration-300 text-sm font-medium">
+                        <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                        Xác định loại da của bạn
+                    </a>
+                </div>
+                <div id="products" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"></div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-8 mt-12">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-4 md:mb-0">
+                    <div class="flex items-center">
+                        <svg class="w-8 h-8 text-indigo-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"></path>
+                        </svg>
+                        <span class="text-xl font-bold">SKIN AI</span>
+                    </div>
+                    <p class="mt-2 text-gray-400 text-sm">Công nghệ AI phân tích da tiên tiến</p>
+                </div>
+                <div class="text-gray-400 text-sm">
+                    <p>© 2023 SKIN AI. All rights reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Toast notification function
+        function showToast(message, type = 'error') {
+            const toast = document.getElementById('toast');
+            const toastMessage = document.getElementById('toastMessage');
+            const toastIcon = document.getElementById('toastIcon');
+            
+            toastMessage.textContent = message;
+            
+            if (type === 'error') {
+                toast.className = 'fixed top-4 right-4 px-6 py-3 rounded-lg shadow-xl toast z-50 bg-red-500 text-white';
+                toastIcon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>';
+            } else {
+                toast.className = 'fixed top-4 right-4 px-6 py-3 rounded-lg shadow-xl toast z-50 bg-green-500 text-white';
+                toastIcon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>';
+            }
+            
+            toast.classList.remove('hidden');
+            toast.style.transform = 'translateX(200%)';
+            setTimeout(() => {
+                toast.style.transform = 'translateX(0)';
+            }, 10);
+            
+            setTimeout(() => {
+                toast.classList.add('hidden');
+            }, 3000);
+        }
+
+        // Image preview handlers
+        function setupImagePreview(inputId, previewId, placeholderId, previewImageId) {
+            const input = document.querySelector(`input[name="${inputId}"]`);
+            const preview = document.getElementById(previewId);
+            const placeholder = document.getElementById(placeholderId);
+            const previewImage = document.getElementById(previewImageId);
+            
+            input.addEventListener('change', function() {
+                if (this.files && this.files[0]) {
+                    const reader = new FileReader();
+                    
+                    reader.onload = function(e) {
+                        previewImage.src = e.target.result;
+                        preview.classList.remove('hidden');
+                        placeholder.classList.add('hidden');
+                    }
+                    
+                    reader.readAsDataURL(this.files[0]);
+                }
+            });
+        }
+        
+        // Set up all image previews
+        setupImagePreview('left', 'leftPreview', 'leftPlaceholder', 'leftPreviewImage');
+        setupImagePreview('front', 'frontPreview', 'frontPlaceholder', 'frontPreviewImage');
+        setupImagePreview('right', 'rightPreview', 'rightPlaceholder', 'rightPreviewImage');
+
+        // Handle form submission
+        document.getElementById("uploadForm").addEventListener("submit", async function (event) {
+            event.preventDefault();
+
+            // Validate inputs
+            const inputs = ['left', 'right', 'front'].map(name => document.querySelector(`input[name="${name}"]`));
+            if (inputs.some(input => !input.files.length)) {
+                showToast('Vui lòng tải lên đầy đủ 3 ảnh (trái, phải, chính diện) để phân tích chính xác.');
+                return;
+            }
+
+            document.getElementById("loading").classList.remove("hidden");
+            document.getElementById("results").classList.add("hidden");
+
+            const formData = new FormData(this);
+            try {
+                const response = await fetch("http://127.0.0.1:5000/predict", {
+                    method: "POST",
+                    body: formData
+                });
+                const result = await response.json();
+                console.log("Response JSON:", result);
+
+                if (response.ok) {
+                    document.getElementById("loading").classList.add("hidden");
+                    document.getElementById("results").classList.remove("hidden");
+
+                    // Display score with comment
+                    document.getElementById("skinScore").textContent = result.score;
+                    const scoreComment = document.getElementById("skinComment");
+                    if (result.score >= 8) {
+                        scoreComment.textContent = "Làn da của bạn đang ở tình trạng rất tốt! Hãy tiếp tục duy trì chế độ chăm sóc hiện tại.";
+                        scoreComment.className = "mt-6 text-indigo-600 max-w-2xl mx-auto font-medium";
+                    } else if (result.score >= 5) {
+                        scoreComment.textContent = "Làn da của bạn ở mức trung bình. Có một số vấn đề cần cải thiện.";
+                        scoreComment.className = "mt-6 text-blue-600 max-w-2xl mx-auto font-medium";
+                    } else {
+                        scoreComment.textContent = "Làn da của bạn cần được chăm sóc đặc biệt. Hãy tham khảo các gợi ý bên dưới.";
+                        scoreComment.className = "mt-6 text-orange-600 max-w-2xl mx-auto font-medium";
+                    }
+
+                    // Display analysis with tags
+                    ["left", "right", "front"].forEach(side => {
+                        const analysisList = document.getElementById(`${side}Analysis`);
+                        const tagsContainer = document.getElementById(`${side}AnalysisTags`);
+                        const imgElement = document.getElementById(`${side}Image`);
+                        
+                        analysisList.innerHTML = "";
+                        tagsContainer.innerHTML = "";
+                        imgElement.src = result.image_urls[side] + "?t=" + new Date().getTime();
+
+                        // Nếu không phát hiện vấn đề thì KHÔNG render gì cả
+                        if (result.analysis[side][0].label === "Không phát hiện") {
+                            // Không làm gì cả
+                            return;
+                        }
+
+                        result.analysis[side].forEach(item => {
+                            // Ẩn các nhãn không mong muốn
+                            if (
+                                item.label === "pigment" ||
+                                item.label === "pores" ||
+                                item.label === "acne" ||
+                                item.label === "Không phát hiện"
+                            ) return;
+
+                            const li = document.createElement("li");
+                            li.className = "flex items-start";
+                            
+                            let iconColor = "text-yellow-500";
+                            if (item.label.includes("mụn")) iconColor = "text-red-500";
+                            else if (item.label.includes("lỗ chân lông")) iconColor = "text-blue-500";
+                            else if (item.label.includes("nám")) iconColor = "text-purple-500";
+                            
+                            li.innerHTML = `
+                                <svg class="w-5 h-5 ${iconColor} mr-2 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                </svg>
+                                <div>
+                                    <span class="font-medium">${item.label}</span>
+                                    <span class="block text-xs text-gray-500">Độ chính xác: ${(item.confidence * 100).toFixed(1)}%</span>
+                                </div>
+                            `;
+                            analysisList.appendChild(li);
+                            
+                            // Add tag for each issue
+                            let tagClass = "bg-yellow-100 text-yellow-800";
+                            if (item.label.includes("mụn")) tagClass = "bg-red-100 text-red-800";
+                            else if (item.label.includes("lỗ chân lông")) tagClass = "bg-blue-100 text-blue-800";
+                            else if (item.label.includes("nám")) tagClass = "bg-purple-100 text-purple-800";
+                            
+                            const tag = document.createElement("span");
+                            tag.className = `issue-tag ${tagClass}`;
+                            tag.textContent = item.label;
+                            tagsContainer.appendChild(tag);
+                        });
+                    });
+
+                    // Display improvements as cards
+                    const improvementsDiv = document.getElementById("improvements");
+                    improvementsDiv.innerHTML = "";
+                    
+                    Object.entries(result.improvements).forEach(([issue, items]) => {
+                        if (items.length > 0) {
+                            const card = document.createElement("div");
+                            card.className = "product-card bg-white p-5 rounded-lg border border-gray-100";
+                            
+                            // Chọn màu và tiêu đề theo issue tiếng Việt
+                            let iconColor = "text-yellow-500";
+                            let titleColor = "text-yellow-700";
+                            let bgColor = "bg-yellow-50";
+                            let title = "";
+                            if (issue === "mụn") {
+                                iconColor = "text-red-500";
+                                titleColor = "text-red-700";
+                                bgColor = "bg-red-50";
+                                title = "Cải thiện mụn";
+                            } else if (issue === "lỗ chân lông to") {
+                                iconColor = "text-blue-500";
+                                titleColor = "text-blue-700";
+                                bgColor = "bg-blue-50";
+                                title = "Thu nhỏ lỗ chân lông";
+                            } else if (issue === "thâm/nám") {
+                                iconColor = "text-purple-500";
+                                titleColor = "text-purple-700";
+                                bgColor = "bg-purple-50";
+                                title = "Giảm thâm/nám";
+                            }
+
+                            card.innerHTML = `
+                                <div class="flex items-center mb-4">
+                                    <div class="w-10 h-10 ${bgColor} rounded-full flex items-center justify-center mr-3">
+                                        <svg class="w-5 h-5 ${iconColor}" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                        </svg>
+                                    </div>
+                                    <h4 class="${titleColor} font-semibold">${title}</h4>
+                                </div>
+                                <ul class="space-y-2 text-gray-600">
+                                    ${items.map(item => `<li class="flex items-start">
+                                        <svg class="w-4 h-4 text-gray-400 mr-2 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                        </svg>
+                                        <span>${item}</span>
+                                    </li>`).join('')}
+                                </ul>
+                            `;
+                            improvementsDiv.appendChild(card);
+                        }
+                    });
+
+                    // Display products as cards
+                    const productsDiv = document.getElementById("products");
+                    productsDiv.innerHTML = "";
+                    
+                    Object.entries(result.products).forEach(([issue, items]) => {
+                        if (items.length > 0) {
+                            items.forEach(item => {
+                                const card = document.createElement("div");
+                                card.className = "product-card bg-white p-5 rounded-lg border border-gray-100";
+                                
+                                let iconColor = "text-yellow-500";
+                                let titleColor = "text-yellow-700";
+                                let title = "";
+                                if (issue === "mụn") {
+                                    iconColor = "text-red-500";
+                                    titleColor = "text-red-700";
+                                    title = "Sản phẩm cho da mụn";
+                                } else if (issue === "lỗ chân lông to") {
+                                    iconColor = "text-blue-500";
+                                    titleColor = "text-blue-700";
+                                    title = "Sản phẩm cho lỗ chân lông to";
+                                } else if (issue === "thâm/nám") {
+                                    iconColor = "text-purple-500";
+                                    titleColor = "text-purple-700";
+                                    title = "Sản phẩm cho thâm/nám";
+                                }
+                                
+                                card.innerHTML = `
+                                    <div class="flex items-center mb-3">
+                                        <svg class="w-5 h-5 ${iconColor} mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path>
+                                        </svg>
+                                        <span class="text-xs font-medium ${titleColor}">${title}</span>
+                                    </div>
+                                    <p class="text-gray-700">${item}</p>
+                                `;
+                                productsDiv.appendChild(card);
+                            });
+                        }
+                    });
+
+                    // Sau khi render analysis cho từng side
+                    // Tổng hợp các vấn đề da từ improvements
+                    const issues = Object.keys(result.improvements).filter(k => result.improvements[k].length > 0);
+                    const skinComment = document.getElementById("skinComment");
+                    if (issues.length > 0) {
+                        skinComment.textContent = "Bạn đang gặp vấn đề: " + issues.join(", ");
+                        skinComment.className = "mt-6 text-orange-600 max-w-2xl mx-auto font-medium";
+                    } else {
+                        skinComment.textContent = "Làn da của bạn không có vấn đề đáng kể!";
+                        skinComment.className = "mt-6 text-indigo-600 max-w-2xl mx-auto font-medium";
+                    }
+                } else {
+                    document.getElementById("loading").classList.add("hidden");
+                    showToast(`Lỗi từ server: ${result.error || 'Không xác định'} (Mã: ${response.status})`);
+                }
+            } catch (error) {
+                document.getElementById("loading").classList.add("hidden");
+                showToast(`Lỗi kết nối: ${error.message}. Vui lòng kiểm tra server đang chạy trên http://127.0.0.1:5000`);
+            }
+        });
+
+        // Handle cleanup
+        document.getElementById("cleanupButton").addEventListener("click", async function () {
+            try {
+                const response = await fetch("http://127.0.0.1:5000/cleanup", {
+                    method: "POST"
+                });
+                const result = await response.json();
+                if (response.ok) {
+                    showToast(result.message, 'success');
+                    // Reset preview images
+                    ['left', 'front', 'right'].forEach(side => {
+                        document.getElementById(`${side}Preview`).classList.add('hidden');
+                        document.getElementById(`${side}Placeholder`).classList.remove('hidden');
+                        document.querySelector(`input[name="${side}"]`).value = '';
+                    });
+                } else {
+                    showToast(`Lỗi từ server: ${result.error} (Mã: ${response.status})`);
+                }
+            } catch (error) {
+                showToast(`Lỗi kết nối: ${error.message}. Vui lòng kiểm tra server đang chạy trên http://127.0.0.1:5000`);
+            }
+        });
+    </script>
+</body>
+</html>

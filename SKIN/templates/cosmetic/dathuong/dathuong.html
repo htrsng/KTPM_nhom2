@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trang Chủ - Mỹ Phẩm Da Thường</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='cosmetic/css/styles.css') }}">
+</head>
+<body class="bg-gray-100">
+    <!-- Header -->
+    <header class="bg-white shadow">
+        <nav class="container mx-auto px-6 py-4 flex items-center justify-between">
+            <div class="w-full flex justify-between items-center font-semibold text-gray-800 nav-links bg-blue-50 rounded-xl px-6 py-3 shadow-md mt-6 mb-6">
+                <a href="dathuong.html" class="nav-item active">Trang Chủ</a>
+                <a href="taytrang.html" class="nav-item">Tẩy Trang</a>
+                <a href="suaruamat.html" class="nav-item">Sữa Rửa Mặt</a>
+                <a href="serum.html" class="nav-item">Serum</a>
+                <a href="kemchongnang.html" class="nav-item">Kem Chống Nắng</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main -->
+    <main class="container mx-auto px-6 py-8">
+        <h2 class="text-3xl font-bold text-blue-700 mb-8 text-center">Mỹ Phẩm Dành Cho Da Thường</h2>
+        <div class="grid gap-12 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 mt-8">
+            <div class="product-card">
+                <img src="{{ url_for('static', filename='img_dathuong/taytrang/ttnbdathuong.webp') }}" alt="Tẩy Trang 1" class="product-img">
+                <h3>Bioderma Sensibio H2O Micellar Water (Nắp Hồng)</h3>
+                <div><strong>Thành phần chính</strong>: Công nghệ Micellar, Glycerin (dưỡng ẩm), chiết xuất dưa leo (làm dịu).</div>
+                <div><strong>Công dụng</strong>: Làm sạch nhẹ nhàng lớp trang điểm, bụi bẩn và dầu thừa, giữ da mềm mại, không khô căng.</div>
+                <div><strong>Kết cấu</strong>: Nước lỏng, không nhờn, dễ sử dụng với bông tẩy trang.</div>
+                <div><strong>Đặc điểm nổi bật</strong>: Không cồn, không hương liệu, được kiểm nghiệm da liễu, lý tưởng cho da thường và nhạy cảm.</div>
+                <div class="text-blue-500 font-semibold">Phù hợp: Da thường</div>
+                <div class="text-pink-600 font-bold mt-2">Giá tham khảo: ~350.000 - 450.000 VND/500ml</div>
+            </div>
+            <div class="product-card">
+                <img src="{{ url_for('static', filename='img_dathuong/suaruamat/srmnbdathuong.webp') }}" alt="Sữa Rửa Mặt 1" class="product-img">
+                <h3>CeraVe Foaming Facial Cleanser (Xanh Lá)</h3>
+                <div><strong>Thành phần chính</strong>: Ceramides (phục hồi hàng rào bảo vệ da), Niacinamide (làm dịu, làm sáng), Hyaluronic Acid (dưỡng ẩm).</div>
+                <div><strong>Công dụng</strong>: Làm sạch sâu bụi bẩn và dầu thừa, dưỡng ẩm, giữ da mềm mại và khỏe mạnh.</div>
+                <div><strong>Kết cấu</strong>: Dạng gel, tạo bọt nhẹ, dễ rửa sạch, không gây khô căng.</div>
+                <div><strong>Đặc điểm nổi bật</strong>: Không cồn, không paraben, được phát triển bởi bác sĩ da liễu, phù hợp da thường đến da dầu.</div>
+                <div class="text-blue-500 font-semibold">Phù hợp: Da thường</div>
+                <div class="text-pink-600 font-bold mt-2">Giá tham khảo: ~300.000 - 400.000 VND/355ml</div>
+            </div>
+            <div class="product-card">
+                <img src="{{ url_for('static', filename='img_dathuong/serum/srnbdathuong.webp') }}" alt="Serum 1" class="product-img">
+                <h3>Vichy Mineral 89 Serum</h3>
+                <div><strong>Thành phần chính</strong>: Nước khoáng Vichy 89% (làm dịu), Hyaluronic Acid (cấp ẩm), Niacinamide (làm sáng).</div>
+                <div><strong>Công dụng</strong>: Cấp ẩm sâu, củng cố hàng rào bảo vệ da, làm sáng và cải thiện độ đều màu da.</div>
+                <div><strong>Kết cấu</strong>: Dạng gel lỏng, thấm nhanh, không nhờn dính.</div>
+                <div><strong>Đặc điểm nổi bật</strong>: Không cồn, không hương liệu, được kiểm nghiệm da liễu, lý tưởng cho da thường.</div>
+                <div class="text-blue-500 font-semibold">Phù hợp: Da thường</div>
+                <div class="text-pink-600 font-bold mt-2">Giá tham khảo: ~700.000 - 900.000 VND/50ml</div>
+            </div>
+            <div class="product-card">
+                <img src="{{ url_for('static', filename='img_dathuong/kemchongnang/kcndathuong-1.webp') }}" alt="Kem Chống Nắng 1" class="product-img">
+                <h3>L’Oreal Paris UV Defender Matte & Fresh SPF 50+ PA++++ (Vạch Đỏ)</h3>
+                <div><strong>Thành phần chính</strong>: Mexoryl SX/XL (bộ lọc UV), Niacinamide (làm sáng), bột kiềm dầu.</div>
+                <div><strong>Công dụng</strong>: Bảo vệ da khỏi tia UVA/UVB, kiểm soát dầu, làm sáng da, mang lại lớp finish mờ lì.</div>
+                <div><strong>Kết cấu</strong>: Dạng kem mịn, thấm nhanh, không gây bết dính.</div>
+                <div><strong>Đặc điểm nổi bật</strong>: Công thức kiềm dầu hiệu quả, không cồn, giá cả phải chăng, phù hợp da thường đến da dầu.</div>
+                <div class="text-blue-500 font-semibold">Phù hợp: Da thường</div>
+                <div class="text-pink-600 font-bold mt-2">Giá tham khảo: ~200.000 - 300.000 VND/50ml</div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-200 py-6">
+        <div class="container mx-auto px-6 text-center">
+        </div>
+    </footer>
+
+    <script src="{{ url_for('static', filename='cosmetic/js/main.js') }}"></script>
+</body>
+</html>
