@@ -128,8 +128,9 @@
     .card-3 { animation-delay: 0.5s; }
     
     .footer {
-      background: rgba(255, 255, 255, 0.8);
+      background: rgba(255, 255, 255, 0.9);
       backdrop-filter: blur(10px);
+      border-top: 1px solid rgba(0, 0, 0, 0.1);
     }
     
     .dark .service-card {
@@ -137,7 +138,50 @@
     }
     
     .dark .footer {
-      background: rgba(31, 41, 55, 0.8);
+      background: rgba(31, 41, 55, 0.9);
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    /* New footer styles */
+    .footer-container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    .footer-column h3 {
+      position: relative;
+      padding-bottom: 12px;
+      margin-bottom: 20px;
+    }
+    
+    .footer-column h3::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 40px;
+      height: 2px;
+      background: linear-gradient(to right, var(--primary-blue), var(--primary-pink));
+    }
+    
+    .footer-link:hover {
+      transform: translateX(5px);
+    }
+    
+    .social-icon {
+      transition: all 0.3s ease;
+    }
+    
+    .social-icon:hover {
+      transform: translateY(-3px);
+    }
+    
+    .footer-bottom {
+      border-top: 1px solid rgba(0, 0, 0, 0.05);
+    }
+    
+    .dark .footer-bottom {
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
     }
   </style>
 </head>
@@ -200,7 +244,106 @@
     </div>
   </main>
 
-  
+  <!-- Footer Section -->
+  <footer class="footer mt-auto">
+    <div class="footer-container px-6 py-12">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+        <!-- About Column -->
+        <div class="footer-column">
+          <h3 class="text-xl font-semibold text-gray-800 dark:text-white">Về chúng tôi</h3>
+          <p class="text-gray-600 dark:text-gray-300 mt-4">
+            Hệ thống chăm sóc sức khỏe và làm đẹp toàn diện, ứng dụng công nghệ AI để mang đến giải pháp cá nhân hóa.
+          </p>
+          <div class="flex space-x-4 mt-6">
+            <a href="#" class="social-icon text-gray-500 hover:text-blue-500 dark:hover:text-blue-400 text-lg">
+              <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="#" class="social-icon text-gray-500 hover:text-pink-500 dark:hover:text-pink-400 text-lg">
+              <i class="fab fa-instagram"></i>
+            </a>
+            <a href="#" class="social-icon text-gray-500 hover:text-blue-400 dark:hover:text-blue-300 text-lg">
+              <i class="fab fa-twitter"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Quick Links -->
+        <div class="footer-column">
+          <h3 class="text-xl font-semibold text-gray-800 dark:text-white">Liên kết nhanh</h3>
+          <ul class="mt-4 space-y-3">
+            <li><a href="#" class="footer-link text-gray-600 hover:text-blue-500 dark:hover:text-blue-400 transition flex items-center">
+              <i class="fas fa-chevron-right mr-2 text-xs opacity-70"></i> Trang chủ
+            </a></li>
+            <li><a href="#" class="footer-link text-gray-600 hover:text-blue-500 dark:hover:text-blue-400 transition flex items-center">
+              <i class="fas fa-chevron-right mr-2 text-xs opacity-70"></i> Dịch vụ
+            </a></li>
+            <li><a href="#" class="footer-link text-gray-600 hover:text-blue-500 dark:hover:text-blue-400 transition flex items-center">
+              <i class="fas fa-chevron-right mr-2 text-xs opacity-70"></i> Giới thiệu
+            </a></li>
+            <li><a href="#" class="footer-link text-gray-600 hover:text-blue-500 dark:hover:text-blue-400 transition flex items-center">
+              <i class="fas fa-chevron-right mr-2 text-xs opacity-70"></i> Câu hỏi thường gặp
+            </a></li>
+          </ul>
+        </div>
+
+        <!-- Services -->
+        <div class="footer-column">
+          <h3 class="text-xl font-semibold text-gray-800 dark:text-white">Dịch vụ</h3>
+          <ul class="mt-4 space-y-3">
+            <li><a href="http://127.0.0.1:5000" class="footer-link text-gray-600 hover:text-blue-500 dark:hover:text-blue-400 transition flex items-center">
+              <i class="fas fa-chevron-right mr-2 text-xs opacity-70"></i> Phân tích da
+            </a></li>
+            <li><a href="VocDang/index.html" class="footer-link text-gray-600 hover:text-blue-500 dark:hover:text-blue-400 transition flex items-center">
+              <i class="fas fa-chevron-right mr-2 text-xs opacity-70"></i> Tư vấn vóc dáng
+            </a></li>
+            <li><a href="TroChuyen/index.html" class="footer-link text-gray-600 hover:text-blue-500 dark:hover:text-blue-400 transition flex items-center">
+              <i class="fas fa-chevron-right mr-2 text-xs opacity-70"></i> Hỗ trợ tâm lý
+            </a></li>
+            <li><a href="#" class="footer-link text-gray-600 hover:text-blue-500 dark:hover:text-blue-400 transition flex items-center">
+              <i class="fas fa-chevron-right mr-2 text-xs opacity-70"></i> Chế độ dinh dưỡng
+            </a></li>
+          </ul>
+        </div>
+
+        <!-- Contact -->
+        <div class="footer-column">
+          <h3 class="text-xl font-semibold text-gray-800 dark:text-white">Liên hệ</h3>
+          <ul class="mt-4 space-y-4">
+            <li class="flex items-start">
+              <i class="fas fa-map-marker-alt mt-1 mr-3 text-blue-500"></i>
+              <span class="text-gray-600 dark:text-gray-300"></span>
+            </li>
+            <li class="flex items-start">
+              <i class="fas fa-phone-alt mt-1 mr-3 text-blue-500"></i>
+              <span class="text-gray-600 dark:text-gray-300">(+84) 12 1234 5678</span>
+            </li>
+            <li class="flex items-start">
+              <i class="fas fa-envelope mt-1 mr-3 text-blue-500"></i>
+              <span class="text-gray-600 dark:text-gray-300">support@suckhoelamdep.vn</span>
+            </li>
+            <li class="flex items-start">
+              <i class="fas fa-clock mt-1 mr-3 text-blue-500"></i>
+              <span class="text-gray-600 dark:text-gray-300">Thứ 2 - Thứ 7: 8:00 - 18:00</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Bottom Footer -->
+      <div class="footer-bottom mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
+        <p class="text-gray-500 dark:text-gray-400 text-sm mb-4 md:mb-0">
+           <span class="font-medium">Sức Khỏe & Làm Đẹp</span>. Tất cả quyền được bảo lưu.
+        </p>
+        <div class="flex flex-wrap justify-center gap-4 md:gap-6">
+          <a href="#" class="text-gray-500 hover:text-blue-500 dark:hover:text-blue-400 text-sm transition">Điều khoản dịch vụ</a>
+          <a href="#" class="text-gray-500 hover:text-blue-500 dark:hover:text-blue-400 text-sm transition">Chính sách bảo mật</a>
+          <a href="#" class="text-gray-500 hover:text-blue-500 dark:hover:text-blue-400 text-sm transition">Cookie</a>
+          <a href="#" class="text-gray-500 hover:text-blue-500 dark:hover:text-blue-400 text-sm transition">Sitemap</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
   <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
   <script>
     // Theme toggle functionality
