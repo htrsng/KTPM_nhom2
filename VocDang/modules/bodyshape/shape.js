@@ -16,27 +16,27 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
   const darkModeToggle = document.getElementById('dark-mode-toggle');
+  const body = document.body;
   if (
-    localStorage.getItem('theme') === 'dark' ||
-    (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)
+    localStorage.getItem('darkMode') === 'enabled' ||
+    (!localStorage.getItem('darkMode') && window.matchMedia('(prefers-color-scheme: dark)').matches)
   ) {
-    document.documentElement.classList.add('dark');
-    if (darkModeToggle) darkModeToggle.textContent = '☀️ Chế độ sáng';
+    body.classList.add('dark-mode');
+    if (darkModeToggle) darkModeToggle.innerHTML = '<i class="fas fa-sun"></i>';
   } else {
-    document.documentElement.classList.remove('dark');
-    if (darkModeToggle) darkModeToggle.textContent = '🌙 Chế độ tối';
+    body.classList.remove('dark-mode');
+    if (darkModeToggle) darkModeToggle.innerHTML = '<i class="fas fa-moon"></i>';
   }
 
-  // Dark mode setup
   if (darkModeToggle) {
     darkModeToggle.addEventListener('click', () => {
-      document.documentElement.classList.toggle('dark');
-      if (document.documentElement.classList.contains('dark')) {
-        localStorage.setItem('theme', 'dark');
-        darkModeToggle.textContent = '☀️ Chế độ sáng';
+      body.classList.toggle('dark-mode');
+      if (body.classList.contains('dark-mode')) {
+        localStorage.setItem('darkMode', 'enabled');
+        darkModeToggle.innerHTML = '<i class="fas fa-sun"></i>';
       } else {
-        localStorage.setItem('theme', 'light');
-        darkModeToggle.textContent = '🌙 Chế độ tối';
+        localStorage.setItem('darkMode', 'disabled');
+        darkModeToggle.innerHTML = '<i class="fas fa-moon"></i>';
       }
     });
   }
