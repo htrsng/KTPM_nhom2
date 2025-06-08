@@ -53,18 +53,22 @@ Dự án đã **hoàn thiện** và sẵn sàng sử dụng. Các tính năng m�
 - **Dependencies**:
   ```bash
   pip install flask ultralytics opencv-python numpy albumentations python-dotenv gunicorn
+---
 
 ### Phần cứng 
 - **RAM** : Tối thiểu 8GB (khuyến nghị 16GB)
 - **CPU**: Đa nhân (GPU NVIDIA với CUDA để tăng tốc YOLOv8)
 - **Dung lượng**: ~6MB cho file best.pt và không gian cho thư mục static
+---
 
 ### Mô hình AI
 - File best.pt (YOLOv8, ~6MB) nằm tại SKIN/models/best.pt, đã train sẵn để phân tích da.
 - Lưu ý: Đường dẫn đến file best.pt được hard-coded trong app.py. Đảm bảo file tồn tại tại SKIN/models/best.pt trước khi chạy ứng dụng.
+---
 
 ### Cơ sở dữ liệu : 
 - Hiện sử dụng dữ liệu tĩnh (PRODUCTS, QUESTIONS). Kế hoạch tích hợp MongoDB/SQLite trong tương lai.
+---
 
 ### 📥 Cài đặt 
 
@@ -85,12 +89,13 @@ pip install torch
 ```bash
 cd SKIN 
 ```
-- Chạy server : 
+- Chạy server Flask : 
 ```bash 
 python app.py 
 ``` 
-- Chạy ứng dung : 
-Mở file index tổng rồi chạy : Open with Live Server 
+- Chạy tổng quan : 
+   Mở file index.html trong thư mục gốc (KTPM_nhom2/index.html) bằng Live Server (VD: extension Live Server trong VS Code).
+--- 
 
 ### 🚀 Sử dụng : 
 ## 1 . Truy cập ứng dụng
@@ -113,6 +118,7 @@ Mở file index tổng rồi chạy : Open with Live Server
    - Chọn trạng thái cảm xúc để tương tác với chatbot.
 
    ảnh minh họa .
+--- 
 
 ### 📂 Cấu trúc thư mục 
 ```text
@@ -150,7 +156,7 @@ KTPM_nhom2/
 │   └── index.html           # Trang chính chatbot
 └── README.md                # Tài liệu dự án
 ``` 
-
+--- 
 ### 💻Công nghệ sử dụng 
 - **Backend:** Python, Flask  
 - **Frontend:** HTML5, JavaScript, Tailwind CSS  
@@ -158,7 +164,7 @@ KTPM_nhom2/
 - **Xử lý ảnh:** OpenCV, Albumentations  
 - **Dữ liệu tĩnh:** JSON (`palettes.json`, `questions.json`, `styles.json`)
 
-
+--- 
 
 ### 🤝 Đóng góp 
  Chúng tôi hoan nghênh mọi đóng góp ! Để tham gia : 
@@ -178,6 +184,7 @@ KTPM_nhom2/
  **5. Tạo Pull Request trên GitHub.**
    - **Quy tắc code**: Tuân thủ PEP8 (Python) và Prettier (JS/CSS).
    - ***Báo lỗi**: Mở issue trên GitHub.
+--- 
 
 
 
