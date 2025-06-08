@@ -149,6 +149,7 @@ KTPM_nhom2/
 ├── TroChuyen/               # Module Trò chuyện
 │   └── index.html           # Trang chính chatbot
 └── README.md                # Tài liệu dự án
+``` 
 
 ### 💻Công nghệ sử dụng 
 ## Backend: Python, Flask
