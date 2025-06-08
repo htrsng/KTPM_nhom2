@@ -115,6 +115,7 @@ Mở file index tổng rồi chạy : Open with Live Server
    ảnh minh họa .
 
 ### 📂 Cấu trúc thư mục 
+```text
 KTPM_nhom2/
 ├── index.html               # Trang tổng quan
 ├── SKIN/                    # Module Mỹ phẩm
