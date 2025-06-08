@@ -152,29 +152,29 @@ KTPM_nhom2/
 ``` 
 
 ### 💻Công nghệ sử dụng 
-## Backend: Python, Flask
-## Frontend: HTML5, JavaScript, Tailwind CSS
-## AI: YOLOv8 (phân tích da)
-## Xử lý ảnh: OpenCV, Albumentations
-## Dữ liệu tĩnh: JSON (palettes.json, questions.json, styles.json)
+ **Backend:** Python, Flask
+ **Frontend:** HTML5, JavaScript, Tailwind CSS
+ **AI:** YOLOv8 (phân tích da)
+ **Xử lý ảnh:** OpenCV, Albumentations
+ **Dữ liệu tĩnh:** JSON (palettes.json, questions.json, styles.json)
 
 
 ### 🤝 Đóng góp 
  Chúng tôi hoan nghênh mọi đóng góp ! Để tham gia : 
- ## 1. Fork repository: https://github.com/htrsng/KTPM_nhom2
- ## 2. Tạo branch : 
+  **1.Fork repository**: https://github.com/htrsng/KTPM_nhom2
+  **2. Tạo branch :** 
  ```bash 
  git checkout -b feature/ten-tinh-nang
  ```
- ## 3. Commit thay đổi : 
+ **3. Commit thay đổi :** 
  ```bash 
  git commit -m "Mô tả thay đổi"
  ```
- ## 4. Push branch : 
+ **4. Push branch :** 
  ```bash 
  git push origin feature/ten-tinh-nang
  ```
- ## 5. Tạo Pull Request trên GitHub.
+ **5. Tạo Pull Request trên GitHub.**
   **Quy tắc code**: Tuân thủ PEP8 (Python) và Prettier (JS/CSS).
    ***Báo lỗi**: Mở issue trên GitHub.
 
