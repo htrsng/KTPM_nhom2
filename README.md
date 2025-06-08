@@ -5,6 +5,10 @@
 ![Python](https://img.shields.io/badge/python-3.8+-yellow)
 
 Một ứng dụng web hiện đại giúp bạn chăm sóc **làn da**, **vóc dáng**, và **tinh thần** với giao diện thân thiện, trải nghiệm cá nhân hóa, và công nghệ AI tiên tiến. Đây là giải pháp **all-in-one** để nâng tầm vẻ đẹp và sức khỏe của bạn!
+### 🎥 Demo sản phẩm
+
+"📺 Video Demo:https://www.youtube.com/watch?v=I6bRZ0dXn58 "
+
 
 ---
 
@@ -38,6 +42,7 @@ Một ứng dụng web hiện đại giúp bạn chăm sóc **làn da**, **vóc 
 - 🌐 Mở rộng sang ứng dụng di động.
 - 🤖 Nâng cấp AI phân tích da và chatbot để hiểu tâm trạng người dùng tốt hơn.
 - 🗄️ Tích hợp cơ sở dữ liệu (MongoDB/SQLite) để quản lý dữ liệu động.
+---
 
 ## 📊 Trạng thái dự án
 
@@ -167,21 +172,21 @@ KTPM_nhom2/
 --- 
 
 ### 🤝 Đóng góp 
- Chúng tôi hoan nghênh mọi đóng góp ! Để tham gia : 
-  **1.Fork repository**: https://github.com/htrsng/KTPM_nhom2
-  **2. Tạo branch :** 
+Chúng tôi hoan nghênh mọi đóng góp ! Để tham gia : 
+- **1.Fork repository**: https://github.com/htrsng/KTPM_nhom2
+- **2. Tạo branch :** 
  ```bash 
  git checkout -b feature/ten-tinh-nang
  ```
- **3. Commit thay đổi :** 
+- **3. Commit thay đổi :** 
  ```bash 
  git commit -m "Mô tả thay đổi"
  ```
- **4. Push branch :** 
+- **4. Push branch :** 
  ```bash 
  git push origin feature/ten-tinh-nang
  ```
- **5. Tạo Pull Request trên GitHub.**
+- **5. Tạo Pull Request trên GitHub.**
    - **Quy tắc code**: Tuân thủ PEP8 (Python) và Prettier (JS/CSS).
    - ***Báo lỗi**: Mở issue trên GitHub.
 --- 
