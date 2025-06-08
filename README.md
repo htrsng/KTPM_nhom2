@@ -6,8 +6,8 @@
 
 Một ứng dụng web hiện đại giúp bạn chăm sóc **làn da**, **vóc dáng**, và **tinh thần** với giao diện thân thiện, trải nghiệm cá nhân hóa, và công nghệ AI tiên tiến. Đây là giải pháp **all-in-one** để nâng tầm vẻ đẹp và sức khỏe của bạn!
 ### 🎥 Demo sản phẩm
-"📺 **Video Demo :** https://www.youtube.com/watch?v=I6bRZ0dXn58 "
-🔗 **GitHub Repository**: https://github.com/htrsng/KTPM_nhom2
+- "📺 **Video Demo :** https://www.youtube.com/watch?v=I6bRZ0dXn58 "
+- 🔗 **GitHub Repository**: https://github.com/htrsng/KTPM_nhom2
 
 ---
 
