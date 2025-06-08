@@ -61,7 +61,120 @@ Dự án đã **hoàn thiện** và sẵn sàng sử dụng. Các tính năng m�
 
 ### Mô hình AI
 - File best.pt (YOLOv8, ~6MB) nằm tại SKIN/models/best.pt, đã train sẵn để phân tích da.
+- Lưu ý: Đường dẫn đến file best.pt được hard-coded trong app.py. Đảm bảo file tồn tại tại SKIN/models/best.pt trước khi chạy ứng dụng.
 
 ### Cơ sở dữ liệu : 
 - Hiện sử dụng dữ liệu tĩnh (PRODUCTS, QUESTIONS). Kế hoạch tích hợp MongoDB/SQLite trong tương lai.
+
+### 📥 Cài đặt 
+
+### 1. Clone repository
+```bash
+git clone https://github.com/htrsng/KTPM_nhom2.git
+```
+### 2. Cài đặt dependencies
+```bash 
+pip install flask ultralytics opencv-python numpy albumentations python-dotenv gunicorn
+```
+- nếu gặp lỗi cài thêm 
+```bash 
+pip install torch 
+``` 
+### 3. Chạy ứng dụng 
+- Di chuyển vào thư mục SKIN : 
+```bash
+cd SKIN 
+```
+- Chạy server : 
+```bash 
+python app.py 
+``` 
+- Chạy ứng dung : 
+Mở file index tổng rồi chạy : Open with Live Server 
+
+### 🚀 Sử dụng : 
+## 1 . Truy cập ứng dụng
+  - Mở trình duyệt tại http://127.0.0.1:5000 (module Mỹ phẩm).
+  - Truy cập các module khác:
+      - Vóc dáng: [repo-root]/VocDang/index.html
+      - Trò chuyện: [repo-root]/TroChuyen/index.html
+## 2. Tính năng Mỹ phẩm:
+  - Upload 3 ảnh khuôn mặt (JPG/PNG) .
+  - Trả lời khảo sát loại da để nhận gợi ý sản phẩm.
+  - Xem kết quả: điểm số da, vấn đề (mụn, lỗ chân lông, thâm/nám), gợi ý cải thiện.
+## 3. Tính năng Vóc dáng:
+  - Truy cập [repo-root]/VocDang/index.html.
+  - Tính TDEE/BMR tại VocDang/modules/weight/tdee.html.
+  - Nhập số đo cơ thể tại VocDang/modules/bodyshape/shape.html để nhận gợi ý phối đồ.
+  - Khảo sát màu sắc cá nhân tại VocDang/modules/skintone/tone.html.
+
+## 4. Tính năng Trò chuyện:
+   - Truy cập [repo-root]/TroChuyen/index.html hoặc http://127.0.0.1:5000/hotro.
+   - Chọn trạng thái cảm xúc để tương tác với chatbot.
+
+   ảnh minh họa .
+
+### 📂 Cấu trúc thư mục 
+KTPM_nhom2/
+├── index.html               # Trang tổng quan
+├── SKIN/                    # Module Mỹ phẩm
+│   ├── app.py               # Backend Flask
+│   ├── models/              # Mô hình YOLOv8
+│   │   └── best.pt          # File mô hình (~6MB)
+│   ├── static/              # File tĩnh
+│   │   ├── cosmetic/        # CSS, JS cho mỹ phẩm
+│   │   ├── img_danhaycam/   # Hình ảnh sản phẩm da nhạy cảm
+│   │   ├── img_dadau/       # Hình ảnh sản phẩm da dầu
+│   │   ├── img_danthuong/   # Hình ảnh sản phẩm da thường
+│   │   ├── img_dahonhop/    # Hình ảnh sản phẩm da hỗn hợp
+│   │   ├── uploads/         # Ảnh người dùng upload
+│   │   └── results/predict/ # Kết quả YOLOv8
+│   └── templates/           # HTML giao diện
+│       ├── cosmetic/        # HTML cho từng loại da
+│       ├── index.html       # Trang chính module SKIN
+│       └── hotro.html       # Trang chatbot
+├── VocDang/                 # Module Vóc dáng
+│   ├── data/                # Dữ liệu tĩnh
+│   │   ├── palettes.json    # Màu sắc cá nhân
+│   │   ├── questions.json   # Câu hỏi khảo sát
+│   │   └── styles.json      # Phong cách phối đồ
+│   ├── modules/             # Tính năng con
+│   │   ├── bodyshape/       # Phân tích số đo
+│   │   ├── skintone/        # Phân tích màu sắc
+│   │   └── weight/          # Tính TDEE/BMR
+│   ├── style.css            # CSS giao diện
+│   ├── index.html           # Trang chính module VocDang
+│   └── script.js            # JS module VocDang
+├── TroChuyen/               # Module Trò chuyện
+│   └── index.html           # Trang chính chatbot
+└── README.md                # Tài liệu dự án
+
+### 💻Công nghệ sử dụng 
+## Backend: Python, Flask
+## Frontend: HTML5, JavaScript, Tailwind CSS
+## AI: YOLOv8 (phân tích da)
+## Xử lý ảnh: OpenCV, Albumentations
+## Dữ liệu tĩnh: JSON (palettes.json, questions.json, styles.json)
+
+
+### 🤝 Đóng góp 
+ Chúng tôi hoan nghênh mọi đóng góp ! Để tham gia : 
+ 1. Fork repository: https://github.com/htrsng/KTPM_nhom2
+ 2. Tạo branch : 
+ ```bash 
+ git checkout -b feature/ten-tinh-nang
+ ```
+ 3. Commit thay đổi : 
+ ```bash 
+ git commit -m "Mô tả thay đổi"
+ ```
+ 4. Push branch : 
+ ```bash 
+ git push origin feature/ten-tinh-nang
+ ```
+ 5. Tạo Pull Request trên GitHub.
+   ## Quy tắc code: Tuân thủ PEP8 (Python) và Prettier (JS/CSS).
+   ## Báo lỗi: Mở issue trên GitHub.
+
+
 
