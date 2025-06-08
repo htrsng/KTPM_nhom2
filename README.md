@@ -68,11 +68,11 @@ Dự án đã **hoàn thiện** và sẵn sàng sử dụng. Các tính năng m�
 
 ### 📥 Cài đặt 
 
-## 1. Clone repository
+**1. Clone repository**
 ```bash
 git clone https://github.com/htrsng/KTPM_nhom2.git
 ```
-## 2. Cài đặt dependencies
+ **2. Cài đặt dependencies**
 ```bash 
 pip install flask ultralytics opencv-python numpy albumentations python-dotenv gunicorn
 ```
@@ -80,7 +80,7 @@ pip install flask ultralytics opencv-python numpy albumentations python-dotenv g
 ```bash 
 pip install torch 
 ``` 
-## 3. Chạy ứng dụng 
+**3. Chạy ứng dụng**
 - Di chuyển vào thư mục SKIN : 
 ```bash
 cd SKIN 
