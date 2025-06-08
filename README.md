@@ -7,7 +7,7 @@
 Một ứng dụng web hiện đại giúp bạn chăm sóc **làn da**, **vóc dáng**, và **tinh thần** với giao diện thân thiện, trải nghiệm cá nhân hóa, và công nghệ AI tiên tiến. Đây là giải pháp **all-in-one** để nâng tầm vẻ đẹp và sức khỏe của bạn!
 ### 🎥 Demo sản phẩm
 
-"📺 Video Demo:https://www.youtube.com/watch?v=I6bRZ0dXn58 "
+"📺 **Video Demo :** https://www.youtube.com/watch?v=I6bRZ0dXn58 "
 
 
 ---
@@ -190,6 +190,15 @@ Chúng tôi hoan nghênh mọi đóng góp ! Để tham gia :
    - **Quy tắc code**: Tuân thủ PEP8 (Python) và Prettier (JS/CSS).
    - ***Báo lỗi**: Mở issue trên GitHub.
 --- 
+### 📬 Nhóm phát triển
+
+| Họ tên                | Mã số sinh viên | Vai trò     | Email                  | GitHub            |
+|-----------------------|------------------|-------------|-------------------------|--------------------|
+| Nguyễn Thị Huyền Trang | 23010181         | Phát triển | 23010181@st.phenikaa-uni.edu.vn      | [htrsng](https://github.com/htrsng) |
+| Trần Xuân Thành        | 23010160         | Phát triển | 23010160@st.phenikaa-uni.edu.vn      | [Kaitszo](https://github.com/Kaitszo) |
+
+
+
 
 
 
