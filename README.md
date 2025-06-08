@@ -6,9 +6,8 @@
 
 Một ứng dụng web hiện đại giúp bạn chăm sóc **làn da**, **vóc dáng**, và **tinh thần** với giao diện thân thiện, trải nghiệm cá nhân hóa, và công nghệ AI tiên tiến. Đây là giải pháp **all-in-one** để nâng tầm vẻ đẹp và sức khỏe của bạn!
 ### 🎥 Demo sản phẩm
-
 "📺 **Video Demo :** https://www.youtube.com/watch?v=I6bRZ0dXn58 "
-
+🔗 **GitHub Repository**: https://github.com/htrsng/KTPM_nhom2
 
 ---
 
@@ -32,8 +31,6 @@ Một ứng dụng web hiện đại giúp bạn chăm sóc **làn da**, **vóc 
 | **Mỹ phẩm**      | Upload 3 ảnh khuôn mặt để phân tích da bằng AI YOLOv8. Nhận điểm số, gợi ý cải thiện, và sản phẩm phù hợp. |
 | **Vóc dáng**     | Tính toán TDEE/BMR, gợi ý phối đồ và màu sắc cá nhân dựa trên số đo. |
 | **Trò chuyện**   | Chatbot thân thiện, đổi màu giao diện theo cảm xúc (vui, buồn, tức giận). |
-
-> [📸 Placeholder: Thêm ảnh minh họa các tính năng tại đây]
 
 ---
 
@@ -68,7 +65,7 @@ Dự án đã **hoàn thiện** và sẵn sàng sử dụng. Các tính năng m�
 
 ### Mô hình AI
 - File best.pt (YOLOv8, ~6MB) nằm tại SKIN/models/best.pt, đã train sẵn để phân tích da.
-- Lưu ý: Đường dẫn đến file best.pt được hard-coded trong app.py. Đảm bảo file tồn tại tại SKIN/models/best.pt trước khi chạy ứng dụng.
+- **Lưu ý:** Đường dẫn đến file best.pt được hard-coded trong app.py. Đảm bảo file tồn tại tại SKIN/models/best.pt trước khi chạy ứng dụng.
 ---
 
 ### Cơ sở dữ liệu : 
@@ -98,12 +95,17 @@ cd SKIN
 ```bash 
 python app.py 
 ``` 
+- Trong môi trường production :
+```bash
+gunicorn --bind 127.0.0.1:5000 -w 4 SKIN.app:app
+```
 - Chạy tổng quan : 
    Mở file index.html trong thư mục gốc (KTPM_nhom2/index.html) bằng Live Server (VD: extension Live Server trong VS Code).
 --- 
 
 ### 🚀 Sử dụng : 
 ## 1 . Truy cập ứng dụng
+  - Mở [repo-root]/index.html với Live Server để truy cập trang tổng quan.
   - Mở trình duyệt tại http://127.0.0.1:5000 (module Mỹ phẩm).
   - Truy cập các module khác:
       - Vóc dáng: [repo-root]/VocDang/index.html
@@ -119,11 +121,8 @@ python app.py
   - Khảo sát màu sắc cá nhân tại VocDang/modules/skintone/tone.html.
 
 ## 4. Tính năng Trò chuyện:
-   - Truy cập [repo-root]/TroChuyen/index.html hoặc http://127.0.0.1:5000/hotro.
+   - Truy cập [repo-root]/TroChuyen/index.html 
    - Chọn trạng thái cảm xúc để tương tác với chatbot.
-
-   ảnh minh họa .
---- 
 
 ### 📂 Cấu trúc thư mục 
 ```text
