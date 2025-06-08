@@ -53,3 +53,15 @@ Dự án đã **hoàn thiện** và sẵn sàng sử dụng. Các tính năng m�
 - **Dependencies**:
   ```bash
   pip install flask ultralytics opencv-python numpy albumentations python-dotenv gunicorn
+
+### Phần cứng 
+- **RAM** : Tối thiểu 8GB (khuyến nghị 16GB)
+- **CPU**: Đa nhân (GPU NVIDIA với CUDA để tăng tốc YOLOv8)
+- **Dung lượng**: ~6MB cho file best.pt và không gian cho thư mục static
+
+### Mô hình AI
+- File best.pt (YOLOv8, ~6MB) nằm tại SKIN/models/best.pt, đã train sẵn để phân tích da.
+
+### Cơ sở dữ liệu : 
+- Hiện sử dụng dữ liệu tĩnh (PRODUCTS, QUESTIONS). Kế hoạch tích hợp MongoDB/SQLite trong tương lai.
+
