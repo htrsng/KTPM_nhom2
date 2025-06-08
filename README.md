@@ -152,13 +152,12 @@ KTPM_nhom2/
 ``` 
 
 ### 💻Công nghệ sử dụng 
-```text
- **Backend:** Python, Flask
- **Frontend:** HTML5, JavaScript, Tailwind CSS
- **AI:** YOLOv8 (phân tích da)
- **Xử lý ảnh:** OpenCV, Albumentations
- **Dữ liệu tĩnh:** JSON (palettes.json, questions.json, styles.json)
-```
+- **Backend:** Python, Flask  
+- **Frontend:** HTML5, JavaScript, Tailwind CSS  
+- **AI:** YOLOv8 (phân tích da)  
+- **Xử lý ảnh:** OpenCV, Albumentations  
+- **Dữ liệu tĩnh:** JSON (`palettes.json`, `questions.json`, `styles.json`)
+
 
 
 ### 🤝 Đóng góp 
@@ -177,10 +176,9 @@ KTPM_nhom2/
  git push origin feature/ten-tinh-nang
  ```
  **5. Tạo Pull Request trên GitHub.**
- ```text
-  **Quy tắc code**: Tuân thủ PEP8 (Python) và Prettier (JS/CSS).
-   ***Báo lỗi**: Mở issue trên GitHub.
-```
+   - **Quy tắc code**: Tuân thủ PEP8 (Python) và Prettier (JS/CSS).
+   - ***Báo lỗi**: Mở issue trên GitHub.
+
 
 
 
