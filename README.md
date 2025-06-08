@@ -7,7 +7,7 @@
 
 Một ứng dụng web hiện đại giúp bạn chăm sóc **làn da**, **vóc dáng**, và **tinh thần** với giao diện thân thiện, trải nghiệm cá nhân hóa, và công nghệ AI tiên tiến. Đây là giải pháp **all-in-one** để nâng tầm vẻ đẹp và sức khỏe của bạn! Đây là dự án học thuật của Nhóm 2, Đại học Phenikaa, môn Kỹ thuật phần mềm, do Nguyễn Thị Huyền Trang và Trần Xuân Thành thực hiện dưới sự hướng dẫn của giảng viên Trương Anh Hoàng.
 ### 🎥 Demo sản phẩm
-- 📺 **Video Demo**: [Xem trên YouTube](https://www.youtube.com/watch?v=I6bRZ0dXn58)
+- 📺 **Video Demo**: [Xem trên YouTube](https://www.youtube.com/watch?v=7-uEXbKXTy8&t=5s)
 - 🔗 **GitHub Repository**: https://github.com/htrsng/KTPM_nhom2
 
 ---
