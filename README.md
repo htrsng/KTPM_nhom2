@@ -20,8 +20,6 @@ Một ứng dụng web hiện đại giúp bạn chăm sóc **làn da**, **vóc 
 
 **Điểm nổi bật**: Tích hợp toàn diện chăm sóc da, ngoại hình, và tinh thần trong một nền tảng duy nhất, mang đến trải nghiệm mượt mà và trực quan.
 
-> [📸 Placeholder: Thêm ảnh giao diện chính tại đây]
-
 ---
 
 ## 🚀 Tính năng chính
