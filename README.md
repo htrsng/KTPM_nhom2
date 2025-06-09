@@ -183,7 +183,7 @@ Chúng tôi hoan nghênh mọi đóng góp ! Để tham gia :
  ```
 - **5. Tạo Pull Request trên GitHub.**
    - **Quy tắc code**: Tuân thủ PEP8 (Python) và Prettier (JS/CSS).
-   - ***Báo lỗi**: Mở issue trên GitHub.
+   - **Báo lỗi**: Mở issue trên GitHub.
 --- 
 ### 📜Giấy phép
 [MIT License](LICENSE)
